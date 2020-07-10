@@ -4,7 +4,7 @@
 ///
 /// Representation of a ray-traceable sphere.
 
-#include <raytrace/raytrace.h>
+#include <raytrace/ray.h>
 #include <raytrace/sceneObject.h>
 
 #include <gm/functions/normalize.h>
@@ -32,10 +32,11 @@ public:
     }
 
     virtual inline bool
-    Hit( const gm::Ray& i_ray, const gm::FloatRange& i_magnitudeRange, HitRecord& o_record ) const override
+    Hit( const raytrace::Ray& i_ray, const gm::FloatRange& i_magnitudeRange, HitRecord& o_record ) const override
     {
         gm::Vec2f intersections;
-        if ( gm::RaySphereIntersection( m_origin, m_radius, i_ray.Origin(), i_ray.Direction(), intersections ) > 0 )
+        if ( gm::RaySphereIntersection( m_origin, m_radius, i_ray.Origin(), i_ray.Direction(), intersections ) >
+             0 )
         {
             if ( intersections[ 0 ] < i_magnitudeRange.Max() && intersections[ 0 ] > i_magnitudeRange.Min() )
             {
@@ -55,7 +56,7 @@ public:
 
     /* Reference implementation.
     virtual inline bool
-    Hit( const gm::Ray& i_ray, const gm::FloatRange& i_magnitudeRange, HitRecord& o_record ) const override
+    Hit( const raytrace::Ray& i_ray, const gm::FloatRange& i_magnitudeRange, HitRecord& o_record ) const override
     {
         gm::Vec3f oc           = i_ray.Origin() - m_origin;
         auto      a            = gm::LengthSquared( i_ray.Direction() );
@@ -97,7 +98,7 @@ private:
     /// \param i_ray The ray.
     /// \param i_rayMagnitude the magnitude of the ray intersection.
     /// \param o_record the record of a ray hit.
-    inline void _Record( const gm::Ray& i_ray, float i_rayMagnitude, HitRecord& o_record ) const
+    inline void _Record( const raytrace::Ray& i_ray, float i_rayMagnitude, HitRecord& o_record ) const
     {
         o_record.m_position  = gm::RayPosition( i_ray.Origin(), i_ray.Direction(), i_rayMagnitude );
         o_record.m_normal    = ( o_record.m_position - m_origin ) / m_radius;

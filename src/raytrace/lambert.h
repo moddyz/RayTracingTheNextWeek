@@ -27,16 +27,16 @@ public:
     {
     }
 
-    inline virtual bool Scatter( const gm::Ray&   i_ray,
+    inline virtual bool Scatter( const raytrace::Ray&   i_ray,
                                  const HitRecord& i_hitRecord,
                                  gm::Vec3f&       o_attenuation,
-                                 gm::Ray&         o_scatteredRay ) const override
+                                 raytrace::Ray&         o_scatteredRay ) const override
     {
         // Produce random scatter direction.
         gm::Vec3f rayTarget = i_hitRecord.m_position + // From the hit point...
                               i_hitRecord.m_normal +   // Add a unit in the direction of the normal.
                               RandomUnitVector();      // Add random unit vector.
-        o_scatteredRay = gm::Ray( /* origin */ i_hitRecord.m_position,
+        o_scatteredRay = raytrace::Ray( /* origin */ i_hitRecord.m_position,
                                   /* direction */ gm::Normalize( rayTarget - i_hitRecord.m_position ) );
 
         // Apply albedo.

@@ -40,10 +40,10 @@ public:
     {
     }
 
-    inline virtual bool Scatter( const gm::Ray&   i_ray,
+    inline virtual bool Scatter( const raytrace::Ray&   i_ray,
                                  const HitRecord& i_hitRecord,
                                  gm::Vec3f&       o_attenuation,
-                                 gm::Ray&         o_scatteredRay ) const override
+                                 raytrace::Ray&         o_scatteredRay ) const override
     {
         // Fixed attenuation color
         o_attenuation = gm::Vec3f( 1.0f, 1.0f, 1.0f );
@@ -78,7 +78,7 @@ public:
         if ( ( incidentIndex / refractedIndex ) * sinTheta > 1.0 )
         {
             gm::Vec3f reflectedDirection = Reflect( normRayDir, incidentNormal );
-            o_scatteredRay               = gm::Ray( i_hitRecord.m_position, reflectedDirection );
+            o_scatteredRay               = raytrace::Ray( i_hitRecord.m_position, reflectedDirection );
             return true;
         }
 
@@ -87,7 +87,7 @@ public:
         if ( gm::RandomNumber( gm::FloatRange( 0.0f, 1.0f ) ) < Schlick( cosTheta, incidentIndex / refractedIndex ) )
         {
             gm::Vec3f reflectedDirection = Reflect( normRayDir, incidentNormal );
-            o_scatteredRay               = gm::Ray( i_hitRecord.m_position, reflectedDirection );
+            o_scatteredRay               = raytrace::Ray( i_hitRecord.m_position, reflectedDirection );
             return true;
         }
 
@@ -95,7 +95,7 @@ public:
         gm::Vec3f refractedDirection = Refract( normRayDir, incidentNormal, incidentIndex, refractedIndex );
 
         // Assemble ray.
-        o_scatteredRay = gm::Ray( i_hitRecord.m_position, refractedDirection );
+        o_scatteredRay = raytrace::Ray( i_hitRecord.m_position, refractedDirection );
 
         return true;
     }

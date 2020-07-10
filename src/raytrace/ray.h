@@ -1,26 +1,23 @@
-//
-// This file is auto-generated, please do not modify directly!
-//
-
 #pragma once
 
 /// \file ray.h
-/// \ingroup gm_types_composite
+///
+/// A representation of a ray.
 
-#include <gm/gm.h>
+#include <raytrace/raytrace.h>
 
 #include <sstream>
 
 #include <gm/types/vec3f.h>
 
-GM_NS_OPEN
+RAYTRACE_NS_OPEN
 
 /// \class Ray
-/// \ingroup gm_types_composite
 ///
 /// Class definition of a composite type with named elements:
-/// - origin (\ref Vec3f)
-/// - direction (\ref Vec3f)
+/// - origin (\ref gm::Vec3f)
+/// - direction (\ref gm::Vec3f)
+/// - time (\ref float)
 class Ray final
 {
 public:
@@ -29,12 +26,13 @@ public:
     // --------------------------------------------------------------------- //
 
     /// Default constructor.
-    GM_HOST_DEVICE constexpr inline Ray() = default;
+    constexpr inline Ray() = default;
 
     /// Element-wise constructor.
-    GM_HOST_DEVICE explicit constexpr inline Ray( const Vec3f& i_origin, const Vec3f& i_direction )
+    explicit constexpr inline Ray( const gm::Vec3f& i_origin, const gm::Vec3f& i_direction, float i_time = 0.0f )
         : m_origin( i_origin )
         , m_direction( i_direction )
+        , m_time( i_time )
     {
     }
 
@@ -43,27 +41,39 @@ public:
     // --------------------------------------------------------------------- //
 
     /// Const accessor for "origin".
-    GM_HOST_DEVICE inline const Vec3f& Origin() const
+    inline const gm::Vec3f& Origin() const
     {
         return m_origin;
     }
 
     /// Mutable accessor for "origin".
-    GM_HOST_DEVICE inline Vec3f& Origin()
+    inline gm::Vec3f& Origin()
     {
         return m_origin;
     }
 
     /// Const accessor for "direction".
-    GM_HOST_DEVICE inline const Vec3f& Direction() const
+    inline const gm::Vec3f& Direction() const
     {
         return m_direction;
     }
 
     /// Mutable accessor for "direction".
-    GM_HOST_DEVICE inline Vec3f& Direction()
+    inline gm::Vec3f& Direction()
     {
         return m_direction;
+    }
+
+    /// Const accessor for "time".
+    inline const float& Time() const
+    {
+        return m_time;
+    }
+
+    /// Mutable accessor for "time".
+    inline float& Time()
+    {
+        return m_time;
     }
 
     // --------------------------------------------------------------------- //
@@ -88,8 +98,9 @@ public:
 
 private:
     // Element members.
-    Vec3f m_origin;
-    Vec3f m_direction;
+    gm::Vec3f m_origin;
+    gm::Vec3f m_direction;
+    float     m_time = 0.0f;
 };
 
 /// Operator overload for << to enable writing the string representation of \p i_composite into an output
@@ -105,4 +116,4 @@ inline std::ostream& operator<<( std::ostream& o_outputStream, const Ray& i_comp
     return o_outputStream;
 }
 
-GM_NS_CLOSE
+RAYTRACE_NS_CLOSE
