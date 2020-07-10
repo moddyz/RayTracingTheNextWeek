@@ -1,41 +1,32 @@
-# CMakeTemplate
+# RayTracingTheNextWeek
 
-Basic template which can be used as a starting point for a new CMake-based C++ project.
-
-This project also serves as an aggregation of useful CMake functionality.
+An implementation of the book [Ray Tracing: The Next Week](https://raytracing.github.io/books/RayTracingTheNextWeek.html).  
 
 ## Table of Contents
 
-- [Usage](#usage)
-  - [Convenience functions & macros](#convenience-functions-and-macros)
-- [Documentation](#documentation)
+- [Programs](#programs)
+  * [0. Motion Blur](#0-motion-blur)
+- [Library](#library)
 - [Building](#building)
-  - [Requirements](#requirements)
 - [Build Status](#build-status)
 
-## Usage
+## Programs
 
-To use this template: 
-1. Create a new repository using **CMakeTemplate** as the selected template project.
-2. Replace occurances of "CMakeTemplate" with the new project name.
-```bash
-find . -name ".git" -prune -o -type f -exec sed -i "s/CMakeTemplate/YOUR_PROJECT_NAME/g" {} +
-```
-3. Prune any un-wanted source directories or files (such as the example library and programs under `src/`).
+### 0. Motion Blur
 
-### Convenience functions and macros
+![Image](./src/0_motionBlur/output.png)
 
-Convenience functions and macros are available to build libraries, documentation, programs, tests, or export the project:
-- [cpp_library](src/exampleSharedLibrary/CMakeLists.txt)
-- [cpp_program](src/exampleProgram/CMakeLists.txt)
-- [cpp_test_program](src/exampleSharedLibrary/tests/CMakeLists.txt)
-- [export_project](CMakeLists.txt)
+[Source code](./src/0_motionBlur/main.cpp)
 
-See [cmake/macros/Public.cmake](cmake/macros/Public.cmake) for the full listing.
+[Link to Chapter 2](https://raytracing.github.io/books/RayTracingTheNextWeek.html#motionblur)
+
+## Library
+
+Common functions and classes are refactored into the [raytrace library](./src/raytrace) and the [GraphicsMath](https://github.com/moddyz/GraphicsMath) project.
 
 ## Documentation
 
-Documentation based on the latest state of master, [hosted by GitHub Pages](https://moddyz.github.io/CMakeTemplate/).
+Doxygen documentation based on the latest state of master, [hosted by GitHub Pages](https://moddyz.github.io/RayTracingTheNextWeek/).
 
 ## Building
 
@@ -47,12 +38,11 @@ A convenience build script is provided, for building all targets, and optionally
 ### Requirements
 
 - `>= CMake-3.17`
-- `>= C++17`
+- `C++17`
 - `doxygen` and `graphviz` (optional for documentation)
 
 ## Build Status
 
 |       | master | 
 | ----- | ------ | 
-| macOS-10.14 | [![Build Status](https://travis-ci.com/moddyz/CMakeTemplate.svg?branch=master)](https://travis-ci.com/moddyz/CMakeTemplate) |
-
+| macOS-10.14 | [![Build Status](https://travis-ci.com/moddyz/RayTracingTheNextWeek.svg?branch=master)](https://travis-ci.com/moddyz/RayTracingTheNextWeek) |

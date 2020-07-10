@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.17)
 
 # Project Name
 project(
-    CMakeTemplate
+    RayTracingTheNextWeek
     VERSION 0.0
-    DESCRIPTION "Basic template for starting out a new CMake-based project."
+    DESCRIPTION "Implementation of the Ray Tracing: The Next Week book."
     LANGUAGES CXX
 )
 
@@ -38,10 +38,12 @@ if(BUILD_DOCUMENTATION)
         GENERATE_TAGFILE
             TRUE
         DOXYFILE
-            ${CMAKE_SOURCE_DIR}/docs/Doxyfile.in
+            ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.in
         INPUTS
             ${CMAKE_CURRENT_SOURCE_DIR}/src/
-            ${CMAKE_CURRENT_SOURCE_DIR}/src/exampleSharedLibrary/
+            ${CMAKE_CURRENT_SOURCE_DIR}/src/raytrace
+        TAGFILES
+            ${CMAKE_CURRENT_SOURCE_DIR}/docs/gm.tag=https://moddyz.github.io/GraphicsMath/
     )
 endif()
 
