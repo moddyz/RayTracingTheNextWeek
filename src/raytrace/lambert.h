@@ -37,7 +37,8 @@ public:
                               i_hitRecord.m_normal +   // Add a unit in the direction of the normal.
                               RandomUnitVector();      // Add random unit vector.
         o_scatteredRay = raytrace::Ray( /* origin */ i_hitRecord.m_position,
-                                        /* direction */ gm::Normalize( rayTarget - i_hitRecord.m_position ) );
+                                        /* direction */ gm::Normalize( rayTarget - i_hitRecord.m_position ),
+                                        /* time */ i_ray.Time() );
 
         // Apply albedo.
         o_attenuation = m_albedo;

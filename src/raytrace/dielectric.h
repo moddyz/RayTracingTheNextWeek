@@ -77,8 +77,9 @@ public:
         double sinTheta = sqrt( 1.0 - cosTheta * cosTheta );
         if ( ( incidentIndex / refractedIndex ) * sinTheta > 1.0 )
         {
-            gm::Vec3f reflectedDirection = Reflect( normRayDir, incidentNormal );
-            o_scatteredRay               = raytrace::Ray( i_hitRecord.m_position, reflectedDirection );
+            o_scatteredRay = raytrace::Ray( /* origin */ i_hitRecord.m_position,
+                                            /* direction */ Reflect( normRayDir, incidentNormal ),
+                                            /* time */ i_ray.Time() );
             return true;
         }
 
@@ -86,16 +87,17 @@ public:
         // to the geometric surface normal.
         if ( gm::RandomNumber( gm::FloatRange( 0.0f, 1.0f ) ) < Schlick( cosTheta, incidentIndex / refractedIndex ) )
         {
-            gm::Vec3f reflectedDirection = Reflect( normRayDir, incidentNormal );
-            o_scatteredRay               = raytrace::Ray( i_hitRecord.m_position, reflectedDirection );
+            o_scatteredRay = raytrace::Ray( /* origin */ i_hitRecord.m_position,
+                                            /* direction */ Reflect( normRayDir, incidentNormal ),
+                                            /* time */ i_ray.Time() );
             return true;
         }
 
-        // Compute new refracted direction.
-        gm::Vec3f refractedDirection = Refract( normRayDir, incidentNormal, incidentIndex, refractedIndex );
-
-        // Assemble ray.
-        o_scatteredRay = raytrace::Ray( i_hitRecord.m_position, refractedDirection );
+        // Refracted ray.
+        o_scatteredRay =
+            raytrace::Ray( /* origin */ i_hitRecord.m_position,
+                           /* direction */ Refract( normRayDir, incidentNormal, incidentIndex, refractedIndex ),
+                           /* time */ i_ray.Time() );
 
         return true;
     }

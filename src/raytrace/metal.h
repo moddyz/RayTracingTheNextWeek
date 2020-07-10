@@ -42,7 +42,8 @@ public:
 
         // Produce reflected ray.
         o_scatteredRay = raytrace::Ray( /* origin */ i_hitRecord.m_position,
-                                        /* direction */ gm::Normalize( reflectedDirection ) );
+                                        /* direction */ gm::Normalize( reflectedDirection ),
+                                        /* time */ i_ray.Time() );
 
         // Apply albedo.
         o_attenuation = m_albedo;
