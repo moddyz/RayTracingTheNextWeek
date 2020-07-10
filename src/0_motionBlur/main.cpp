@@ -25,8 +25,8 @@
 #include <raytrace/metal.h>
 #include <raytrace/ppmImageWriter.h>
 #include <raytrace/randomPointInUnitDisk.h>
-#include <raytrace/sphere.h>
 #include <raytrace/ray.h>
+#include <raytrace/sphere.h>
 
 #include <iostream>
 
@@ -140,11 +140,21 @@ static gm::Vec3f ComputeRayColor( const raytrace::Ray&   i_ray,
     return gm::LinearInterpolation( gm::Vec3f( 1.0, 1.0, 1.0 ), gm::Vec3f( 0.5, 0.7, 1.0 ), weight );
 }
 
+/// Shade the specified pixel coordinate \p i_pixelCoord through colors sampled from casted rays.
+///
+/// \param i_pixelCoord The pixel coordinate to shade.
+/// \param i_samplesPerPixel The number of rays casted to sample colors, per pixel.
+/// \param i_rayBounceLimit The number of bounces a ray can perform before it is retired.
+/// \param i_camera The camera model which rays are cast from.
+/// \param i_sceneObjects The objects in the scene which the rays can interact with.
+/// \param o_image The image buffer to write color values into.
+/// \param i_printDebug Flag to enable debug printing of shading and ray information.
 void ShadePixel( const gm::Vec2i&          i_pixelCoord,
                  int                       i_samplesPerPixel,
                  int                       i_rayBounceLimit,
                  const raytrace::Camera&   i_camera,
                  const SceneObjectPtrs&    i_sceneObjects,
+                 const gm::FloatRange&     i_shutterRange,
                  raytrace::RGBImageBuffer& o_image,
                  bool                      i_printDebug = false )
 {
@@ -167,29 +177,27 @@ void ShadePixel( const gm::Vec2i&          i_pixelCoord,
         gm::Vec3f randomPointInLens = lensRadius * raytrace::RandomPointInUnitDisk();
         gm::Vec3f lensOffset        = randomPointInLens.X() * i_camera.Right() + randomPointInLens.Y() * i_camera.Up();
 
-        raytrace::Ray ray( /* origin */ i_camera.Origin() + lensOffset,  // The origin of the ray is the camera origin.
-                           /* direction */ i_camera.ViewportBottomLeft() // Starting from the viewport bottom left...
-                               + ( u * i_camera.ViewportHorizontal() )   // Horizontal offset.
-                               + ( v * i_camera.ViewportVertical() )     // Vertical offset.
-                               - i_camera.Origin()                       // Get difference vector from camera origin.
-
-                               - lensOffset // Since the origin was offset, we must apply the inverse offset to
-                                            // the ray direction such that the ray position _at the focal plane_
-                                            // is the same as before!
-        );
+        gm::Vec3f rayDirection = i_camera.ViewportBottomLeft()           // Starting from the viewport bottom left...
+                                 + ( u * i_camera.ViewportHorizontal() ) // Horizontal offset.
+                                 + ( v * i_camera.ViewportVertical() )   // Vertical offset.
+                                 - i_camera.Origin()                     // Get difference vector from camera origin.
+                                 - lensOffset; // Since the origin was offset, we must apply the inverse offset to
+                                               // the ray direction such that the ray position _at the focal plane_
+                                               // is the same as before!
+        raytrace::Ray ray( /* origin */ i_camera.Origin() + lensOffset,
+                           /* direction */ rayDirection,
+                           /* time */ gm::RandomNumber( i_shutterRange ) );
 
         // Normalize the direction of the ray.
         ray.Direction() = gm::Normalize( ray.Direction() );
-        if ( i_printDebug )
-        {
-            std::cout << c_indent << "Sample: " << sampleIndex << std::endl;
-        }
 
         // Accumulate color.
         gm::Vec3f sampleColor = ComputeRayColor( ray, i_rayBounceLimit, i_sceneObjects, i_printDebug );
         pixelColor += sampleColor;
+
         if ( i_printDebug )
         {
+            std::cout << c_indent << "Sample: " << sampleIndex << std::endl;
             std::cout << c_indent << "Sample color: " << sampleColor << std::endl;
         }
     }
@@ -209,6 +217,9 @@ void ShadePixel( const gm::Vec2i&          i_pixelCoord,
     o_image( i_pixelCoord.X(), i_pixelCoord.Y() ) = pixelColor;
 }
 
+/// Populate the scene by appending a variety of objects to \p o_sceneObjects.
+///
+/// \param o_sceneObjects Collection to populate with scene objects.
 void PopulateSceneObjects( SceneObjectPtrs& o_sceneObjects )
 {
     raytrace::MaterialSharedPtr groundMaterial = std::make_shared< raytrace::Lambert >( gm::Vec3f( 0.5, 0.5, 0.5 ) );
@@ -289,7 +300,13 @@ int main( int i_argc, char** i_argv )
           cxxopts::value< float >()->default_value( "20" ) ) // Camera param.
         ( "a,aperture",
           "Aperture of the camera (lens diameter).",
-          cxxopts::value< float >()->default_value( "0.2" ) )                                    // Camera param.
+          cxxopts::value< float >()->default_value( "0.2" ) ) // Camera param.
+        ( "shutterOpen",
+          "The time when the shutter is open.",
+          cxxopts::value< float >()->default_value( "0.0" ) ) // Motion blur param.
+        ( "shutterClose",
+          "The time when the shutter is closed.",
+          cxxopts::value< float >()->default_value( "1.0" ) )                                    // Motion blur param.
         ( "d,debug", "Turn on debug mode.", cxxopts::value< bool >()->default_value( "false" ) ) // Debug mode.
         ( "x,debugXCoord",
           "The x-coordinate of the pixel in the image to print debug information for.",
@@ -298,7 +315,9 @@ int main( int i_argc, char** i_argv )
           "The y-coordinate of the pixel in the image to print debug information for.",
           cxxopts::value< int >()->default_value( "0" ) ); // Ycoord.
 
-    auto        args            = options.parse( i_argc, i_argv );
+    auto args = options.parse( i_argc, i_argv );
+
+    // Imaging options.
     int         imageWidth      = args[ "width" ].as< int >();
     int         imageHeight     = args[ "height" ].as< int >();
     int         samplesPerPixel = args[ "samplesPerPixel" ].as< int >();
@@ -306,9 +325,14 @@ int main( int i_argc, char** i_argv )
     float       verticalFov     = args[ "verticalFov" ].as< float >();
     float       aperture        = args[ "aperture" ].as< float >();
     std::string filePath        = args[ "output" ].as< std::string >();
-    bool        debug           = args[ "debug" ].as< bool >();
-    int         debugXCoord     = args[ "debugXCoord" ].as< int >();
-    int         debugYCoord     = imageHeight - args[ "debugYCoord" ].as< int >();
+
+    // Timing options.
+    gm::FloatRange shutterRange( args[ "shutterOpen" ].as< float >(), args[ "shutterClose" ].as< float >() );
+
+    // Debug options.
+    bool debug       = args[ "debug" ].as< bool >();
+    int  debugXCoord = args[ "debugXCoord" ].as< int >();
+    int  debugYCoord = imageHeight - args[ "debugYCoord" ].as< int >();
 
     // ------------------------------------------------------------------------
     // Allocate image buffer & camera.
@@ -342,7 +366,7 @@ int main( int i_argc, char** i_argv )
 
     for ( const gm::Vec2i& pixelCoord : image.Extent() )
     {
-        ShadePixel( pixelCoord, samplesPerPixel, rayBounceLimit, camera, sceneObjects, image );
+        ShadePixel( pixelCoord, samplesPerPixel, rayBounceLimit, camera, sceneObjects, shutterRange, image );
     }
 
     // ------------------------------------------------------------------------
@@ -356,6 +380,7 @@ int main( int i_argc, char** i_argv )
                     rayBounceLimit,
                     camera,
                     sceneObjects,
+                    shutterRange,
                     image,
                     /* printDebug */ true );
     }
