@@ -178,9 +178,12 @@ void ShadePixel( const gm::Vec2i&          i_pixelCoord,
         float u = ( float( i_pixelCoord.X() ) + gm::RandomNumber( c_normalizedRange ) ) / o_image.Extent().Max().X();
         float v = ( float( i_pixelCoord.Y() ) + gm::RandomNumber( c_normalizedRange ) ) / o_image.Extent().Max().Y();
 
+        // Compute lens offset, produces the depth of field effect for those objects not exactly
+        // at the focal distance.
         gm::Vec3f randomPointInLens = lensRadius * raytrace::RandomPointInUnitDisk();
         gm::Vec3f lensOffset        = randomPointInLens.X() * i_camera.Right() + randomPointInLens.Y() * i_camera.Up();
 
+        // Construct our ray.
         gm::Vec3f rayDirection = i_camera.ViewportBottomLeft()           // Starting from the viewport bottom left...
                                  + ( u * i_camera.ViewportHorizontal() ) // Horizontal offset.
                                  + ( v * i_camera.ViewportVertical() )   // Vertical offset.
@@ -189,11 +192,8 @@ void ShadePixel( const gm::Vec2i&          i_pixelCoord,
                                                // the ray direction such that the ray position _at the focal plane_
                                                // is the same as before!
         raytrace::Ray ray( /* origin */ i_camera.Origin() + lensOffset,
-                           /* direction */ rayDirection,
+                           /* direction */ gm::Normalize( rayDirection ),
                            /* time */ gm::RandomNumber( i_shutterRange ) );
-
-        // Normalize the direction of the ray.
-        ray.Direction() = gm::Normalize( ray.Direction() );
 
         // Accumulate color.
         gm::Vec3f sampleColor = ComputeRayColor( ray, i_rayBounceLimit, i_sceneObjects, i_printDebug );
