@@ -40,10 +40,10 @@ public:
     {
     }
 
-    inline virtual bool Scatter( const raytrace::Ray&   i_ray,
-                                 const HitRecord& i_hitRecord,
-                                 gm::Vec3f&       o_attenuation,
-                                 raytrace::Ray&         o_scatteredRay ) const override
+    inline virtual bool Scatter( const raytrace::Ray& i_ray,
+                                 const HitRecord&     i_hitRecord,
+                                 gm::Vec3f&           o_attenuation,
+                                 raytrace::Ray&       o_scatteredRay ) const override
     {
         // Fixed attenuation color
         o_attenuation = gm::Vec3f( 1.0f, 1.0f, 1.0f );

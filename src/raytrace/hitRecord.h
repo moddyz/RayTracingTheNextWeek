@@ -6,8 +6,8 @@
 
 #include <gm/types/vec3f.h>
 
-#include <raytrace/raytrace.h>
 #include <raytrace/material.h>
+#include <raytrace/raytrace.h>
 
 RAYTRACE_NS_OPEN
 

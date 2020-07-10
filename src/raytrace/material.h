@@ -4,8 +4,8 @@
 ///
 /// Scene object assignable material abstraction.
 
-#include <raytrace/raytrace.h>
 #include <raytrace/ray.h>
+#include <raytrace/raytrace.h>
 
 RAYTRACE_NS_OPEN
 
@@ -35,10 +35,10 @@ public:
     ///
     /// \retval true If this material produces a scattered ray. \p o_scatteredRay will be populated.
     /// \retval false If this material absorbs the scattered ray.  \p o_scatteredRay will be undefined.
-    virtual bool Scatter( const raytrace::Ray&   i_ray,
-                          const HitRecord& i_hitRecord,
-                          gm::Vec3f&       o_attenuation,
-                          raytrace::Ray&         o_scatteredRay ) const = 0;
+    virtual bool Scatter( const raytrace::Ray& i_ray,
+                          const HitRecord&     i_hitRecord,
+                          gm::Vec3f&           o_attenuation,
+                          raytrace::Ray&       o_scatteredRay ) const = 0;
 };
 
 /// \typedef MaterialPtr

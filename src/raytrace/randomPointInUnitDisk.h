@@ -22,7 +22,7 @@ RAYTRACE_NS_OPEN
 inline gm::Vec3f RandomPointInUnitDisk()
 {
     // Random angle & magnitude
-    float angle = gm::RandomNumber( gm::FloatRange( 0.0f, 2.0f * GM_PI ) );
+    float angle     = gm::RandomNumber( gm::FloatRange( 0.0f, 2.0f * GM_PI ) );
     float magnitude = gm::RandomNumber( gm::FloatRange( 0.0f, 1.0f ) );
 
     // Compute the cosine and sine for the x & y coordinates based on the random angle,

@@ -30,7 +30,8 @@ public:
     /// \retval true If the ray hits this object.
     /// \retval false If the ray does not hit this object, or if the hit is outside the range
     /// of \p i_magnitudeRange.
-    virtual bool Hit( const raytrace::Ray& i_ray, const gm::FloatRange& i_magnitudeRange, HitRecord& o_record ) const = 0;
+    virtual bool
+    Hit( const raytrace::Ray& i_ray, const gm::FloatRange& i_magnitudeRange, HitRecord& o_record ) const = 0;
 };
 
 /// \typedef SceneObjectPtr
