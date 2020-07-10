@@ -4,11 +4,16 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
 
 ## Table of Contents
 
+- [Prequel](#prequel)
 - [Programs](#programs)
   * [0. Motion Blur](#0-motion-blur)
 - [Library](#library)
 - [Building](#building)
 - [Build Status](#build-status)
+
+## Prequel
+
+You can check out the implementation to the prequel, [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html), over at [RayTracingInOneWeekend](https://github.com/moddyz/RayTracingInOneWeekend).
 
 ## Programs
 
