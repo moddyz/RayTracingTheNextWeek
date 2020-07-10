@@ -219,8 +219,9 @@ void ShadePixel( const gm::Vec2i&          i_pixelCoord,
 
 /// Populate the scene by appending a variety of objects to \p o_sceneObjects.
 ///
+/// \param i_shutterRange The time range where the shutter opens and closes.
 /// \param o_sceneObjects Collection to populate with scene objects.
-void PopulateSceneObjects( SceneObjectPtrs& o_sceneObjects )
+void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, SceneObjectPtrs& o_sceneObjects )
 {
     raytrace::MaterialSharedPtr groundMaterial = std::make_shared< raytrace::Lambert >( gm::Vec3f( 0.5, 0.5, 0.5 ) );
     o_sceneObjects.push_back( std::make_unique< raytrace::Sphere >( gm::Vec3f( 0, -1000, 0 ), 1000, groundMaterial ) );
@@ -243,7 +244,19 @@ void PopulateSceneObjects( SceneObjectPtrs& o_sceneObjects )
                                       gm::RandomNumber( c_normalizedRange ) );
 
                     raytrace::MaterialSharedPtr sphereMaterial = std::make_shared< raytrace::Lambert >( albedo );
-                    o_sceneObjects.push_back( std::make_unique< raytrace::Sphere >( center, 0.2, sphereMaterial ) );
+
+                    // Compute a random Y axis translation.
+                    gm::Vec3f centerTranslation( 0, gm::RandomNumber( gm::FloatRange( 0, 0.5f ) ), 0 );
+
+                    // Set multiple time samples for the sphere.
+                    std::vector< std::pair< float, gm::Vec3f > > timeSamples = {
+                        {i_shutterRange.Min(), center},
+                        {i_shutterRange.Max(), center + centerTranslation}};
+
+                    o_sceneObjects.push_back(
+                        std::make_unique< raytrace::Sphere >( raytrace::Attribute< gm::Vec3f >( timeSamples ),
+                                                              0.2,
+                                                              sphereMaterial ) );
                 }
                 else if ( materialChoice < 0.95 )
                 {
@@ -358,7 +371,7 @@ int main( int i_argc, char** i_argv )
     // ------------------------------------------------------------------------
 
     SceneObjectPtrs sceneObjects;
-    PopulateSceneObjects( sceneObjects );
+    PopulateSceneObjects( shutterRange, sceneObjects );
 
     // ------------------------------------------------------------------------
     // Compute ray colors.

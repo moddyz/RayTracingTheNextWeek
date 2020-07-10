@@ -10,6 +10,7 @@ project(
 
 # Options
 option(BUILD_DOCUMENTATION "Build doxygen documentation." ON)
+option(BUILD_DOCUMENTATION "Build doxygen documentation." ON)
 
 # Cross-platform compatibility.
 if(UNIX AND NOT APPLE)

@@ -4,6 +4,7 @@
 ///
 /// Representation of a ray-traceable sphere.
 
+#include <raytrace/attribute.h>
 #include <raytrace/ray.h>
 #include <raytrace/sceneObject.h>
 
@@ -20,11 +21,24 @@ RAYTRACE_NS_OPEN
 class Sphere : public SceneObject
 {
 public:
-    /// Construct a Sphere with a origin and radius.
+    /// Construct a static Sphere with a origin and radius.
     ///
     /// \param i_origin The origin of the sphere.
     /// \param i_radius The radius of the sphere.
     inline explicit Sphere( const gm::Vec3f& i_origin, float i_radius, MaterialSharedPtr i_material = nullptr )
+        : m_origin( {{0, i_origin}} )
+        , m_radius( i_radius )
+        , m_material( i_material )
+    {
+    }
+
+    /// Construct a dynamic (moving!) Sphere with a origin and radius.
+    ///
+    /// \param i_origin The origin of the sphere.
+    /// \param i_radius The radius of the sphere.
+    inline explicit Sphere( const Attribute< gm::Vec3f >& i_origin,
+                            float                         i_radius,
+                            MaterialSharedPtr             i_material = nullptr )
         : m_origin( i_origin )
         , m_radius( i_radius )
         , m_material( i_material )
@@ -35,7 +49,11 @@ public:
     Hit( const raytrace::Ray& i_ray, const gm::FloatRange& i_magnitudeRange, HitRecord& o_record ) const override
     {
         gm::Vec2f intersections;
-        if ( gm::RaySphereIntersection( m_origin, m_radius, i_ray.Origin(), i_ray.Direction(), intersections ) > 0 )
+        if ( gm::RaySphereIntersection( m_origin.Value( i_ray.Time() ),
+                                        m_radius,
+                                        i_ray.Origin(),
+                                        i_ray.Direction(),
+                                        intersections ) > 0 )
         {
             if ( intersections[ 0 ] < i_magnitudeRange.Max() && intersections[ 0 ] > i_magnitudeRange.Min() )
             {
@@ -53,44 +71,6 @@ public:
         return false;
     }
 
-    /* Reference implementation.
-    virtual inline bool
-    Hit( const raytrace::Ray& i_ray, const gm::FloatRange& i_magnitudeRange, HitRecord& o_record ) const override
-    {
-        gm::Vec3f oc           = i_ray.Origin() - m_origin;
-        auto      a            = gm::LengthSquared( i_ray.Direction() );
-        auto      half_b       = gm::DotProduct( oc, i_ray.Direction() );
-        auto      c            = gm::LengthSquared( oc ) - m_radius * m_radius;
-        auto      discriminant = half_b * half_b - a * c;
-
-        if ( discriminant > 0 )
-        {
-            auto root = sqrt( discriminant );
-
-            auto temp = ( -half_b - root ) / a;
-            if ( temp < i_magnitudeRange.Max() && temp > i_magnitudeRange.Min() )
-            {
-                o_record.m_magnitude = temp;
-                o_record.m_position  = gm::RayPosition( i_ray.Origin(), i_ray.Direction(), o_record.m_magnitude );
-                o_record.m_normal    = ( o_record.m_position - m_origin ) / m_radius;
-                o_record.m_material  = m_material;
-                return true;
-            }
-
-            temp = ( -half_b + root ) / a;
-            if ( temp < i_magnitudeRange.Max() && temp > i_magnitudeRange.Min() )
-            {
-                o_record.m_magnitude = temp;
-                o_record.m_position  = gm::RayPosition( i_ray.Origin(), i_ray.Direction(), o_record.m_magnitude );
-                o_record.m_normal    = ( o_record.m_position - m_origin ) / m_radius;
-                o_record.m_material  = m_material;
-                return true;
-            }
-        }
-        return false;
-    }
-    */
-
 private:
     /// Helper method to record a ray hitting the sphere.
     ///
@@ -100,13 +80,13 @@ private:
     inline void _Record( const raytrace::Ray& i_ray, float i_rayMagnitude, HitRecord& o_record ) const
     {
         o_record.m_position  = gm::RayPosition( i_ray.Origin(), i_ray.Direction(), i_rayMagnitude );
-        o_record.m_normal    = ( o_record.m_position - m_origin ) / m_radius;
+        o_record.m_normal    = ( o_record.m_position - m_origin.Value( i_ray.Time() ) ) / m_radius;
         o_record.m_magnitude = i_rayMagnitude;
         o_record.m_material  = m_material;
     }
 
     // The origin of the sphere.
-    gm::Vec3f m_origin;
+    Attribute< gm::Vec3f > m_origin;
 
     // The radius of the sphere.
     float m_radius = 0.0f;
