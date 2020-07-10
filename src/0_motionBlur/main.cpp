@@ -1,6 +1,10 @@
 /// \page 0_motionBlur Motion Blur
 ///
 /// Ray tracing program which adds motion blur.
+///
+/// The rays which are cast from the camera now inherit a time value between the shutter begin and close.
+///
+/// Select spheres in the scene also "move", with different positions set for the shutter begin and close times.
 
 #include <cxxopts.hpp>
 
