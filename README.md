@@ -7,6 +7,7 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
 - [Prequel](#prequel)
 - [Programs](#programs)
   * [0. Motion Blur](#0-motion-blur)
+  * [1. Bounding Volume Hierarchies](#0-bounding-volume-hierarchies)
 - [Library](#library)
 - [Building](#building)
 - [Build Status](#build-status)
@@ -24,6 +25,21 @@ You can check out the implementation to the prequel, [Ray Tracing in One Weekend
 [Source code](./src/0_motionBlur/main.cpp)
 
 [Link to Chapter 2](https://raytracing.github.io/books/RayTracingTheNextWeek.html#motionblur)
+
+### 0. Bounding Volume Hierarchies
+
+![Image](./src/1_boundingVolumeHierarchies/output.png)
+
+With the same scene from [0. Motion Blur](#0-motion-blur):
+- With BVH: **10.575s**
+- Without BVH: **216.854s**
+
+Measurements taken using the `time` Linux command line utility, on a Thinkpad X1 Extreme outfitted 
+with Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz.
+
+[Source code](./src/1_boundingVolumeHierarchies/main.cpp)
+
+[Link to Chapter 2](https://raytracing.github.io/books/RayTracingTheNextWeek.html#boundingvolumehierarchies)
 
 ## Library
 

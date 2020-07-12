@@ -88,7 +88,7 @@ public:
                 /* max */ origin + hypotenuse );
 
             // Expand range extent.
-            gm::Expand( extent, extentSample );
+            extent = gm::Expand( extent, extentSample );
         }
 
         return extent;

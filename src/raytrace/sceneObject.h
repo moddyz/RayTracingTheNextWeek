@@ -13,6 +13,9 @@
 
 RAYTRACE_NS_OPEN
 
+// Forward declarations.
+class HitRecord;
+
 /// \class SceneObject
 ///
 /// SceneObject is the base class for all scene objects which are \em subject to ray tracing.
@@ -50,6 +53,11 @@ public:
 /// \typedef SceneObjectPtr
 ///
 /// Pointer to the scene object.
-using SceneObjectPtr = std::unique_ptr< SceneObject >;
+using SceneObjectPtr = std::shared_ptr< SceneObject >;
+
+/// \typedef SceneObjectPtrs
+///
+/// A collection of scene objects.
+using SceneObjectPtrs = std::vector< SceneObjectPtr >;
 
 RAYTRACE_NS_CLOSE

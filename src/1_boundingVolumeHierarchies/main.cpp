@@ -1,10 +1,7 @@
-/// \page 0_motionBlur Motion Blur
+/// \page 1_boundingVolumeHierarchies Bounding Volume Hierarchies
 ///
-/// Ray tracing program which adds motion blur.
-///
-/// The rays which are cast from the camera now inherit a time value between the shutter begin and close.
-///
-/// Select spheres in the scene also "move", with different positions set for the shutter begin and close times.
+/// Ray tracing program which introduces bounding volume hierarchies to accelerate computation
+/// by limiting the number of intersection tests.
 
 #include <cxxopts.hpp>
 
@@ -21,6 +18,7 @@
 #include <gm/functions/normalize.h>
 #include <gm/functions/randomNumber.h>
 
+#include <raytrace/bvh.h>
 #include <raytrace/camera.h>
 #include <raytrace/dielectric.h>
 #include <raytrace/hitRecord.h>
@@ -53,13 +51,13 @@ static const char* c_indent = "    ";
 ///
 /// \param i_ray The ray.
 /// \param i_numRayBounces The number of "bounces" a ray has left before termination.
-/// \param i_sceneObjectPtrs The collection of scene objects to test for ray intersection.
+/// \param i_rootObject The root object to perform hit tests against.
 ///
 /// \return The computed ray color.
-static gm::Vec3f ComputeRayColor( const raytrace::Ray&             i_ray,
-                                  int                              i_numRayBounces,
-                                  const raytrace::SceneObjectPtrs& i_sceneObjectPtrs,
-                                  bool                             i_printDebug )
+static gm::Vec3f ComputeRayColor( const raytrace::Ray&            i_ray,
+                                  int                             i_numRayBounces,
+                                  const raytrace::SceneObjectPtr& i_rootObject,
+                                  bool                            i_printDebug )
 {
     if ( i_printDebug )
     {
@@ -76,17 +74,12 @@ static gm::Vec3f ComputeRayColor( const raytrace::Ray&             i_ray,
     // Iterate over all scene objects and test for ray hit(s).
     // We'd like to track the nearest hit and prune out farther objects.
     raytrace::HitRecord record;
-    bool                objectHit           = false;
-    float               nearestHitMagnitude = std::numeric_limits< float >::max();
-    for ( const raytrace::SceneObjectPtr& sceneObjectPtr : i_sceneObjectPtrs )
+    bool                objectHit = false;
+    gm::FloatRange      magnitudeRange( 0.001f, // Fix for "Shadow acne" by culling hits which are too near.
+                                   std::numeric_limits< float >::max() );
+    if ( i_rootObject->Hit( i_ray, magnitudeRange, record ) )
     {
-        gm::FloatRange magnitudeRange( 0.001f, // Fix for "Shadow acne" by culling hits which are too near.
-                                       nearestHitMagnitude );
-        if ( sceneObjectPtr->Hit( i_ray, magnitudeRange, record ) )
-        {
-            objectHit           = true;
-            nearestHitMagnitude = record.m_magnitude;
-        }
+        objectHit = true;
     }
 
     if ( objectHit )
@@ -106,7 +99,7 @@ static gm::Vec3f ComputeRayColor( const raytrace::Ray&             i_ray,
             // Continue ray color recursion.
             // To resolve an aggregate color, we take the vector product.
             gm::Vec3f descendentColor =
-                ComputeRayColor( scatteredRay, i_numRayBounces - 1, i_sceneObjectPtrs, i_printDebug );
+                ComputeRayColor( scatteredRay, i_numRayBounces - 1, i_rootObject, i_printDebug );
 
             if ( i_printDebug )
             {
@@ -145,17 +138,17 @@ static gm::Vec3f ComputeRayColor( const raytrace::Ray&             i_ray,
 /// \param i_samplesPerPixel The number of rays casted to sample colors, per pixel.
 /// \param i_rayBounceLimit The number of bounces a ray can perform before it is retired.
 /// \param i_camera The camera model which rays are cast from.
-/// \param i_sceneObjects The objects in the scene which the rays can interact with.
+/// \param i_rootObject The root object to perform hit tests against.
 /// \param o_image The image buffer to write color values into.
 /// \param i_printDebug Flag to enable debug printing of shading and ray information.
-void ShadePixel( const gm::Vec2i&                 i_pixelCoord,
-                 int                              i_samplesPerPixel,
-                 int                              i_rayBounceLimit,
-                 const raytrace::Camera&          i_camera,
-                 const raytrace::SceneObjectPtrs& i_sceneObjects,
-                 const gm::FloatRange&            i_shutterRange,
-                 raytrace::RGBImageBuffer&        o_image,
-                 bool                             i_printDebug = false )
+void ShadePixel( const gm::Vec2i&                i_pixelCoord,
+                 int                             i_samplesPerPixel,
+                 int                             i_rayBounceLimit,
+                 const raytrace::Camera&         i_camera,
+                 const raytrace::SceneObjectPtr& i_rootObject,
+                 const gm::FloatRange&           i_shutterRange,
+                 raytrace::RGBImageBuffer&       o_image,
+                 bool                            i_printDebug = false )
 {
     if ( i_printDebug )
     {
@@ -191,7 +184,7 @@ void ShadePixel( const gm::Vec2i&                 i_pixelCoord,
                            /* time */ gm::RandomNumber( i_shutterRange ) );
 
         // Accumulate color.
-        gm::Vec3f sampleColor = ComputeRayColor( ray, i_rayBounceLimit, i_sceneObjects, i_printDebug );
+        gm::Vec3f sampleColor = ComputeRayColor( ray, i_rayBounceLimit, i_rootObject, i_printDebug );
         pixelColor += sampleColor;
 
         if ( i_printDebug )
@@ -366,11 +359,16 @@ int main( int i_argc, char** i_argv )
         /* focalDistance */ 10.0 );
 
     // ------------------------------------------------------------------------
-    // Allocate scene objects.
+    // Allocate scene objects, and perform transformations.
     // ------------------------------------------------------------------------
 
+    // Populate an array of scene objects.
     raytrace::SceneObjectPtrs sceneObjects;
     PopulateSceneObjects( shutterRange, sceneObjects );
+
+    // Transform the scene objects into a BVH tree.
+    std::vector< float >     times      = {shutterRange.Min(), shutterRange.Max()};
+    raytrace::SceneObjectPtr rootObject = std::make_shared< raytrace::BVHNode >( sceneObjects, times );
 
     // ------------------------------------------------------------------------
     // Compute ray colors.
@@ -378,7 +376,7 @@ int main( int i_argc, char** i_argv )
 
     for ( const gm::Vec2i& pixelCoord : image.Extent() )
     {
-        ShadePixel( pixelCoord, samplesPerPixel, rayBounceLimit, camera, sceneObjects, shutterRange, image );
+        ShadePixel( pixelCoord, samplesPerPixel, rayBounceLimit, camera, rootObject, shutterRange, image );
     }
 
     // ------------------------------------------------------------------------
@@ -391,7 +389,7 @@ int main( int i_argc, char** i_argv )
                     samplesPerPixel,
                     rayBounceLimit,
                     camera,
-                    sceneObjects,
+                    rootObject,
                     shutterRange,
                     image,
                     /* printDebug */ true );
