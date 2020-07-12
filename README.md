@@ -39,7 +39,7 @@ with Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz.
 
 [Source code](./src/1_boundingVolumeHierarchies/main.cpp)
 
-[Link to Chapter 2](https://raytracing.github.io/books/RayTracingTheNextWeek.html#boundingvolumehierarchies)
+[Link to Chapter 3](https://raytracing.github.io/books/RayTracingTheNextWeek.html#boundingvolumehierarchies)
 
 ## Library
 
