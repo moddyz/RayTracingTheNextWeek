@@ -4,7 +4,8 @@
 ///
 /// The rays which are cast from the camera now inherit a time value between the shutter begin and close.
 ///
-/// Select spheres in the scene also "move", with different positions set for the shutter begin and close times.
+/// Movement is simulated on the  diffuse spheres in the scene, by using different origins
+/// for the shutter open and close times.
 
 #include <cxxopts.hpp>
 
