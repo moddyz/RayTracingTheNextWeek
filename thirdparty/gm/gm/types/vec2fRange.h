@@ -11,6 +11,8 @@
 
 #include <gm/types/vec2f.h>
 
+#include <gm/base/almost.h>
+
 #include <limits>
 #include <sstream>
 
@@ -40,8 +42,8 @@ public:
 
     /// Explicit constructor for initializing a minimum maximum range.
     ///
-    /// \param i_min Minimum bounds.
-    /// \param i_max Maximum bounds.
+    /// \param i_min Minimum.
+    /// \param i_max Maximum.
     GM_HOST_DEVICE constexpr explicit inline Vec2fRange( const Vec2f& i_min, const Vec2f& i_max )
         : m_min( i_min )
         , m_max( i_max )
@@ -82,6 +84,74 @@ public:
     GM_HOST_DEVICE inline Vec2f& Max()
     {
         return m_max;
+    }
+
+    // --------------------------------------------------------------------- //
+    /// \name Comparison
+    // --------------------------------------------------------------------- //
+
+    /// Equality comparison against \p i_range.
+    ///
+    /// \param i_range The range to compare against.
+    ///
+    /// \retval true If this range is equal to \p i_range.
+    /// \retval false If this range is not equal to \p i_range.
+    GM_HOST_DEVICE inline bool operator==( const Vec2fRange& i_range ) const
+    {
+        return Min() == i_range.Min() && Max() == i_range.Max();
+    }
+
+    /// Non-equality comparison against \p i_range.
+    ///
+    /// \param i_range The range to compare against.
+    ///
+    /// \retval true If this range is not equal to \p i_range.
+    /// \retval false If this range is equal to \p i_range.
+    GM_HOST_DEVICE inline bool operator!=( const Vec2fRange& i_range ) const
+    {
+        return !( ( *this ) == i_range );
+    }
+
+    /// Check if this range is empty.
+    ///
+    /// A range is empty if any of the components in the minimum is greater
+    /// than the maximum.
+    ///
+    /// \retval true If this range is empty.
+    /// \retval false If this range is non-empty.
+    GM_HOST_DEVICE inline bool IsEmpty() const
+    {
+        return Min()[ 0 ] > Max()[ 0 ] || Min()[ 1 ] > Max()[ 1 ];
+    }
+
+    // --------------------------------------------------------------------- //
+    /// \name Containment
+    // --------------------------------------------------------------------- //
+
+    /// Check that \p i_value is inside the current range, inclusive of the both the
+    /// min and max.
+    ///
+    /// \param i_value The value to test for inclusiveness within this range.
+    ///
+    /// \retval true If \p i_value is inside the current range.
+    /// \retval false If \p i_value is outisde the current range.
+    GM_HOST_DEVICE inline bool Contains( const Vec2f& i_value ) const
+    {
+        return i_value[ 0 ] >= Min()[ 0 ] && i_value[ 0 ] <= Max()[ 0 ] && i_value[ 1 ] >= Min()[ 1 ] &&
+               i_value[ 1 ] <= Max()[ 1 ];
+    }
+
+    /// Check that \p i_range is \em completely within the current range, as in, the \em min
+    /// and \em max of \p i_range are \em both inclusive of the both the min and max
+    /// of the current range..
+    ///
+    /// \param i_range The range to test for complete inclusiveness within this range.
+    ///
+    /// \retval true If \p i_range is \em completely inside the current range.
+    /// \retval false If \p i_range is \em completely outisde the current range.
+    GM_HOST_DEVICE inline bool Contains( const Vec2fRange& i_range ) const
+    {
+        return Contains( i_range.Min() ) && Contains( i_range.Max() );
     }
 
     // --------------------------------------------------------------------- //

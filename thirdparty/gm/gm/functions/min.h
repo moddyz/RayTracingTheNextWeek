@@ -68,53 +68,6 @@ GM_HOST_DEVICE inline bool Min( const bool& i_valueA, const bool& i_valueB )
 /// \param i_valueB The second value to compare.
 ///
 /// \return The minimum of the two inputs.
-GM_HOST_DEVICE inline Mat3f Min( const Mat3f& i_valueA, const Mat3f& i_valueB )
-{
-    return Mat3f( std::min( i_valueA[ 0 ], i_valueB[ 0 ] ),
-                  std::min( i_valueA[ 1 ], i_valueB[ 1 ] ),
-                  std::min( i_valueA[ 2 ], i_valueB[ 2 ] ),
-                  std::min( i_valueA[ 3 ], i_valueB[ 3 ] ),
-                  std::min( i_valueA[ 4 ], i_valueB[ 4 ] ),
-                  std::min( i_valueA[ 5 ], i_valueB[ 5 ] ),
-                  std::min( i_valueA[ 6 ], i_valueB[ 6 ] ),
-                  std::min( i_valueA[ 7 ], i_valueB[ 7 ] ),
-                  std::min( i_valueA[ 8 ], i_valueB[ 8 ] ) );
-}
-
-/// Find the minimum from the inputs \p i_valueA and \p i_valueB.
-/// \ingroup gm_functions_basic
-///
-/// \param i_valueA The first value to compare.
-/// \param i_valueB The second value to compare.
-///
-/// \return The minimum of the two inputs.
-GM_HOST_DEVICE inline Mat4f Min( const Mat4f& i_valueA, const Mat4f& i_valueB )
-{
-    return Mat4f( std::min( i_valueA[ 0 ], i_valueB[ 0 ] ),
-                  std::min( i_valueA[ 1 ], i_valueB[ 1 ] ),
-                  std::min( i_valueA[ 2 ], i_valueB[ 2 ] ),
-                  std::min( i_valueA[ 3 ], i_valueB[ 3 ] ),
-                  std::min( i_valueA[ 4 ], i_valueB[ 4 ] ),
-                  std::min( i_valueA[ 5 ], i_valueB[ 5 ] ),
-                  std::min( i_valueA[ 6 ], i_valueB[ 6 ] ),
-                  std::min( i_valueA[ 7 ], i_valueB[ 7 ] ),
-                  std::min( i_valueA[ 8 ], i_valueB[ 8 ] ),
-                  std::min( i_valueA[ 9 ], i_valueB[ 9 ] ),
-                  std::min( i_valueA[ 10 ], i_valueB[ 10 ] ),
-                  std::min( i_valueA[ 11 ], i_valueB[ 11 ] ),
-                  std::min( i_valueA[ 12 ], i_valueB[ 12 ] ),
-                  std::min( i_valueA[ 13 ], i_valueB[ 13 ] ),
-                  std::min( i_valueA[ 14 ], i_valueB[ 14 ] ),
-                  std::min( i_valueA[ 15 ], i_valueB[ 15 ] ) );
-}
-
-/// Find the minimum from the inputs \p i_valueA and \p i_valueB.
-/// \ingroup gm_functions_basic
-///
-/// \param i_valueA The first value to compare.
-/// \param i_valueB The second value to compare.
-///
-/// \return The minimum of the two inputs.
 GM_HOST_DEVICE inline Vec2f Min( const Vec2f& i_valueA, const Vec2f& i_valueB )
 {
     return Vec2f( std::min( i_valueA[ 0 ], i_valueB[ 0 ] ), std::min( i_valueA[ 1 ], i_valueB[ 1 ] ) );
@@ -188,6 +141,53 @@ GM_HOST_DEVICE inline Vec4i Min( const Vec4i& i_valueA, const Vec4i& i_valueB )
                   std::min( i_valueA[ 1 ], i_valueB[ 1 ] ),
                   std::min( i_valueA[ 2 ], i_valueB[ 2 ] ),
                   std::min( i_valueA[ 3 ], i_valueB[ 3 ] ) );
+}
+
+/// Find the minimum from the inputs \p i_valueA and \p i_valueB.
+/// \ingroup gm_functions_basic
+///
+/// \param i_valueA The first value to compare.
+/// \param i_valueB The second value to compare.
+///
+/// \return The minimum of the two inputs.
+GM_HOST_DEVICE inline Mat3f Min( const Mat3f& i_valueA, const Mat3f& i_valueB )
+{
+    return Mat3f( std::min( i_valueA[ 0 ], i_valueB[ 0 ] ),
+                  std::min( i_valueA[ 1 ], i_valueB[ 1 ] ),
+                  std::min( i_valueA[ 2 ], i_valueB[ 2 ] ),
+                  std::min( i_valueA[ 3 ], i_valueB[ 3 ] ),
+                  std::min( i_valueA[ 4 ], i_valueB[ 4 ] ),
+                  std::min( i_valueA[ 5 ], i_valueB[ 5 ] ),
+                  std::min( i_valueA[ 6 ], i_valueB[ 6 ] ),
+                  std::min( i_valueA[ 7 ], i_valueB[ 7 ] ),
+                  std::min( i_valueA[ 8 ], i_valueB[ 8 ] ) );
+}
+
+/// Find the minimum from the inputs \p i_valueA and \p i_valueB.
+/// \ingroup gm_functions_basic
+///
+/// \param i_valueA The first value to compare.
+/// \param i_valueB The second value to compare.
+///
+/// \return The minimum of the two inputs.
+GM_HOST_DEVICE inline Mat4f Min( const Mat4f& i_valueA, const Mat4f& i_valueB )
+{
+    return Mat4f( std::min( i_valueA[ 0 ], i_valueB[ 0 ] ),
+                  std::min( i_valueA[ 1 ], i_valueB[ 1 ] ),
+                  std::min( i_valueA[ 2 ], i_valueB[ 2 ] ),
+                  std::min( i_valueA[ 3 ], i_valueB[ 3 ] ),
+                  std::min( i_valueA[ 4 ], i_valueB[ 4 ] ),
+                  std::min( i_valueA[ 5 ], i_valueB[ 5 ] ),
+                  std::min( i_valueA[ 6 ], i_valueB[ 6 ] ),
+                  std::min( i_valueA[ 7 ], i_valueB[ 7 ] ),
+                  std::min( i_valueA[ 8 ], i_valueB[ 8 ] ),
+                  std::min( i_valueA[ 9 ], i_valueB[ 9 ] ),
+                  std::min( i_valueA[ 10 ], i_valueB[ 10 ] ),
+                  std::min( i_valueA[ 11 ], i_valueB[ 11 ] ),
+                  std::min( i_valueA[ 12 ], i_valueB[ 12 ] ),
+                  std::min( i_valueA[ 13 ], i_valueB[ 13 ] ),
+                  std::min( i_valueA[ 14 ], i_valueB[ 14 ] ),
+                  std::min( i_valueA[ 15 ], i_valueB[ 15 ] ) );
 }
 
 GM_NS_CLOSE

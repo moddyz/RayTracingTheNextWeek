@@ -68,53 +68,6 @@ GM_HOST_DEVICE inline bool Max( const bool& i_valueA, const bool& i_valueB )
 /// \param i_valueB The second value to compare.
 ///
 /// \return The maximum of the two inputs.
-GM_HOST_DEVICE inline Mat3f Max( const Mat3f& i_valueA, const Mat3f& i_valueB )
-{
-    return Mat3f( std::max( i_valueA[ 0 ], i_valueB[ 0 ] ),
-                  std::max( i_valueA[ 1 ], i_valueB[ 1 ] ),
-                  std::max( i_valueA[ 2 ], i_valueB[ 2 ] ),
-                  std::max( i_valueA[ 3 ], i_valueB[ 3 ] ),
-                  std::max( i_valueA[ 4 ], i_valueB[ 4 ] ),
-                  std::max( i_valueA[ 5 ], i_valueB[ 5 ] ),
-                  std::max( i_valueA[ 6 ], i_valueB[ 6 ] ),
-                  std::max( i_valueA[ 7 ], i_valueB[ 7 ] ),
-                  std::max( i_valueA[ 8 ], i_valueB[ 8 ] ) );
-}
-
-/// Find the maximum from the inputs \p i_valueA and \p i_valueB.
-/// \ingroup gm_functions_basic
-///
-/// \param i_valueA The first value to compare.
-/// \param i_valueB The second value to compare.
-///
-/// \return The maximum of the two inputs.
-GM_HOST_DEVICE inline Mat4f Max( const Mat4f& i_valueA, const Mat4f& i_valueB )
-{
-    return Mat4f( std::max( i_valueA[ 0 ], i_valueB[ 0 ] ),
-                  std::max( i_valueA[ 1 ], i_valueB[ 1 ] ),
-                  std::max( i_valueA[ 2 ], i_valueB[ 2 ] ),
-                  std::max( i_valueA[ 3 ], i_valueB[ 3 ] ),
-                  std::max( i_valueA[ 4 ], i_valueB[ 4 ] ),
-                  std::max( i_valueA[ 5 ], i_valueB[ 5 ] ),
-                  std::max( i_valueA[ 6 ], i_valueB[ 6 ] ),
-                  std::max( i_valueA[ 7 ], i_valueB[ 7 ] ),
-                  std::max( i_valueA[ 8 ], i_valueB[ 8 ] ),
-                  std::max( i_valueA[ 9 ], i_valueB[ 9 ] ),
-                  std::max( i_valueA[ 10 ], i_valueB[ 10 ] ),
-                  std::max( i_valueA[ 11 ], i_valueB[ 11 ] ),
-                  std::max( i_valueA[ 12 ], i_valueB[ 12 ] ),
-                  std::max( i_valueA[ 13 ], i_valueB[ 13 ] ),
-                  std::max( i_valueA[ 14 ], i_valueB[ 14 ] ),
-                  std::max( i_valueA[ 15 ], i_valueB[ 15 ] ) );
-}
-
-/// Find the maximum from the inputs \p i_valueA and \p i_valueB.
-/// \ingroup gm_functions_basic
-///
-/// \param i_valueA The first value to compare.
-/// \param i_valueB The second value to compare.
-///
-/// \return The maximum of the two inputs.
 GM_HOST_DEVICE inline Vec2f Max( const Vec2f& i_valueA, const Vec2f& i_valueB )
 {
     return Vec2f( std::max( i_valueA[ 0 ], i_valueB[ 0 ] ), std::max( i_valueA[ 1 ], i_valueB[ 1 ] ) );
@@ -188,6 +141,53 @@ GM_HOST_DEVICE inline Vec4i Max( const Vec4i& i_valueA, const Vec4i& i_valueB )
                   std::max( i_valueA[ 1 ], i_valueB[ 1 ] ),
                   std::max( i_valueA[ 2 ], i_valueB[ 2 ] ),
                   std::max( i_valueA[ 3 ], i_valueB[ 3 ] ) );
+}
+
+/// Find the maximum from the inputs \p i_valueA and \p i_valueB.
+/// \ingroup gm_functions_basic
+///
+/// \param i_valueA The first value to compare.
+/// \param i_valueB The second value to compare.
+///
+/// \return The maximum of the two inputs.
+GM_HOST_DEVICE inline Mat3f Max( const Mat3f& i_valueA, const Mat3f& i_valueB )
+{
+    return Mat3f( std::max( i_valueA[ 0 ], i_valueB[ 0 ] ),
+                  std::max( i_valueA[ 1 ], i_valueB[ 1 ] ),
+                  std::max( i_valueA[ 2 ], i_valueB[ 2 ] ),
+                  std::max( i_valueA[ 3 ], i_valueB[ 3 ] ),
+                  std::max( i_valueA[ 4 ], i_valueB[ 4 ] ),
+                  std::max( i_valueA[ 5 ], i_valueB[ 5 ] ),
+                  std::max( i_valueA[ 6 ], i_valueB[ 6 ] ),
+                  std::max( i_valueA[ 7 ], i_valueB[ 7 ] ),
+                  std::max( i_valueA[ 8 ], i_valueB[ 8 ] ) );
+}
+
+/// Find the maximum from the inputs \p i_valueA and \p i_valueB.
+/// \ingroup gm_functions_basic
+///
+/// \param i_valueA The first value to compare.
+/// \param i_valueB The second value to compare.
+///
+/// \return The maximum of the two inputs.
+GM_HOST_DEVICE inline Mat4f Max( const Mat4f& i_valueA, const Mat4f& i_valueB )
+{
+    return Mat4f( std::max( i_valueA[ 0 ], i_valueB[ 0 ] ),
+                  std::max( i_valueA[ 1 ], i_valueB[ 1 ] ),
+                  std::max( i_valueA[ 2 ], i_valueB[ 2 ] ),
+                  std::max( i_valueA[ 3 ], i_valueB[ 3 ] ),
+                  std::max( i_valueA[ 4 ], i_valueB[ 4 ] ),
+                  std::max( i_valueA[ 5 ], i_valueB[ 5 ] ),
+                  std::max( i_valueA[ 6 ], i_valueB[ 6 ] ),
+                  std::max( i_valueA[ 7 ], i_valueB[ 7 ] ),
+                  std::max( i_valueA[ 8 ], i_valueB[ 8 ] ),
+                  std::max( i_valueA[ 9 ], i_valueB[ 9 ] ),
+                  std::max( i_valueA[ 10 ], i_valueB[ 10 ] ),
+                  std::max( i_valueA[ 11 ], i_valueB[ 11 ] ),
+                  std::max( i_valueA[ 12 ], i_valueB[ 12 ] ),
+                  std::max( i_valueA[ 13 ], i_valueB[ 13 ] ),
+                  std::max( i_valueA[ 14 ], i_valueB[ 14 ] ),
+                  std::max( i_valueA[ 15 ], i_valueB[ 15 ] ) );
 }
 
 GM_NS_CLOSE

@@ -225,20 +225,6 @@
       <arglist>(const int &amp;i_value, const IntRange &amp;i_range)</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE Mat3f</type>
-      <name>Clamp</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga4daedb8da222e40d8156af73fc6f7951</anchor>
-      <arglist>(const Mat3f &amp;i_value, const FloatRange &amp;i_range)</arglist>
-    </member>
-    <member kind="function">
-      <type>GM_HOST_DEVICE Mat4f</type>
-      <name>Clamp</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga8c764e5134bef4e42ac0c1e92af44ef4</anchor>
-      <arglist>(const Mat4f &amp;i_value, const FloatRange &amp;i_range)</arglist>
-    </member>
-    <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
       <name>Clamp</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
@@ -279,6 +265,20 @@
       <anchorfile>group__gm__functions__basic.html</anchorfile>
       <anchor>ga2346a93e131bd30774d106e9a12124b1</anchor>
       <arglist>(const Vec4i &amp;i_value, const IntRange &amp;i_range)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat3f</type>
+      <name>Clamp</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga4daedb8da222e40d8156af73fc6f7951</anchor>
+      <arglist>(const Mat3f &amp;i_value, const FloatRange &amp;i_range)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat4f</type>
+      <name>Clamp</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga8c764e5134bef4e42ac0c1e92af44ef4</anchor>
+      <arglist>(const Mat4f &amp;i_value, const FloatRange &amp;i_range)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -413,6 +413,78 @@
       <anchorfile>group__gm__functions__basic.html</anchorfile>
       <anchor>gaf73e888e47c977c95460b0c058b0c34a</anchor>
       <arglist>(const Mat4f &amp;i_value)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>intersection.h</name>
+    <path>/code/GraphicsMath/src/gm/functions/</path>
+    <filename>intersection_8h</filename>
+    <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
+    <includes id="floatRange_8h" name="floatRange.h" local="no" imported="no">gm/types/floatRange.h</includes>
+    <includes id="intRange_8h" name="intRange.h" local="no" imported="no">gm/types/intRange.h</includes>
+    <includes id="vec2fRange_8h" name="vec2fRange.h" local="no" imported="no">gm/types/vec2fRange.h</includes>
+    <includes id="vec2iRange_8h" name="vec2iRange.h" local="no" imported="no">gm/types/vec2iRange.h</includes>
+    <includes id="vec3fRange_8h" name="vec3fRange.h" local="no" imported="no">gm/types/vec3fRange.h</includes>
+    <includes id="vec3iRange_8h" name="vec3iRange.h" local="no" imported="no">gm/types/vec3iRange.h</includes>
+    <includes id="vec4fRange_8h" name="vec4fRange.h" local="no" imported="no">gm/types/vec4fRange.h</includes>
+    <includes id="vec4iRange_8h" name="vec4iRange.h" local="no" imported="no">gm/types/vec4iRange.h</includes>
+    <includes id="max_8h" name="max.h" local="no" imported="no">gm/functions/max.h</includes>
+    <includes id="min_8h" name="min.h" local="no" imported="no">gm/functions/min.h</includes>
+    <member kind="function">
+      <type>GM_NS_OPEN GM_HOST_DEVICE FloatRange</type>
+      <name>Intersection</name>
+      <anchorfile>intersection_8h.html</anchorfile>
+      <anchor>a4e6730c048899c7508d29b1116e666d2</anchor>
+      <arglist>(const FloatRange &amp;i_lhs, const FloatRange &amp;i_rhs)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE IntRange</type>
+      <name>Intersection</name>
+      <anchorfile>intersection_8h.html</anchorfile>
+      <anchor>a9fc7cd65e67b2db4220329c1de8ac7ea</anchor>
+      <arglist>(const IntRange &amp;i_lhs, const IntRange &amp;i_rhs)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec2fRange</type>
+      <name>Intersection</name>
+      <anchorfile>intersection_8h.html</anchorfile>
+      <anchor>adf816c64bf42a306cb7da443b79c98a8</anchor>
+      <arglist>(const Vec2fRange &amp;i_lhs, const Vec2fRange &amp;i_rhs)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec3fRange</type>
+      <name>Intersection</name>
+      <anchorfile>intersection_8h.html</anchorfile>
+      <anchor>abc89aab11b0463972a02e9cc506421cf</anchor>
+      <arglist>(const Vec3fRange &amp;i_lhs, const Vec3fRange &amp;i_rhs)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec4fRange</type>
+      <name>Intersection</name>
+      <anchorfile>intersection_8h.html</anchorfile>
+      <anchor>a1b633eb67861ed49e31a3c15ae5b09af</anchor>
+      <arglist>(const Vec4fRange &amp;i_lhs, const Vec4fRange &amp;i_rhs)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec2iRange</type>
+      <name>Intersection</name>
+      <anchorfile>intersection_8h.html</anchorfile>
+      <anchor>a9596c0fd06581b9edc22a9ca0c7772d8</anchor>
+      <arglist>(const Vec2iRange &amp;i_lhs, const Vec2iRange &amp;i_rhs)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec3iRange</type>
+      <name>Intersection</name>
+      <anchorfile>intersection_8h.html</anchorfile>
+      <anchor>a719daae8c873b4223bf784be7b5001b5</anchor>
+      <arglist>(const Vec3iRange &amp;i_lhs, const Vec3iRange &amp;i_rhs)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec4iRange</type>
+      <name>Intersection</name>
+      <anchorfile>intersection_8h.html</anchorfile>
+      <anchor>afc8b4997fcb4bc94bed65726a5c76684</anchor>
+      <arglist>(const Vec4iRange &amp;i_lhs, const Vec4iRange &amp;i_rhs)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -663,20 +735,6 @@
       <arglist>(const bool &amp;i_valueA, const bool &amp;i_valueB)</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE Mat3f</type>
-      <name>Max</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga0436a40f59c6554a15ce898dc5cf84e5</anchor>
-      <arglist>(const Mat3f &amp;i_valueA, const Mat3f &amp;i_valueB)</arglist>
-    </member>
-    <member kind="function">
-      <type>GM_HOST_DEVICE Mat4f</type>
-      <name>Max</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga37f840849efe9615964bc32429ca20cd</anchor>
-      <arglist>(const Mat4f &amp;i_valueA, const Mat4f &amp;i_valueB)</arglist>
-    </member>
-    <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
       <name>Max</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
@@ -718,6 +776,20 @@
       <anchor>gacdf209f13f239dc9cb70c1b0daccf0ec</anchor>
       <arglist>(const Vec4i &amp;i_valueA, const Vec4i &amp;i_valueB)</arglist>
     </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat3f</type>
+      <name>Max</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga0436a40f59c6554a15ce898dc5cf84e5</anchor>
+      <arglist>(const Mat3f &amp;i_valueA, const Mat3f &amp;i_valueB)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat4f</type>
+      <name>Max</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga37f840849efe9615964bc32429ca20cd</anchor>
+      <arglist>(const Mat4f &amp;i_valueA, const Mat4f &amp;i_valueB)</arglist>
+    </member>
   </compound>
   <compound kind="file">
     <name>min.h</name>
@@ -752,20 +824,6 @@
       <anchorfile>group__gm__functions__basic.html</anchorfile>
       <anchor>ga2679967ee89033f83535e432f07eb5c7</anchor>
       <arglist>(const bool &amp;i_valueA, const bool &amp;i_valueB)</arglist>
-    </member>
-    <member kind="function">
-      <type>GM_HOST_DEVICE Mat3f</type>
-      <name>Min</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gae2aa7be7bdd849d6b0cb46c67d23ef93</anchor>
-      <arglist>(const Mat3f &amp;i_valueA, const Mat3f &amp;i_valueB)</arglist>
-    </member>
-    <member kind="function">
-      <type>GM_HOST_DEVICE Mat4f</type>
-      <name>Min</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga76a28039482e67f63bbe2400f7b48858</anchor>
-      <arglist>(const Mat4f &amp;i_valueA, const Mat4f &amp;i_valueB)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
@@ -808,6 +866,20 @@
       <anchorfile>group__gm__functions__basic.html</anchorfile>
       <anchor>ga3bd1a731ef51e958386b599f1444a10d</anchor>
       <arglist>(const Vec4i &amp;i_valueA, const Vec4i &amp;i_valueB)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat3f</type>
+      <name>Min</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gae2aa7be7bdd849d6b0cb46c67d23ef93</anchor>
+      <arglist>(const Mat3f &amp;i_valueA, const Mat3f &amp;i_valueB)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat4f</type>
+      <name>Min</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga76a28039482e67f63bbe2400f7b48858</anchor>
+      <arglist>(const Mat4f &amp;i_valueA, const Mat4f &amp;i_valueB)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -895,6 +967,47 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>rayAABBIntersection.h</name>
+    <path>/code/GraphicsMath/src/gm/functions/</path>
+    <filename>rayAABBIntersection_8h</filename>
+    <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
+    <includes id="floatRange_8h" name="floatRange.h" local="no" imported="no">gm/types/floatRange.h</includes>
+    <includes id="vec2f_8h" name="vec2f.h" local="no" imported="no">gm/types/vec2f.h</includes>
+    <includes id="vec2fRange_8h" name="vec2fRange.h" local="no" imported="no">gm/types/vec2fRange.h</includes>
+    <includes id="vec3f_8h" name="vec3f.h" local="no" imported="no">gm/types/vec3f.h</includes>
+    <includes id="vec3fRange_8h" name="vec3fRange.h" local="no" imported="no">gm/types/vec3fRange.h</includes>
+    <includes id="vec4f_8h" name="vec4f.h" local="no" imported="no">gm/types/vec4f.h</includes>
+    <includes id="vec4fRange_8h" name="vec4fRange.h" local="no" imported="no">gm/types/vec4fRange.h</includes>
+    <includes id="assert_8h" name="assert.h" local="no" imported="no">gm/base/assert.h</includes>
+    <includes id="intersection_8h" name="intersection.h" local="no" imported="no">gm/functions/intersection.h</includes>
+    <includes id="max_8h" name="max.h" local="no" imported="no">gm/functions/max.h</includes>
+    <includes id="min_8h" name="min.h" local="no" imported="no">gm/functions/min.h</includes>
+    <includes id="rayPosition_8h" name="rayPosition.h" local="no" imported="no">gm/functions/rayPosition.h</includes>
+    <member kind="function">
+      <type>GM_NS_OPEN GM_HOST_DEVICE bool</type>
+      <name>RayAABBIntersection</name>
+      <anchorfile>rayAABBIntersection_8h.html</anchorfile>
+      <anchor>a4bf7c8313c46b9cbf21d6cf73f9995d0</anchor>
+      <arglist>(const Vec2f &amp;i_rayOrigin, const Vec2f &amp;i_rayDirection, const Vec2fRange &amp;i_aabb, FloatRange &amp;o_intersections)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>RayAABBIntersection</name>
+      <anchorfile>rayAABBIntersection_8h.html</anchorfile>
+      <anchor>a09e1def07915702f638b593c712ffd7e</anchor>
+      <arglist>(const Vec3f &amp;i_rayOrigin, const Vec3f &amp;i_rayDirection, const Vec3fRange &amp;i_aabb, FloatRange &amp;o_intersections)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>RayAABBIntersection</name>
+      <anchorfile>rayAABBIntersection_8h.html</anchorfile>
+      <anchor>a29f5a4d92836447265533f5f8a933108</anchor>
+      <arglist>(const Vec4f &amp;i_rayOrigin, const Vec4f &amp;i_rayDirection, const Vec4fRange &amp;i_aabb, FloatRange &amp;o_intersections)</arglist>
+    </member>
+    <docanchor file="rayAABBIntersection_8h" title="Solving Ray AABB intersection in one dimension">gm_section_rayABBIntersection1DProof</docanchor>
+    <docanchor file="rayAABBIntersection_8h" title="Solving Ray AABB intersection in N dimensions">gm_section_rayABBIntersectionExtension</docanchor>
+  </compound>
+  <compound kind="file">
     <name>rayPosition.h</name>
     <path>/code/GraphicsMath/src/gm/functions/</path>
     <filename>rayPosition_8h</filename>
@@ -922,7 +1035,7 @@
     <path>/code/GraphicsMath/src/gm/functions/</path>
     <filename>raySphereIntersection_8h</filename>
     <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
-    <includes id="vec2f_8h" name="vec2f.h" local="no" imported="no">gm/types/vec2f.h</includes>
+    <includes id="floatRange_8h" name="floatRange.h" local="no" imported="no">gm/types/floatRange.h</includes>
     <includes id="vec3f_8h" name="vec3f.h" local="no" imported="no">gm/types/vec3f.h</includes>
     <includes id="assert_8h" name="assert.h" local="no" imported="no">gm/base/assert.h</includes>
     <includes id="dotProduct_8h" name="dotProduct.h" local="no" imported="no">gm/functions/dotProduct.h</includes>
@@ -931,8 +1044,8 @@
       <type>GM_NS_OPEN GM_HOST_DEVICE int</type>
       <name>RaySphereIntersection</name>
       <anchorfile>group__gm__functions__rayTracing.html</anchorfile>
-      <anchor>ga2f003e0912ab4eeb5b84e72baaf344d6</anchor>
-      <arglist>(const Vec3f &amp;i_sphereOrigin, const float &amp;i_sphereRadius, const Vec3f &amp;i_rayOrigin, const Vec3f &amp;i_rayDirection, Vec2f &amp;o_intersections)</arglist>
+      <anchor>gaa14388e5cbb2f41e4efb04b01c77b1b6</anchor>
+      <arglist>(const Vec3f &amp;i_sphereOrigin, const float &amp;i_sphereRadius, const Vec3f &amp;i_rayOrigin, const Vec3f &amp;i_rayDirection, FloatRange &amp;o_intersections)</arglist>
     </member>
     <docanchor file="raySphereIntersection_8h" title="Analytic proof of Ray Sphere Intersection">GM_section_raySphereIntersectionAnalyticProof</docanchor>
   </compound>
@@ -1079,6 +1192,7 @@
     <path>/code/GraphicsMath/src/gm/types/</path>
     <filename>floatRange_8h</filename>
     <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
+    <includes id="almost_8h" name="almost.h" local="no" imported="no">gm/base/almost.h</includes>
     <class kind="class">FloatRange</class>
     <member kind="function">
       <type>std::ostream &amp;</type>
@@ -1226,6 +1340,7 @@
     <filename>vec2fRange_8h</filename>
     <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
     <includes id="vec2f_8h" name="vec2f.h" local="no" imported="no">gm/types/vec2f.h</includes>
+    <includes id="almost_8h" name="almost.h" local="no" imported="no">gm/base/almost.h</includes>
     <class kind="class">Vec2fRange</class>
     <member kind="function">
       <type>std::ostream &amp;</type>
@@ -1277,6 +1392,7 @@
     <filename>vec2iRange_8h</filename>
     <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
     <includes id="vec2i_8h" name="vec2i.h" local="no" imported="no">gm/types/vec2i.h</includes>
+    <includes id="almost_8h" name="almost.h" local="no" imported="no">gm/base/almost.h</includes>
     <class kind="class">Vec2iRange</class>
     <class kind="class">Vec2iRange::iterator</class>
     <member kind="function">
@@ -1330,6 +1446,7 @@
     <filename>vec3fRange_8h</filename>
     <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
     <includes id="vec3f_8h" name="vec3f.h" local="no" imported="no">gm/types/vec3f.h</includes>
+    <includes id="almost_8h" name="almost.h" local="no" imported="no">gm/base/almost.h</includes>
     <class kind="class">Vec3fRange</class>
     <member kind="function">
       <type>std::ostream &amp;</type>
@@ -1381,6 +1498,7 @@
     <filename>vec3iRange_8h</filename>
     <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
     <includes id="vec3i_8h" name="vec3i.h" local="no" imported="no">gm/types/vec3i.h</includes>
+    <includes id="almost_8h" name="almost.h" local="no" imported="no">gm/base/almost.h</includes>
     <class kind="class">Vec3iRange</class>
     <class kind="class">Vec3iRange::iterator</class>
     <member kind="function">
@@ -1434,6 +1552,7 @@
     <filename>vec4fRange_8h</filename>
     <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
     <includes id="vec4f_8h" name="vec4f.h" local="no" imported="no">gm/types/vec4f.h</includes>
+    <includes id="almost_8h" name="almost.h" local="no" imported="no">gm/base/almost.h</includes>
     <class kind="class">Vec4fRange</class>
     <member kind="function">
       <type>std::ostream &amp;</type>
@@ -1485,6 +1604,7 @@
     <filename>vec4iRange_8h</filename>
     <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
     <includes id="vec4i_8h" name="vec4i.h" local="no" imported="no">gm/types/vec4i.h</includes>
+    <includes id="almost_8h" name="almost.h" local="no" imported="no">gm/base/almost.h</includes>
     <class kind="class">Vec4iRange</class>
     <class kind="class">Vec4iRange::iterator</class>
     <member kind="function">
@@ -1548,6 +1668,41 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classFloatRange.html</anchorfile>
+      <anchor>ae3c960aa2c7699c6d0da1470254f5149</anchor>
+      <arglist>(const FloatRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classFloatRange.html</anchorfile>
+      <anchor>a0a9a58f7ef0d0c431153880385d2ae5f</anchor>
+      <arglist>(const FloatRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classFloatRange.html</anchorfile>
+      <anchor>aeaa530954511846098568f8188864d84</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classFloatRange.html</anchorfile>
+      <anchor>a87cac896362e69e63e1d7d360b7837a1</anchor>
+      <arglist>(const float &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classFloatRange.html</anchorfile>
+      <anchor>acb2380b66bf2feab7df573a8698a296f</anchor>
+      <arglist>(const FloatRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
       <type>GM_HOST_DEVICE constexpr</type>
       <name>FloatRange</name>
       <anchorfile>classFloatRange.html</anchorfile>
@@ -1588,6 +1743,41 @@
       <anchorfile>classFloatRange.html</anchorfile>
       <anchor>ae647942e0aeeea4b2db8a2af6ad87368</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classFloatRange.html</anchorfile>
+      <anchor>ae3c960aa2c7699c6d0da1470254f5149</anchor>
+      <arglist>(const FloatRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classFloatRange.html</anchorfile>
+      <anchor>a0a9a58f7ef0d0c431153880385d2ae5f</anchor>
+      <arglist>(const FloatRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classFloatRange.html</anchorfile>
+      <anchor>aeaa530954511846098568f8188864d84</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classFloatRange.html</anchorfile>
+      <anchor>a87cac896362e69e63e1d7d360b7837a1</anchor>
+      <arglist>(const float &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classFloatRange.html</anchorfile>
+      <anchor>acb2380b66bf2feab7df573a8698a296f</anchor>
+      <arglist>(const FloatRange &amp;i_range) const</arglist>
     </member>
     <member kind="function">
       <type>std::string</type>
@@ -1651,6 +1841,41 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classIntRange.html</anchorfile>
+      <anchor>af770bf8440706dd9854b6a5be7c450ad</anchor>
+      <arglist>(const IntRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classIntRange.html</anchorfile>
+      <anchor>ac4f11ab9f130848db7255917a47fb138</anchor>
+      <arglist>(const IntRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classIntRange.html</anchorfile>
+      <anchor>a12d27a9a0f1b6083639182ca50e84529</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classIntRange.html</anchorfile>
+      <anchor>af5de60f0615b8b9b483a5ffaadd74f87</anchor>
+      <arglist>(const int &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classIntRange.html</anchorfile>
+      <anchor>a63e37a8cdd4310eada8629ad6f619888</anchor>
+      <arglist>(const IntRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
       <type>iterator</type>
       <name>begin</name>
       <anchorfile>classIntRange.html</anchorfile>
@@ -1705,6 +1930,41 @@
       <anchorfile>classIntRange.html</anchorfile>
       <anchor>a4f6049747974140bfe11e4e3991a6a70</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classIntRange.html</anchorfile>
+      <anchor>af770bf8440706dd9854b6a5be7c450ad</anchor>
+      <arglist>(const IntRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classIntRange.html</anchorfile>
+      <anchor>ac4f11ab9f130848db7255917a47fb138</anchor>
+      <arglist>(const IntRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classIntRange.html</anchorfile>
+      <anchor>a12d27a9a0f1b6083639182ca50e84529</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classIntRange.html</anchorfile>
+      <anchor>af5de60f0615b8b9b483a5ffaadd74f87</anchor>
+      <arglist>(const int &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classIntRange.html</anchorfile>
+      <anchor>a63e37a8cdd4310eada8629ad6f619888</anchor>
+      <arglist>(const IntRange &amp;i_range) const</arglist>
     </member>
     <member kind="function">
       <type>iterator</type>
@@ -2698,6 +2958,41 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec2fRange.html</anchorfile>
+      <anchor>a193345fa4ab86233323509706912f7a8</anchor>
+      <arglist>(const Vec2fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec2fRange.html</anchorfile>
+      <anchor>a5a8ec5e5af2ca373464d193a83a951ff</anchor>
+      <arglist>(const Vec2fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec2fRange.html</anchorfile>
+      <anchor>a1ff0d0b87fb768b67824e2d6cddd2ae4</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec2fRange.html</anchorfile>
+      <anchor>a9661ead61a428ab36b23e02262623db7</anchor>
+      <arglist>(const Vec2f &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec2fRange.html</anchorfile>
+      <anchor>a52b0abbddeadffa1abf337eeaddad9e5</anchor>
+      <arglist>(const Vec2fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
       <type>GM_HOST_DEVICE constexpr</type>
       <name>Vec2fRange</name>
       <anchorfile>classVec2fRange.html</anchorfile>
@@ -2738,6 +3033,41 @@
       <anchorfile>classVec2fRange.html</anchorfile>
       <anchor>a12ef79fbf94043832e57a54e01d5c9b2</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec2fRange.html</anchorfile>
+      <anchor>a193345fa4ab86233323509706912f7a8</anchor>
+      <arglist>(const Vec2fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec2fRange.html</anchorfile>
+      <anchor>a5a8ec5e5af2ca373464d193a83a951ff</anchor>
+      <arglist>(const Vec2fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec2fRange.html</anchorfile>
+      <anchor>a1ff0d0b87fb768b67824e2d6cddd2ae4</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec2fRange.html</anchorfile>
+      <anchor>a9661ead61a428ab36b23e02262623db7</anchor>
+      <arglist>(const Vec2f &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec2fRange.html</anchorfile>
+      <anchor>a52b0abbddeadffa1abf337eeaddad9e5</anchor>
+      <arglist>(const Vec2fRange &amp;i_range) const</arglist>
     </member>
     <member kind="function">
       <type>std::string</type>
@@ -3064,6 +3394,41 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec2iRange.html</anchorfile>
+      <anchor>ade07384d4f08cd5f84208b006a733a19</anchor>
+      <arglist>(const Vec2iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec2iRange.html</anchorfile>
+      <anchor>a7f3af91135298dc3638bb047ec25b25c</anchor>
+      <arglist>(const Vec2iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec2iRange.html</anchorfile>
+      <anchor>ab87d1beefd107e0119c47ceedc64f7d4</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec2iRange.html</anchorfile>
+      <anchor>aa1d0e81e83aa14981f1cb8f65102297e</anchor>
+      <arglist>(const Vec2i &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec2iRange.html</anchorfile>
+      <anchor>afac137c7a7961dd88f98f8c636a6ae3d</anchor>
+      <arglist>(const Vec2iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
       <type>iterator</type>
       <name>begin</name>
       <anchorfile>classVec2iRange.html</anchorfile>
@@ -3118,6 +3483,41 @@
       <anchorfile>classVec2iRange.html</anchorfile>
       <anchor>a0942f5cd4a772e02a42b048b29147dbc</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec2iRange.html</anchorfile>
+      <anchor>ade07384d4f08cd5f84208b006a733a19</anchor>
+      <arglist>(const Vec2iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec2iRange.html</anchorfile>
+      <anchor>a7f3af91135298dc3638bb047ec25b25c</anchor>
+      <arglist>(const Vec2iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec2iRange.html</anchorfile>
+      <anchor>ab87d1beefd107e0119c47ceedc64f7d4</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec2iRange.html</anchorfile>
+      <anchor>aa1d0e81e83aa14981f1cb8f65102297e</anchor>
+      <arglist>(const Vec2i &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec2iRange.html</anchorfile>
+      <anchor>afac137c7a7961dd88f98f8c636a6ae3d</anchor>
+      <arglist>(const Vec2iRange &amp;i_range) const</arglist>
     </member>
     <member kind="function">
       <type>iterator</type>
@@ -3471,6 +3871,41 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec3fRange.html</anchorfile>
+      <anchor>a5dd26febc8faf9efca315b644e02c649</anchor>
+      <arglist>(const Vec3fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec3fRange.html</anchorfile>
+      <anchor>a990803c52ff12a6340ef37fa6b106a92</anchor>
+      <arglist>(const Vec3fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec3fRange.html</anchorfile>
+      <anchor>a396c525f672d0859d57e7c0c398bf6f6</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec3fRange.html</anchorfile>
+      <anchor>a664303ca73f92eced1f6778bbc40300b</anchor>
+      <arglist>(const Vec3f &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec3fRange.html</anchorfile>
+      <anchor>aa5811eed06fcde42eab52c0f1b1378fd</anchor>
+      <arglist>(const Vec3fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
       <type>GM_HOST_DEVICE constexpr</type>
       <name>Vec3fRange</name>
       <anchorfile>classVec3fRange.html</anchorfile>
@@ -3511,6 +3946,41 @@
       <anchorfile>classVec3fRange.html</anchorfile>
       <anchor>ab782b06e636839a52375924ca0dd8b08</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec3fRange.html</anchorfile>
+      <anchor>a5dd26febc8faf9efca315b644e02c649</anchor>
+      <arglist>(const Vec3fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec3fRange.html</anchorfile>
+      <anchor>a990803c52ff12a6340ef37fa6b106a92</anchor>
+      <arglist>(const Vec3fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec3fRange.html</anchorfile>
+      <anchor>a396c525f672d0859d57e7c0c398bf6f6</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec3fRange.html</anchorfile>
+      <anchor>a664303ca73f92eced1f6778bbc40300b</anchor>
+      <arglist>(const Vec3f &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec3fRange.html</anchorfile>
+      <anchor>aa5811eed06fcde42eab52c0f1b1378fd</anchor>
+      <arglist>(const Vec3fRange &amp;i_range) const</arglist>
     </member>
     <member kind="function">
       <type>std::string</type>
@@ -3851,6 +4321,41 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec3iRange.html</anchorfile>
+      <anchor>a72cc28d07402b6bb6ee4b486c84c553d</anchor>
+      <arglist>(const Vec3iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec3iRange.html</anchorfile>
+      <anchor>a8040f8152df0f7ec358a34528401cb5f</anchor>
+      <arglist>(const Vec3iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec3iRange.html</anchorfile>
+      <anchor>a46553cb3cd8192744f78d5817a6111d6</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec3iRange.html</anchorfile>
+      <anchor>a90f111d51cc2c9c6e1d8a183fcae47ba</anchor>
+      <arglist>(const Vec3i &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec3iRange.html</anchorfile>
+      <anchor>ac75ce48d620ad44cb1ecbd3cf48c90da</anchor>
+      <arglist>(const Vec3iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
       <type>iterator</type>
       <name>begin</name>
       <anchorfile>classVec3iRange.html</anchorfile>
@@ -3905,6 +4410,41 @@
       <anchorfile>classVec3iRange.html</anchorfile>
       <anchor>a13b3b7228a6b06a1ef23865c4ecc8efe</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec3iRange.html</anchorfile>
+      <anchor>a72cc28d07402b6bb6ee4b486c84c553d</anchor>
+      <arglist>(const Vec3iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec3iRange.html</anchorfile>
+      <anchor>a8040f8152df0f7ec358a34528401cb5f</anchor>
+      <arglist>(const Vec3iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec3iRange.html</anchorfile>
+      <anchor>a46553cb3cd8192744f78d5817a6111d6</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec3iRange.html</anchorfile>
+      <anchor>a90f111d51cc2c9c6e1d8a183fcae47ba</anchor>
+      <arglist>(const Vec3i &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec3iRange.html</anchorfile>
+      <anchor>ac75ce48d620ad44cb1ecbd3cf48c90da</anchor>
+      <arglist>(const Vec3iRange &amp;i_range) const</arglist>
     </member>
     <member kind="function">
       <type>iterator</type>
@@ -4272,6 +4812,41 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec4fRange.html</anchorfile>
+      <anchor>a30b4bdfb52be2421746630e95d207b77</anchor>
+      <arglist>(const Vec4fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec4fRange.html</anchorfile>
+      <anchor>a5116edca4e9f4bb364e35d3ba77bc3c9</anchor>
+      <arglist>(const Vec4fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec4fRange.html</anchorfile>
+      <anchor>aec6e6130af6c4b3e2beda14ac7b5ce59</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec4fRange.html</anchorfile>
+      <anchor>a4fcb1fb2ac9d3ec8a035b46f149b6284</anchor>
+      <arglist>(const Vec4f &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec4fRange.html</anchorfile>
+      <anchor>acf241aab8ba589dc082d17606f28666a</anchor>
+      <arglist>(const Vec4fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
       <type>GM_HOST_DEVICE constexpr</type>
       <name>Vec4fRange</name>
       <anchorfile>classVec4fRange.html</anchorfile>
@@ -4312,6 +4887,41 @@
       <anchorfile>classVec4fRange.html</anchorfile>
       <anchor>a648a8b7f32cb751559c1c446a9d99cb9</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec4fRange.html</anchorfile>
+      <anchor>a30b4bdfb52be2421746630e95d207b77</anchor>
+      <arglist>(const Vec4fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec4fRange.html</anchorfile>
+      <anchor>a5116edca4e9f4bb364e35d3ba77bc3c9</anchor>
+      <arglist>(const Vec4fRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec4fRange.html</anchorfile>
+      <anchor>aec6e6130af6c4b3e2beda14ac7b5ce59</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec4fRange.html</anchorfile>
+      <anchor>a4fcb1fb2ac9d3ec8a035b46f149b6284</anchor>
+      <arglist>(const Vec4f &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec4fRange.html</anchorfile>
+      <anchor>acf241aab8ba589dc082d17606f28666a</anchor>
+      <arglist>(const Vec4fRange &amp;i_range) const</arglist>
     </member>
     <member kind="function">
       <type>std::string</type>
@@ -4666,6 +5276,41 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec4iRange.html</anchorfile>
+      <anchor>a41b1700095101490783d2d33fbf6b202</anchor>
+      <arglist>(const Vec4iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec4iRange.html</anchorfile>
+      <anchor>a635f051b4db81253675324eaacd8ae58</anchor>
+      <arglist>(const Vec4iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec4iRange.html</anchorfile>
+      <anchor>a784005396a854a93af5a6056e0381e86</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec4iRange.html</anchorfile>
+      <anchor>a06baa6a9d59caf1c43ca5fd75043c914</anchor>
+      <arglist>(const Vec4i &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec4iRange.html</anchorfile>
+      <anchor>acf0b0d633bf10ed88562d338855510cd</anchor>
+      <arglist>(const Vec4iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
       <type>iterator</type>
       <name>begin</name>
       <anchorfile>classVec4iRange.html</anchorfile>
@@ -4720,6 +5365,41 @@
       <anchorfile>classVec4iRange.html</anchorfile>
       <anchor>a68268fad2c7f49e3a6517ec15c5ed645</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator==</name>
+      <anchorfile>classVec4iRange.html</anchorfile>
+      <anchor>a41b1700095101490783d2d33fbf6b202</anchor>
+      <arglist>(const Vec4iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>operator!=</name>
+      <anchorfile>classVec4iRange.html</anchorfile>
+      <anchor>a635f051b4db81253675324eaacd8ae58</anchor>
+      <arglist>(const Vec4iRange &amp;i_range) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>IsEmpty</name>
+      <anchorfile>classVec4iRange.html</anchorfile>
+      <anchor>a784005396a854a93af5a6056e0381e86</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec4iRange.html</anchorfile>
+      <anchor>a06baa6a9d59caf1c43ca5fd75043c914</anchor>
+      <arglist>(const Vec4i &amp;i_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>Contains</name>
+      <anchorfile>classVec4iRange.html</anchorfile>
+      <anchor>acf0b0d633bf10ed88562d338855510cd</anchor>
+      <arglist>(const Vec4iRange &amp;i_range) const</arglist>
     </member>
     <member kind="function">
       <type>iterator</type>
@@ -4832,6 +5512,7 @@
     <file>clamp.h</file>
     <file>degrees.h</file>
     <file>floor.h</file>
+    <file>intersection.h</file>
     <file>linearInterpolation.h</file>
     <file>linearMap.h</file>
     <file>max.h</file>
@@ -4938,20 +5619,6 @@
       <arglist>(const int &amp;i_value, const IntRange &amp;i_range)</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE Mat3f</type>
-      <name>Clamp</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga4daedb8da222e40d8156af73fc6f7951</anchor>
-      <arglist>(const Mat3f &amp;i_value, const FloatRange &amp;i_range)</arglist>
-    </member>
-    <member kind="function">
-      <type>GM_HOST_DEVICE Mat4f</type>
-      <name>Clamp</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga8c764e5134bef4e42ac0c1e92af44ef4</anchor>
-      <arglist>(const Mat4f &amp;i_value, const FloatRange &amp;i_range)</arglist>
-    </member>
-    <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
       <name>Clamp</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
@@ -4992,6 +5659,20 @@
       <anchorfile>group__gm__functions__basic.html</anchorfile>
       <anchor>ga2346a93e131bd30774d106e9a12124b1</anchor>
       <arglist>(const Vec4i &amp;i_value, const IntRange &amp;i_range)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat3f</type>
+      <name>Clamp</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga4daedb8da222e40d8156af73fc6f7951</anchor>
+      <arglist>(const Mat3f &amp;i_value, const FloatRange &amp;i_range)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat4f</type>
+      <name>Clamp</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga8c764e5134bef4e42ac0c1e92af44ef4</anchor>
+      <arglist>(const Mat4f &amp;i_value, const FloatRange &amp;i_range)</arglist>
     </member>
     <member kind="function">
       <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
@@ -5148,20 +5829,6 @@
       <arglist>(const bool &amp;i_valueA, const bool &amp;i_valueB)</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE Mat3f</type>
-      <name>Max</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga0436a40f59c6554a15ce898dc5cf84e5</anchor>
-      <arglist>(const Mat3f &amp;i_valueA, const Mat3f &amp;i_valueB)</arglist>
-    </member>
-    <member kind="function">
-      <type>GM_HOST_DEVICE Mat4f</type>
-      <name>Max</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga37f840849efe9615964bc32429ca20cd</anchor>
-      <arglist>(const Mat4f &amp;i_valueA, const Mat4f &amp;i_valueB)</arglist>
-    </member>
-    <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
       <name>Max</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
@@ -5204,6 +5871,20 @@
       <arglist>(const Vec4i &amp;i_valueA, const Vec4i &amp;i_valueB)</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE Mat3f</type>
+      <name>Max</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga0436a40f59c6554a15ce898dc5cf84e5</anchor>
+      <arglist>(const Mat3f &amp;i_valueA, const Mat3f &amp;i_valueB)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat4f</type>
+      <name>Max</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga37f840849efe9615964bc32429ca20cd</anchor>
+      <arglist>(const Mat4f &amp;i_valueA, const Mat4f &amp;i_valueB)</arglist>
+    </member>
+    <member kind="function">
       <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
       <name>Min</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
@@ -5223,20 +5904,6 @@
       <anchorfile>group__gm__functions__basic.html</anchorfile>
       <anchor>ga2679967ee89033f83535e432f07eb5c7</anchor>
       <arglist>(const bool &amp;i_valueA, const bool &amp;i_valueB)</arglist>
-    </member>
-    <member kind="function">
-      <type>GM_HOST_DEVICE Mat3f</type>
-      <name>Min</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gae2aa7be7bdd849d6b0cb46c67d23ef93</anchor>
-      <arglist>(const Mat3f &amp;i_valueA, const Mat3f &amp;i_valueB)</arglist>
-    </member>
-    <member kind="function">
-      <type>GM_HOST_DEVICE Mat4f</type>
-      <name>Min</name>
-      <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga76a28039482e67f63bbe2400f7b48858</anchor>
-      <arglist>(const Mat4f &amp;i_valueA, const Mat4f &amp;i_valueB)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
@@ -5279,6 +5946,20 @@
       <anchorfile>group__gm__functions__basic.html</anchorfile>
       <anchor>ga3bd1a731ef51e958386b599f1444a10d</anchor>
       <arglist>(const Vec4i &amp;i_valueA, const Vec4i &amp;i_valueB)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat3f</type>
+      <name>Min</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gae2aa7be7bdd849d6b0cb46c67d23ef93</anchor>
+      <arglist>(const Mat3f &amp;i_valueA, const Mat3f &amp;i_valueB)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat4f</type>
+      <name>Min</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga76a28039482e67f63bbe2400f7b48858</anchor>
+      <arglist>(const Mat4f &amp;i_valueA, const Mat4f &amp;i_valueB)</arglist>
     </member>
     <member kind="function">
       <type>GM_NS_OPEN GM_HOST_DEVICE int</type>
@@ -5519,6 +6200,7 @@
     <name>gm_functions_rayTracing</name>
     <title>Ray tracing operators</title>
     <filename>group__gm__functions__rayTracing.html</filename>
+    <file>rayAABBIntersection.h</file>
     <file>rayPosition.h</file>
     <file>raySphereIntersection.h</file>
     <member kind="function">
@@ -5539,8 +6221,8 @@
       <type>GM_NS_OPEN GM_HOST_DEVICE int</type>
       <name>RaySphereIntersection</name>
       <anchorfile>group__gm__functions__rayTracing.html</anchorfile>
-      <anchor>ga2f003e0912ab4eeb5b84e72baaf344d6</anchor>
-      <arglist>(const Vec3f &amp;i_sphereOrigin, const float &amp;i_sphereRadius, const Vec3f &amp;i_rayOrigin, const Vec3f &amp;i_rayDirection, Vec2f &amp;o_intersections)</arglist>
+      <anchor>gaa14388e5cbb2f41e4efb04b01c77b1b6</anchor>
+      <arglist>(const Vec3f &amp;i_sphereOrigin, const float &amp;i_sphereRadius, const Vec3f &amp;i_rayOrigin, const Vec3f &amp;i_rayDirection, FloatRange &amp;o_intersections)</arglist>
     </member>
   </compound>
   <compound kind="page">

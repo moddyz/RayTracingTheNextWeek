@@ -48,21 +48,21 @@ public:
     virtual inline bool
     Hit( const raytrace::Ray& i_ray, const gm::FloatRange& i_magnitudeRange, HitRecord& o_record ) const override
     {
-        gm::Vec2f intersections;
+        gm::FloatRange intersections;
         if ( gm::RaySphereIntersection( m_origin.Value( i_ray.Time() ),
                                         m_radius,
                                         i_ray.Origin(),
                                         i_ray.Direction(),
                                         intersections ) > 0 )
         {
-            if ( intersections[ 0 ] < i_magnitudeRange.Max() && intersections[ 0 ] > i_magnitudeRange.Min() )
+            if ( i_magnitudeRange.Contains( intersections.Min() ) )
             {
-                _Record( i_ray, intersections[ 0 ], o_record );
+                _Record( i_ray, intersections.Min(), o_record );
                 return true;
             }
-            else if ( intersections[ 1 ] < i_magnitudeRange.Max() && intersections[ 1 ] > i_magnitudeRange.Min() )
+            else if ( i_magnitudeRange.Contains( intersections.Max() ) )
             {
-                _Record( i_ray, intersections[ 1 ], o_record );
+                _Record( i_ray, intersections.Max(), o_record );
                 return true;
             }
         }
