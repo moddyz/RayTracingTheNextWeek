@@ -7,7 +7,7 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
 - [Prequel](#prequel)
 - [Programs](#programs)
   * [0. Motion Blur](#0-motion-blur)
-  * [1. Bounding Volume Hierarchies](#0-bounding-volume-hierarchies)
+  * [1. Bounding Volume Hierarchies](#1-bounding-volume-hierarchies)
 - [Library](#library)
 - [Building](#building)
 - [Build Status](#build-status)
