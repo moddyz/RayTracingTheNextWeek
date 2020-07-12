@@ -22,7 +22,9 @@ You can check out the implementation to the prequel, [Ray Tracing in One Weekend
 
 ![Image](./src/0_motionBlur/output.png)
 
-Simulate the effect of motion blur, by introducing the concept of time to ray, and scene objects.
+Simulate the effect of motion blur, by introducing the concept of time to rays and scene objects.
+
+Rays are fired at random times between *shutter open* and *close* to produce the averaged image across that time interval.
 
 Scene objects now possess *attributes*.  Attributes store values for multiple time samples, and supports 
 queries between, or beyond available samples.  For more information, see the [class documentation for Attribute](https://moddyz.github.io/RayTracingTheNextWeek/classAttribute.html).
