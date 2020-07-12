@@ -26,7 +26,7 @@ You can check out the implementation to the prequel, [Ray Tracing in One Weekend
 
 [Link to Chapter 2](https://raytracing.github.io/books/RayTracingTheNextWeek.html#motionblur)
 
-### 0. Bounding Volume Hierarchies
+### 1. Bounding Volume Hierarchies
 
 ![Image](./src/1_boundingVolumeHierarchies/output.png)
 
