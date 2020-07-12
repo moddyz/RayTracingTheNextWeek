@@ -22,6 +22,11 @@ You can check out the implementation to the prequel, [Ray Tracing in One Weekend
 
 ![Image](./src/0_motionBlur/output.png)
 
+Simulate the effect of motion blur, by introducing the concept of time to ray, and scene objects.
+
+Scene objects now possess *attributes*.  Attributes store values for multiple time samples, and supports 
+queries between, or beyond available samples.  For more information, see the [class documentation for Attribute](https://moddyz.github.io/RayTracingTheNextWeek/classAttribute.html).
+
 [Source code](./src/0_motionBlur/main.cpp)
 
 [Link to Chapter 2](https://raytracing.github.io/books/RayTracingTheNextWeek.html#motionblur)
@@ -29,6 +34,10 @@ You can check out the implementation to the prequel, [Ray Tracing in One Weekend
 ### 1. Bounding Volume Hierarchies
 
 ![Image](./src/1_boundingVolumeHierarchies/output.png)
+
+Introducing bounding volume hierarchy (BVH) to accelerate the ray tracing.  The BVH reduces the number of
+intersection tests performed per-ray by pruning out hierarchies of scene objects whose bounding volume does not 
+intersect with the ray.
 
 With the same scene from [0. Motion Blur](#0-motion-blur):
 - With BVH: **10.575s**
