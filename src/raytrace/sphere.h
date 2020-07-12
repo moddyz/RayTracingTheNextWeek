@@ -9,6 +9,7 @@
 #include <raytrace/sceneObject.h>
 
 #include <gm/functions/contains.h>
+#include <gm/functions/expand.h>
 #include <gm/functions/normalize.h>
 #include <gm/functions/rayPosition.h>
 #include <gm/functions/raySphereIntersection.h>
@@ -70,6 +71,27 @@ public:
 
         // Sorry, missed!
         return false;
+    }
+
+    virtual gm::Vec3fRange Extent( const std::vector< float >& i_times ) const override
+    {
+        gm::Vec3fRange extent;
+        for ( float time : i_times )
+        {
+            // Sample values at time.
+            gm::Vec3f origin = m_origin.Value( time );
+            gm::Vec3f hypotenuse( m_radius, m_radius, m_radius );
+
+            // Compute extent for the current time sample.
+            gm::Vec3fRange extentSample(
+                /* min */ origin - hypotenuse,
+                /* max */ origin + hypotenuse );
+
+            // Expand range extent.
+            gm::Expand( extent, extentSample );
+        }
+
+        return extent;
     }
 
 private:
