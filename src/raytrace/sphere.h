@@ -8,6 +8,7 @@
 #include <raytrace/ray.h>
 #include <raytrace/sceneObject.h>
 
+#include <gm/functions/contains.h>
 #include <gm/functions/normalize.h>
 #include <gm/functions/rayPosition.h>
 #include <gm/functions/raySphereIntersection.h>
@@ -55,12 +56,12 @@ public:
                                         i_ray.Direction(),
                                         intersections ) > 0 )
         {
-            if ( i_magnitudeRange.Contains( intersections.Min() ) )
+            if ( gm::Contains( i_magnitudeRange, intersections.Min() ) )
             {
                 _Record( i_ray, intersections.Min(), o_record );
                 return true;
             }
-            else if ( i_magnitudeRange.Contains( intersections.Max() ) )
+            else if ( gm::Contains( i_magnitudeRange, intersections.Max() ) )
             {
                 _Record( i_ray, intersections.Max(), o_record );
                 return true;
