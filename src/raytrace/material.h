@@ -30,7 +30,7 @@ public:
     ///
     /// \param i_ray Incident ray.
     /// \param i_hitRecord The recorded hit information of the ray against the geometry.
-    /// \param o_attentuation Color produced based on the ray, by the material.
+    /// \param o_attenuation Color produced based on the ray, by the material.
     /// \param o_scatteredRay The optional, scattered ray.
     ///
     /// \retval true If this material produces a scattered ray. \p o_scatteredRay will be populated.
@@ -41,10 +41,12 @@ public:
                           raytrace::Ray&       o_scatteredRay ) const = 0;
 };
 
-/// \typedef MaterialPtr
+/// \typedef MaterialSharedPtr
 ///
 /// Shared pointer to an allocated material.
-/// Multiple objects will hold references to a material, thus shared pointer.
+///
+/// Multiple objects will hold references to a material, and to simplify memory management,
+/// a shared pointer is used!
 using MaterialSharedPtr = std::shared_ptr< Material >;
 
 RAYTRACE_NS_CLOSE

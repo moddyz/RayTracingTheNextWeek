@@ -1220,6 +1220,7 @@
     <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
     <includes id="vec2f_8h" name="vec2f.h" local="no" imported="no">gm/types/vec2f.h</includes>
     <includes id="vec3f_8h" name="vec3f.h" local="no" imported="no">gm/types/vec3f.h</includes>
+    <includes id="almost_8h" name="almost.h" local="no" imported="no">gm/base/almost.h</includes>
     <includes id="length_8h" name="length.h" local="no" imported="no">gm/functions/length.h</includes>
     <member kind="function">
       <type>GM_NS_OPEN GM_HOST_DEVICE Vec2f</type>

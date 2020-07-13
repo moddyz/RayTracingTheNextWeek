@@ -27,6 +27,7 @@ public:
     ///
     /// \param i_origin The origin of the sphere.
     /// \param i_radius The radius of the sphere.
+    /// \param i_material Optional material assigned to the sphere.
     inline explicit Sphere( const gm::Vec3f& i_origin, float i_radius, MaterialSharedPtr i_material = nullptr )
         : m_origin( {{0, i_origin}} )
         , m_radius( i_radius )
@@ -38,6 +39,7 @@ public:
     ///
     /// \param i_origin The origin of the sphere.
     /// \param i_radius The radius of the sphere.
+    /// \param i_material Optional material assigned to the sphere.
     inline explicit Sphere( const Attribute< gm::Vec3f >& i_origin,
                             float                         i_radius,
                             MaterialSharedPtr             i_material = nullptr )

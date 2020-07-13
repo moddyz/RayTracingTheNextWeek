@@ -27,7 +27,7 @@ public:
 
     /// Check and record if ray \p i_ray hits the current object.
     ///
-    /// \param i_ray.Origin() The ray to test for hit.
+    /// \param i_ray The ray to test for hit.
     /// \param i_magnitudeRange The range of \em accepted magnitudes to qualify as a ray hit.
     /// \param o_record the record of a ray hit.
     ///
@@ -40,7 +40,7 @@ public:
     /// Compute the extent of this SceneObject over the course of multiple time samples \p i_times.
     ///
     /// If this SceneObject does not have a bounding volume, then an empty extent is returned.
-    /// \sa \ref gm::Vec3fRange::IsEmpty
+    /// \sa \ref Vec3fRange::IsEmpty
     ///
     /// \pre If \p i_times is an empty array, then an empty extent will be returned.
     ///

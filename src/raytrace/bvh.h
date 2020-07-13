@@ -31,8 +31,8 @@ class BVHNode : public SceneObject
 public:
     /// Explicit construction of a BVH from a collection of SceneObject(s) and time samples.
     ///
+    /// \param i_sceneObjects Scene objects to build the BVH for.
     /// \param i_times Time samples to compute extents for.
-    /// \param o_sceneObjects Scene objects to build the BVH for.
     inline explicit BVHNode( const SceneObjectPtrs& i_sceneObjects, const std::vector< float >& i_times )
     {
         // Compute extent of all the objects, including the aggregate extent for this node.

@@ -15,9 +15,9 @@ RAYTRACE_NS_OPEN
 /// \class Ray
 ///
 /// Class definition of a composite type with named elements:
-/// - origin (\ref gm::Vec3f)
-/// - direction (\ref gm::Vec3f)
-/// - time (\ref float)
+/// - origin (\ref Vec3f)
+/// - direction (\ref Vec3f)
+/// - time (float)
 class Ray final
 {
 public:

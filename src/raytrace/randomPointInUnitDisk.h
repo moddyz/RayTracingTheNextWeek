@@ -1,6 +1,6 @@
 #pragma once
 
-/// \file raytrace/randomUnitVector.h
+/// \file raytrace/randomPointInUnitDisk.h
 ///
 /// Utility for generating a random point within a unit disk (circle) in 3D space.
 ///

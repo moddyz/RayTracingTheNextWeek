@@ -1,6 +1,6 @@
 #pragma once
 
-/// \file raytrace/refact.h
+/// \file raytrace/refract.h
 ///
 /// Implementation for refracting a ray through a dieletric surface.
 

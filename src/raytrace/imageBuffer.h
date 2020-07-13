@@ -13,7 +13,7 @@
 
 RAYTRACE_NS_OPEN
 
-/// \file ImageBuffer
+/// \class ImageBuffer
 ///
 /// A dynamically resizable in-memory representation of a 2 dimensional image, with compile-time
 /// defined value type \p ValueT for each pixel.
