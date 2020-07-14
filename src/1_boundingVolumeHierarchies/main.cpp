@@ -20,6 +20,7 @@
 
 #include <raytrace/bvh.h>
 #include <raytrace/camera.h>
+#include <raytrace/constantColor.h>
 #include <raytrace/dielectric.h>
 #include <raytrace/hitRecord.h>
 #include <raytrace/imageBuffer.h>
@@ -215,7 +216,8 @@ void ShadePixel( const gm::Vec2i&                i_pixelCoord,
 /// \param o_sceneObjects Collection to populate with scene objects.
 void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::SceneObjectPtrs& o_sceneObjects )
 {
-    raytrace::MaterialSharedPtr groundMaterial = std::make_shared< raytrace::Lambert >( gm::Vec3f( 0.5, 0.5, 0.5 ) );
+    raytrace::MaterialSharedPtr groundMaterial = std::make_shared< raytrace::Lambert >(
+        std::make_shared< raytrace::ConstantColor >( gm::Vec3f( 0.5, 0.5, 0.5 ) ) );
     o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >( gm::Vec3f( 0, -1000, 0 ), 1000, groundMaterial ) );
 
     for ( int a = -11; a < 11; a++ )
@@ -235,7 +237,8 @@ void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::Scene
                                       gm::RandomNumber( c_normalizedRange ),
                                       gm::RandomNumber( c_normalizedRange ) );
 
-                    raytrace::MaterialSharedPtr sphereMaterial = std::make_shared< raytrace::Lambert >( albedo );
+                    raytrace::MaterialSharedPtr sphereMaterial =
+                        std::make_shared< raytrace::Lambert >( std::make_shared< raytrace::ConstantColor >( albedo ) );
 
                     // Compute a random Y axis translation.
                     gm::Vec3f centerTranslation( 0, gm::RandomNumber( gm::FloatRange( 0, 0.5f ) ), 0 );
@@ -276,7 +279,8 @@ void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::Scene
     raytrace::MaterialSharedPtr material1 = std::make_shared< raytrace::Dielectric >( 1.5 );
     o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >( gm::Vec3f( 0, 1, 0 ), 1.0, material1 ) );
 
-    raytrace::MaterialSharedPtr material2 = std::make_shared< raytrace::Lambert >( gm::Vec3f( 0.4, 0.2, 0.1 ) );
+    raytrace::MaterialSharedPtr material2 = std::make_shared< raytrace::Lambert >(
+        std::make_shared< raytrace::ConstantColor >( gm::Vec3f( 0.4, 0.2, 0.1 ) ) );
     o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >( gm::Vec3f( -4, 1, 0 ), 1.0, material2 ) );
 
     raytrace::MaterialSharedPtr material3 = std::make_shared< raytrace::Metal >( gm::Vec3f( 0.7, 0.6, 0.5 ), 0.0 );

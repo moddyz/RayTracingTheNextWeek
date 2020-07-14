@@ -8,6 +8,8 @@
 #include <raytrace/ray.h>
 #include <raytrace/sceneObject.h>
 
+#include <gm/base/constants.h>
+
 #include <gm/functions/contains.h>
 #include <gm/functions/expand.h>
 #include <gm/functions/normalize.h>
@@ -106,8 +108,35 @@ private:
     {
         o_record.m_position  = gm::RayPosition( i_ray.Origin(), i_ray.Direction(), i_rayMagnitude );
         o_record.m_normal    = ( o_record.m_position - m_origin.Value( i_ray.Time() ) ) / m_radius;
+        o_record.m_uv        = _ComputeUV( o_record.m_normal );
         o_record.m_magnitude = i_rayMagnitude;
         o_record.m_material  = m_material;
+    }
+
+    /// Helper method to compute the normalised UV coordinates for a sphere, given the surface normal.
+    inline gm::Vec2f _ComputeUV( const gm::Vec3f& i_normal ) const
+    {
+        // atan2 returns a value inclusive of the range (-pi, pi)
+        float phi   = atan2( i_normal.Z(), i_normal.X() );
+
+        // asin returns a value inclusive of the range (-pi/2, pi/2)
+        float theta = asin( i_normal.Y() );
+
+        // The normalised coordinate "u" can be computed for the latitude angle (phi)
+        // around the pole of a sphere:
+        //
+        // u = phi / 2*PI
+        //
+        // XXX: Why are we subtracting the result from 1.0f?
+        float u = 1.0f - ( ( phi + GM_PI ) / ( 2.0f * GM_PI ) );
+
+        // The normalised coordinate "v" can be computed for the longitude angle (theta) down
+        // from the pole of the sphere:
+        //
+        // v = theta / PI
+        float v = ( theta + ( GM_PI / 2.0f ) ) / GM_PI;
+
+        return gm::Vec2f( u, v );
     }
 
     // The origin of the sphere.

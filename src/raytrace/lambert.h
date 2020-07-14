@@ -9,6 +9,7 @@
 #include <raytrace/hitRecord.h>
 #include <raytrace/material.h>
 #include <raytrace/randomUnitVector.h>
+#include <raytrace/texture.h>
 
 RAYTRACE_NS_OPEN
 
@@ -22,7 +23,7 @@ class Lambert : public Material
 {
 public:
     /// Explicit constructor with albedo color.
-    inline explicit Lambert( const gm::Vec3f& i_albedo )
+    inline explicit Lambert( const TextureSharedPtr& i_albedo )
         : m_albedo( i_albedo )
     {
     }
@@ -40,14 +41,14 @@ public:
                                         /* direction */ gm::Normalize( rayTarget - i_hitRecord.m_position ),
                                         /* time */ i_ray.Time() );
 
-        // Apply albedo.
-        o_attenuation = m_albedo;
+        // Sample albedo texture.
+        o_attenuation = m_albedo->Sample( i_hitRecord.m_uv, i_hitRecord.m_position );
 
         return true;
     }
 
 private:
-    gm::Vec3f m_albedo;
+    TextureSharedPtr m_albedo;
 };
 
 RAYTRACE_NS_CLOSE

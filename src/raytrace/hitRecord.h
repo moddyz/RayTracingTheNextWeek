@@ -24,11 +24,14 @@ public:
     /// The outward facing normal of the surface, at the point of contact.
     gm::Vec3f m_normal;
 
-    /// The magnitude of the ray at the point of contact.
-    float m_magnitude;
+    /// The 2D coordinate in the texture space to sample colors from.
+    gm::Vec2f m_uv;
 
     /// Material associated with the geometry that was hit by the ray.
     MaterialSharedPtr m_material;
+
+    /// The magnitude of the ray at the point of contact.
+    float m_magnitude = 0.0f;
 };
 
 RAYTRACE_NS_CLOSE
