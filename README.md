@@ -65,7 +65,7 @@ In the image above, the ground plane is assigned a Lambert material with a Check
 
 [Source code](./src/2_solidTextures/main.cpp)
 
-[Link to Chapter 3](https://raytracing.github.io/books/RayTracingTheNextWeek.html#solidtextures)
+[Link to Chapter 4](https://raytracing.github.io/books/RayTracingTheNextWeek.html#solidtextures)
 
 ### 3. Perlin Noise
 
@@ -75,7 +75,7 @@ _Work in progress._
 
 [Source code](./src/3_perlinNoise/main.cpp)
 
-[Link to Chapter 4](https://raytracing.github.io/books/RayTracingTheNextWeek.html#perlinnoise)
+[Link to Chapter 5](https://raytracing.github.io/books/RayTracingTheNextWeek.html#perlinnoise)
 
 ## Library
 
