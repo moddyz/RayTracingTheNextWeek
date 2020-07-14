@@ -1,8 +1,3 @@
-/// \page 1_boundingVolumeHierarchies Bounding Volume Hierarchies
-///
-/// Ray tracing program which introduces bounding volume hierarchies to accelerate computation
-/// by limiting the number of intersection tests.
-
 #include <cxxopts.hpp>
 
 #include <gm/base/constants.h>
@@ -261,8 +256,9 @@ void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::Scene
                                       gm::RandomNumber( gm::FloatRange( 0.5, 1.0 ) ) );
                     float     fuzziness = gm::RandomNumber( gm::FloatRange( 0.0, 0.5 ) );
 
-                    raytrace::MaterialSharedPtr sphereMaterial =
-                        std::make_shared< raytrace::Metal >( albedo, fuzziness );
+                    raytrace::MaterialSharedPtr sphereMaterial = std::make_shared< raytrace::Metal >(
+                        /* albedo */ std::make_shared< raytrace::ConstantColor >( albedo ),
+                        /* fuzziness */ fuzziness );
 
                     o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >( center, 0.2, sphereMaterial ) );
                 }
@@ -283,7 +279,9 @@ void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::Scene
         std::make_shared< raytrace::ConstantColor >( gm::Vec3f( 0.4, 0.2, 0.1 ) ) );
     o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >( gm::Vec3f( -4, 1, 0 ), 1.0, material2 ) );
 
-    raytrace::MaterialSharedPtr material3 = std::make_shared< raytrace::Metal >( gm::Vec3f( 0.7, 0.6, 0.5 ), 0.0 );
+    raytrace::MaterialSharedPtr material3 = std::make_shared< raytrace::Metal >(
+        /* albedo */ std::make_shared< raytrace::ConstantColor >( gm::Vec3f( 0.7, 0.6, 0.5 ) ),
+        /* fuzziness */ 0.0f );
     o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >( gm::Vec3f( 4, 1, 0 ), 1.0, material3 ) );
 }
 

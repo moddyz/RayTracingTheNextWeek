@@ -26,7 +26,7 @@ class Metal : public Material
 {
 public:
     /// Explicit constructor with albedo color.
-    inline explicit Metal( const gm::Vec3f& i_albedo, float i_fuzziness )
+    inline explicit Metal( const TextureSharedPtr& i_albedo, float i_fuzziness )
         : m_albedo( i_albedo )
         , m_fuzziness( gm::Clamp( i_fuzziness, gm::FloatRange( 0.0, 1.0 ) ) )
     {
@@ -45,16 +45,16 @@ public:
                                         /* direction */ gm::Normalize( reflectedDirection ),
                                         /* time */ i_ray.Time() );
 
-        // Apply albedo.
-        o_attenuation = m_albedo;
+        // Sample from albedo texture.
+        o_attenuation = m_albedo->Sample( i_hitRecord.m_uv, i_hitRecord.m_position );
 
         // Produce scattered ray if the scattered ray is not orthogonal to the normal.
         return ( gm::DotProduct( o_scatteredRay.Direction(), i_hitRecord.m_normal ) > 0 );
     }
 
 private:
-    gm::Vec3f m_albedo;
-    float     m_fuzziness;
+    TextureSharedPtr m_albedo;
+    float            m_fuzziness;
 };
 
 RAYTRACE_NS_CLOSE
