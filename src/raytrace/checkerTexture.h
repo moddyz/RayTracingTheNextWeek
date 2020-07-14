@@ -1,6 +1,6 @@
 #pragma once
 
-/// \file raytrace/constantColor.h
+/// \file raytrace/checkerTexture.h
 ///
 /// A texture providing an alternating checker board pattern.
 

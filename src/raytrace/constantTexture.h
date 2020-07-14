@@ -1,6 +1,6 @@
 #pragma once
 
-/// \file raytrace/constantColor.h
+/// \file raytrace/constantTexture.h
 ///
 /// A texture providing a constant color for any sampling coordinates.
 
@@ -8,22 +8,22 @@
 
 RAYTRACE_NS_OPEN
 
-/// \class ConstantColor
+/// \class ConstantTexture
 ///
-/// ConstantColor is a texture which produces a uniform, constant color for any
+/// ConstantTexture is a texture which produces a uniform, constant color for any
 /// sampling inputs.
-class ConstantColor : public Texture
+class ConstantTexture : public Texture
 {
 public:
     /// Explicit constructor with the specified constant color \p i_color.
     ///
     /// \param i_color The color value.
-    inline explicit ConstantColor( const gm::Vec3f& i_color )
+    inline explicit ConstantTexture( const gm::Vec3f& i_color )
         : m_color( i_color )
     {
     }
 
-    /// The ConstantColor texture will always provide the color that was specified in its
+    /// The ConstantTexture texture will always provide the color that was specified in its
     /// constructor.
     ///
     /// \param i_uvCoord This coordinate has no affect on the sampled color.

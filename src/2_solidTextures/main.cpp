@@ -16,7 +16,7 @@
 #include <raytrace/bvh.h>
 #include <raytrace/camera.h>
 #include <raytrace/checkerTexture.h>
-#include <raytrace/constantColor.h>
+#include <raytrace/constantTexture.h>
 #include <raytrace/dielectric.h>
 #include <raytrace/hitRecord.h>
 #include <raytrace/imageBuffer.h>
@@ -213,8 +213,8 @@ void ShadePixel( const gm::Vec2i&                i_pixelCoord,
 void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::SceneObjectPtrs& o_sceneObjects )
 {
     raytrace::TextureSharedPtr checkerTexture = std::make_shared< raytrace::CheckerTexture >(
-        /* even */ std::make_shared< raytrace::ConstantColor >( gm::Vec3f( 0.2, 0.3, 0.1 ) ),
-        /* odd */ std::make_shared< raytrace::ConstantColor >( gm::Vec3f( 0.9, 0.9, 0.9 ) ),
+        /* even */ std::make_shared< raytrace::ConstantTexture >( gm::Vec3f( 0.2, 0.3, 0.1 ) ),
+        /* odd */ std::make_shared< raytrace::ConstantTexture >( gm::Vec3f( 0.9, 0.9, 0.9 ) ),
         /* scale */ 10.0f );
 
     raytrace::MaterialSharedPtr groundMaterial = std::make_shared< raytrace::Lambert >( checkerTexture );
@@ -239,7 +239,7 @@ void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::Scene
                                       gm::RandomNumber( c_normalizedRange ) );
 
                     raytrace::MaterialSharedPtr sphereMaterial =
-                        std::make_shared< raytrace::Lambert >( std::make_shared< raytrace::ConstantColor >( albedo ) );
+                        std::make_shared< raytrace::Lambert >( std::make_shared< raytrace::ConstantTexture >( albedo ) );
 
                     // Compute a random Y axis translation.
                     gm::Vec3f centerTranslation( 0, gm::RandomNumber( gm::FloatRange( 0, 0.5f ) ), 0 );
@@ -263,7 +263,7 @@ void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::Scene
                     float     fuzziness = gm::RandomNumber( gm::FloatRange( 0.0, 0.5 ) );
 
                     raytrace::MaterialSharedPtr sphereMaterial = std::make_shared< raytrace::Metal >(
-                        /* albedo */ std::make_shared< raytrace::ConstantColor >( albedo ),
+                        /* albedo */ std::make_shared< raytrace::ConstantTexture >( albedo ),
                         /* fuzziness */ fuzziness );
 
                     o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >( center, 0.2, sphereMaterial ) );
@@ -282,11 +282,11 @@ void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::Scene
     o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >( gm::Vec3f( 0, 1, 0 ), 1.0, material1 ) );
 
     raytrace::MaterialSharedPtr material2 = std::make_shared< raytrace::Lambert >(
-        std::make_shared< raytrace::ConstantColor >( gm::Vec3f( 0.4, 0.2, 0.1 ) ) );
+        std::make_shared< raytrace::ConstantTexture >( gm::Vec3f( 0.4, 0.2, 0.1 ) ) );
     o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >( gm::Vec3f( -4, 1, 0 ), 1.0, material2 ) );
 
     raytrace::MaterialSharedPtr material3 = std::make_shared< raytrace::Metal >(
-        /* albedo */ std::make_shared< raytrace::ConstantColor >( gm::Vec3f( 0.7, 0.6, 0.5 ) ),
+        /* albedo */ std::make_shared< raytrace::ConstantTexture >( gm::Vec3f( 0.7, 0.6, 0.5 ) ),
         /* fuzziness */ 0.0f );
     o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >( gm::Vec3f( 4, 1, 0 ), 1.0, material3 ) );
 }
