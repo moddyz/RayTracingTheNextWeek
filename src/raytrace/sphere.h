@@ -117,7 +117,7 @@ private:
     inline gm::Vec2f _ComputeUV( const gm::Vec3f& i_normal ) const
     {
         // atan2 returns a value inclusive of the range (-pi, pi)
-        float phi   = atan2( i_normal.Z(), i_normal.X() );
+        float phi = atan2( i_normal.Z(), i_normal.X() );
 
         // asin returns a value inclusive of the range (-pi/2, pi/2)
         float theta = asin( i_normal.Y() );

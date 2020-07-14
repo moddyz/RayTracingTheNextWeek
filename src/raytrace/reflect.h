@@ -6,8 +6,8 @@
 
 #include <raytrace/raytrace.h>
 
-#include <gm/types/vec3f.h>
 #include <gm/functions/dotProduct.h>
+#include <gm/types/vec3f.h>
 
 RAYTRACE_NS_OPEN
 

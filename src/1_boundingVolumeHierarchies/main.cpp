@@ -232,8 +232,8 @@ void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::Scene
                                       gm::RandomNumber( c_normalizedRange ),
                                       gm::RandomNumber( c_normalizedRange ) );
 
-                    raytrace::MaterialSharedPtr sphereMaterial =
-                        std::make_shared< raytrace::Lambert >( std::make_shared< raytrace::ConstantTexture >( albedo ) );
+                    raytrace::MaterialSharedPtr sphereMaterial = std::make_shared< raytrace::Lambert >(
+                        std::make_shared< raytrace::ConstantTexture >( albedo ) );
 
                     // Compute a random Y axis translation.
                     gm::Vec3f centerTranslation( 0, gm::RandomNumber( gm::FloatRange( 0, 0.5f ) ), 0 );
