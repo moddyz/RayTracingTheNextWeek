@@ -8,6 +8,7 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
 - [Programs](#programs)
   * [0. Motion Blur](#0-motion-blur)
   * [1. Bounding Volume Hierarchies](#1-bounding-volume-hierarchies)
+  * [2. Solid Textures](#2-solid-textures)
 - [Library](#library)
 - [Building](#building)
 - [Build Status](#build-status)
@@ -51,6 +52,19 @@ with Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz.
 [Source code](./src/1_boundingVolumeHierarchies/main.cpp)
 
 [Link to Chapter 3](https://raytracing.github.io/books/RayTracingTheNextWeek.html#boundingvolumehierarchies)
+
+### 2. Solid Textures
+
+![Image](./src/2_solidTextures/output.png)
+
+Introducing textures to sample colors from.  Textures are available as a type of material parameter, such
+as the "albedo" parameter for Lambert.
+
+In the image above, the ground plane is assigned a Lambert material with a CheckerTexture for its albedo parameter.
+
+[Source code](./src/2_solidTextures/main.cpp)
+
+[Link to Chapter 3](https://raytracing.github.io/books/RayTracingTheNextWeek.html#solidtextures)
 
 ## Library
 
