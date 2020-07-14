@@ -9,6 +9,7 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
   * [0. Motion Blur](#0-motion-blur)
   * [1. Bounding Volume Hierarchies](#1-bounding-volume-hierarchies)
   * [2. Solid Textures](#2-solid-textures)
+  * [3. Perlin Noise](#3-perlin-noise)
 - [Library](#library)
 - [Building](#building)
 - [Build Status](#build-status)
@@ -65,6 +66,16 @@ In the image above, the ground plane is assigned a Lambert material with a Check
 [Source code](./src/2_solidTextures/main.cpp)
 
 [Link to Chapter 3](https://raytracing.github.io/books/RayTracingTheNextWeek.html#solidtextures)
+
+### 3. Perlin Noise
+
+![Image](./src/3_perlinNoise/output.png)
+
+_Work in progress._
+
+[Source code](./src/3_perlinNoise/main.cpp)
+
+[Link to Chapter 4](https://raytracing.github.io/books/RayTracingTheNextWeek.html#perlinnoise)
 
 ## Library
 
