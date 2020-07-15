@@ -11,6 +11,7 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
   * [2. Solid Textures](#2-solid-textures)
   * [3. Perlin Noise](#3-perlin-noise)
 - [Library](#library)
+- [Documentation](#documentation)
 - [Building](#building)
 - [Build Status](#build-status)
 
