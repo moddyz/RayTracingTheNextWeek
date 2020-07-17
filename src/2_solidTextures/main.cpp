@@ -297,7 +297,7 @@ int main( int i_argc, char** i_argv )
     // Parse command line arguments.
     // ------------------------------------------------------------------------
 
-    cxxopts::Options options( "0_motionBlur", "Adding motion blur to the scene objects." );
+    cxxopts::Options options( "2_solidTextures", "Ray tracing program introducing solid textures." );
     options.add_options()                                                                       // Command line options.
         ( "w,width", "Width of the image.", cxxopts::value< int >()->default_value( "384" ) )   // Width
         ( "h,height", "Height of the image.", cxxopts::value< int >()->default_value( "256" ) ) // Height;
