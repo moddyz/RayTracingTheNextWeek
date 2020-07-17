@@ -9,7 +9,9 @@
 #include <gm/types/floatRange.h>
 #include <gm/types/intRange.h>
 
+#include <gm/functions/dotProduct.h>
 #include <gm/functions/floor.h>
+#include <gm/functions/normalize.h>
 #include <gm/functions/randomNumber.h>
 #include <gm/functions/trilinearInterpolation.h>
 
@@ -31,7 +33,9 @@ public:
         // Generate a sequence of random floats between 0 and 1.
         for ( int valueIndex = 0; valueIndex < c_valueCount; ++valueIndex )
         {
-            m_randomValues[ valueIndex ] = gm::RandomNumber( gm::FloatRange( 0, 1 ) );
+            m_randomVectors[ valueIndex ] = gm::Normalize( gm::Vec3f( gm::RandomNumber( gm::FloatRange( -1, 1 ) ),
+                                                                      gm::RandomNumber( gm::FloatRange( -1, 1 ) ),
+                                                                      gm::RandomNumber( gm::FloatRange( -1, 1 ) ) ) );
         }
 
         // Generate random permutations.
@@ -51,31 +55,43 @@ public:
         gm::Vec3f weights = i_coord - floored;
 
         // Apply hermitian smoothing.
-        weights = gm::Vec3f( weights.X() * weights.X() * ( 3.0f - 2.0f * weights.X() ),
-                             weights.Y() * weights.Y() * ( 3.0f - 2.0f * weights.Y() ),
-                             weights.Z() * weights.Z() * ( 3.0f - 2.0f * weights.Z() ) );
+        gm::Vec3f smoothWeights( weights.X() * weights.X() * ( 3.0f - 2.0f * weights.X() ),
+                                 weights.Y() * weights.Y() * ( 3.0f - 2.0f * weights.Y() ),
+                                 weights.Z() * weights.Z() * ( 3.0f - 2.0f * weights.Z() ) );
 
-        int x = ( int ) floored[ 0 ];
-        int y = ( int ) floored[ 1 ];
-        int z = ( int ) floored[ 2 ];
+        gm::Vec3i coordinates( ( int ) floored[ 0 ], ( int ) floored[ 1 ], ( int ) floored[ 2 ] );
 
-        return gm::TrilinearInterpolation(
-            m_randomValues[ m_permutationX[ x & 255 ] ^ m_permutationY[ y & 255 ] ^ m_permutationZ[ z & 255 ] ],
-            m_randomValues[ m_permutationX[ ( x + 1 ) & 255 ] ^ m_permutationY[ y & 255 ] ^ m_permutationZ[ z & 255 ] ],
-            m_randomValues[ m_permutationX[ x & 255 ] ^ m_permutationY[ ( y + 1 ) & 255 ] ^ m_permutationZ[ z & 255 ] ],
-            m_randomValues[ m_permutationX[ ( x + 1 ) & 255 ] ^ m_permutationY[ ( y + 1 ) & 255 ] ^ m_permutationZ[ z & 255 ] ],
-            m_randomValues[ m_permutationX[ x & 255 ] ^ m_permutationY[ y & 255 ] ^ m_permutationZ[ ( z + 1 ) & 255 ] ],
-            m_randomValues[ m_permutationX[ ( x + 1 ) & 255 ] ^ m_permutationY[ y & 255 ] ^ m_permutationZ[ ( z + 1 ) & 255 ] ],
-            m_randomValues[ m_permutationX[ x & 255 ] ^ m_permutationY[ ( y + 1 ) & 255 ] ^ m_permutationZ[ ( z + 1 ) & 255 ] ],
-            m_randomValues[ m_permutationX[ ( x + 1 ) & 255 ] ^ m_permutationY[ ( y + 1 ) & 255 ] ^ m_permutationZ[ ( z + 1 ) & 255 ] ],
-            weights.X(),
-            weights.Y(),
-            weights.Z() );
+        return gm::TrilinearInterpolation( _LatticeValue( coordinates, gm::Vec3i( 0, 0, 0 ), weights ),
+                                           _LatticeValue( coordinates, gm::Vec3i( 1, 0, 0 ), weights ),
+                                           _LatticeValue( coordinates, gm::Vec3i( 0, 1, 0 ), weights ),
+                                           _LatticeValue( coordinates, gm::Vec3i( 1, 1, 0 ), weights ),
+                                           _LatticeValue( coordinates, gm::Vec3i( 0, 0, 1 ), weights ),
+                                           _LatticeValue( coordinates, gm::Vec3i( 1, 0, 1 ), weights ),
+                                           _LatticeValue( coordinates, gm::Vec3i( 0, 1, 1 ), weights ),
+                                           _LatticeValue( coordinates, gm::Vec3i( 1, 1, 1 ), weights ),
+                                           smoothWeights.X(),
+                                           smoothWeights.Y(),
+                                           smoothWeights.Z() );
     }
 
 private:
     // The number of array values.
     static constexpr int c_valueCount = 256;
+
+    // Generate a specified lattice value for trilinear interpolation.
+    float _LatticeValue( const gm::Vec3i& i_coord, const gm::Vec3i& i_offsets, const gm::Vec3f& i_weights ) const
+    {
+        int vectorIndex = m_permutationX[ ( i_coord.X() + i_offsets.X() ) & 255 ] ^
+                          m_permutationY[ ( i_coord.Y() + i_offsets.Y() ) & 255 ] ^
+                          m_permutationZ[ ( i_coord.Z() + i_offsets.Z() ) & 255 ];
+        const gm::Vec3f& vector = m_randomVectors[ vectorIndex ];
+
+        gm::Vec3f weightVector( i_weights.X() - i_offsets.X(),
+                                i_weights.Y() - i_offsets.Y(),
+                                i_weights.Z() - i_offsets.Z() );
+
+        return gm::DotProduct( vector, weightVector );
+    }
 
     // Generate a random permutation sequence.
     static void _GeneratePermutation( std::array< int, c_valueCount >& o_permutation )
@@ -99,10 +115,10 @@ private:
         }
     }
 
-    std::array< float, c_valueCount > m_randomValues;
-    std::array< int, c_valueCount >   m_permutationX;
-    std::array< int, c_valueCount >   m_permutationY;
-    std::array< int, c_valueCount >   m_permutationZ;
+    std::array< gm::Vec3f, c_valueCount > m_randomVectors;
+    std::array< int, c_valueCount >       m_permutationX;
+    std::array< int, c_valueCount >       m_permutationY;
+    std::array< int, c_valueCount >       m_permutationZ;
 };
 
 RAYTRACE_NS_CLOSE

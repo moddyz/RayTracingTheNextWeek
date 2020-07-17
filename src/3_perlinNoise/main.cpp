@@ -209,7 +209,7 @@ void ShadePixel( const gm::Vec2i&                i_pixelCoord,
 /// \param o_sceneObjects Collection to populate with scene objects.
 void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::SceneObjectPtrs& o_sceneObjects )
 {
-    raytrace::TextureSharedPtr noiseTexture = std::make_shared< raytrace::NoiseTexture >();
+    raytrace::TextureSharedPtr noiseTexture = std::make_shared< raytrace::NoiseTexture >( 10.0 );
 
     o_sceneObjects.push_back(
         std::make_shared< raytrace::Sphere >( /* origin */ gm::Vec3f( 0, -1000, 0 ),
