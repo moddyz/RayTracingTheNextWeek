@@ -10,6 +10,7 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
   * [1. Bounding Volume Hierarchies](#1-bounding-volume-hierarchies)
   * [2. Solid Textures](#2-solid-textures)
   * [3. Perlin Noise](#3-perlin-noise)
+  * [4. Image Texture Mapping](#4-image-texture-mapping)
 - [Library](#library)
 - [Documentation](#documentation)
 - [Building](#building)
@@ -79,6 +80,19 @@ By accumulating multiple layers of perlin noise applied to a sine function over 
 [Source code](./src/3_perlinNoise/main.cpp)
 
 [Link to Chapter 5](https://raytracing.github.io/books/RayTracingTheNextWeek.html#perlinnoise)
+
+
+### 4. Image Texture Mapping
+
+![Image](./src/4_imageTextureMapping/output.png)
+
+Introduced image based textures, which can be loaded from a file on disk.
+
+During color sampling, the geometric surface coordinates (uv) are mapped to a particular image pixel coordinate.
+
+[Source code](./src/4_imageTextureMapping/main.cpp)
+
+[Link to Chapter 6](https://raytracing.github.io/books/RayTracingTheNextWeek.html#imagetexturemapping)
 
 ## Library
 
