@@ -25,6 +25,7 @@
 #include <gm/types/vec2f.h>
 #include <gm/types/vec3f.h>
 
+#include <gm/base/almost.h>
 #include <gm/functions/length.h>
 
 GM_NS_OPEN
@@ -43,7 +44,7 @@ GM_NS_OPEN
 /// \return the position along the curve.
 GM_HOST_DEVICE inline Vec2f RayPosition( const Vec2f& i_origin, const Vec2f& i_direction, const float& i_magnitude )
 {
-    GM_ASSERT_MSG( Length( i_direction ) == 1.0f, "Direction i_direction is not normalised!" );
+    GM_ASSERT_MSG( AlmostEqual( Length( i_direction ), 1.0f ), "Direction i_direction is not normalised!" );
     return i_origin + ( i_direction * i_magnitude );
 }
 
@@ -61,7 +62,7 @@ GM_HOST_DEVICE inline Vec2f RayPosition( const Vec2f& i_origin, const Vec2f& i_d
 /// \return the position along the curve.
 GM_HOST_DEVICE inline Vec3f RayPosition( const Vec3f& i_origin, const Vec3f& i_direction, const float& i_magnitude )
 {
-    GM_ASSERT_MSG( Length( i_direction ) == 1.0f, "Direction i_direction is not normalised!" );
+    GM_ASSERT_MSG( AlmostEqual( Length( i_direction ), 1.0f ), "Direction i_direction is not normalised!" );
     return i_origin + ( i_direction * i_magnitude );
 }
 

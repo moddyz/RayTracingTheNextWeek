@@ -143,6 +143,60 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>bilinearInterpolation.h</name>
+    <path>/code/GraphicsMath/src/gm/functions/</path>
+    <filename>bilinearInterpolation_8h</filename>
+    <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
+    <includes id="mat3f_8h" name="mat3f.h" local="no" imported="no">gm/types/mat3f.h</includes>
+    <includes id="mat4f_8h" name="mat4f.h" local="no" imported="no">gm/types/mat4f.h</includes>
+    <includes id="vec2f_8h" name="vec2f.h" local="no" imported="no">gm/types/vec2f.h</includes>
+    <includes id="vec3f_8h" name="vec3f.h" local="no" imported="no">gm/types/vec3f.h</includes>
+    <includes id="vec4f_8h" name="vec4f.h" local="no" imported="no">gm/types/vec4f.h</includes>
+    <includes id="linearInterpolation_8h" name="linearInterpolation.h" local="no" imported="no">gm/functions/linearInterpolation.h</includes>
+    <member kind="function">
+      <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gacbe3775d38660c7d91030cd48b6c7c25</anchor>
+      <arglist>(const float &amp;i_value00, const float &amp;i_value01, const float &amp;i_value10, const float &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat3f</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gacf417c22bd05e261e59e5bc8d15708ae</anchor>
+      <arglist>(const Mat3f &amp;i_value00, const Mat3f &amp;i_value01, const Mat3f &amp;i_value10, const Mat3f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat4f</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga0399fac7ef2b098f07c8861b1d49a0d3</anchor>
+      <arglist>(const Mat4f &amp;i_value00, const Mat4f &amp;i_value01, const Mat4f &amp;i_value10, const Mat4f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec2f</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga094bd25688e2b5b89ceb62f15eb8b62b</anchor>
+      <arglist>(const Vec2f &amp;i_value00, const Vec2f &amp;i_value01, const Vec2f &amp;i_value10, const Vec2f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec3f</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gab7364e0e9685b265474f49a039be8c7e</anchor>
+      <arglist>(const Vec3f &amp;i_value00, const Vec3f &amp;i_value01, const Vec3f &amp;i_value10, const Vec3f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec4f</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gab137654c95ce45cdadb03efb85071e36</anchor>
+      <arglist>(const Vec4f &amp;i_value00, const Vec4f &amp;i_value01, const Vec4f &amp;i_value10, const Vec4f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
     <name>ceil.h</name>
     <path>/code/GraphicsMath/src/gm/functions/</path>
     <filename>ceil_8h</filename>
@@ -1349,6 +1403,61 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>trilinearInterpolation.h</name>
+    <path>/code/GraphicsMath/src/gm/functions/</path>
+    <filename>trilinearInterpolation_8h</filename>
+    <includes id="gm_8h" name="gm.h" local="no" imported="no">gm/gm.h</includes>
+    <includes id="mat3f_8h" name="mat3f.h" local="no" imported="no">gm/types/mat3f.h</includes>
+    <includes id="mat4f_8h" name="mat4f.h" local="no" imported="no">gm/types/mat4f.h</includes>
+    <includes id="vec2f_8h" name="vec2f.h" local="no" imported="no">gm/types/vec2f.h</includes>
+    <includes id="vec3f_8h" name="vec3f.h" local="no" imported="no">gm/types/vec3f.h</includes>
+    <includes id="vec4f_8h" name="vec4f.h" local="no" imported="no">gm/types/vec4f.h</includes>
+    <includes id="bilinearInterpolation_8h" name="bilinearInterpolation.h" local="no" imported="no">gm/functions/bilinearInterpolation.h</includes>
+    <includes id="linearInterpolation_8h" name="linearInterpolation.h" local="no" imported="no">gm/functions/linearInterpolation.h</includes>
+    <member kind="function">
+      <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga703a230714ee24957be6f2da5a8d97ec</anchor>
+      <arglist>(const float &amp;i_value000, const float &amp;i_value001, const float &amp;i_value010, const float &amp;i_value011, const float &amp;i_value100, const float &amp;i_value101, const float &amp;i_value110, const float &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat3f</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga358d57a0afd184096466b664330cdc6f</anchor>
+      <arglist>(const Mat3f &amp;i_value000, const Mat3f &amp;i_value001, const Mat3f &amp;i_value010, const Mat3f &amp;i_value011, const Mat3f &amp;i_value100, const Mat3f &amp;i_value101, const Mat3f &amp;i_value110, const Mat3f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat4f</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gaed2a655f8192c2c9ba01e8781299facd</anchor>
+      <arglist>(const Mat4f &amp;i_value000, const Mat4f &amp;i_value001, const Mat4f &amp;i_value010, const Mat4f &amp;i_value011, const Mat4f &amp;i_value100, const Mat4f &amp;i_value101, const Mat4f &amp;i_value110, const Mat4f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec2f</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gab5c817c64bea40996a9ad04a80d2124c</anchor>
+      <arglist>(const Vec2f &amp;i_value000, const Vec2f &amp;i_value001, const Vec2f &amp;i_value010, const Vec2f &amp;i_value011, const Vec2f &amp;i_value100, const Vec2f &amp;i_value101, const Vec2f &amp;i_value110, const Vec2f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec3f</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gaf34a3e36b8246f7ae898c55a4ecf3389</anchor>
+      <arglist>(const Vec3f &amp;i_value000, const Vec3f &amp;i_value001, const Vec3f &amp;i_value010, const Vec3f &amp;i_value011, const Vec3f &amp;i_value100, const Vec3f &amp;i_value101, const Vec3f &amp;i_value110, const Vec3f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec4f</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gaf9244a8f16943e49287a57299bd57374</anchor>
+      <arglist>(const Vec4f &amp;i_value000, const Vec4f &amp;i_value001, const Vec4f &amp;i_value010, const Vec4f &amp;i_value011, const Vec4f &amp;i_value100, const Vec4f &amp;i_value101, const Vec4f &amp;i_value110, const Vec4f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
     <name>gm.h</name>
     <path>/code/GraphicsMath/src/gm/</path>
     <filename>gm_8h</filename>
@@ -1959,6 +2068,13 @@
       <arglist>() const</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>HasNans</name>
+      <anchorfile>classFloatRange.html</anchorfile>
+      <anchor>aa50351b449b166044a8aaa7d48db02b5</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
       <type>std::string</type>
       <name>GetString</name>
       <anchorfile>classFloatRange.html</anchorfile>
@@ -2129,6 +2245,13 @@
       <name>end</name>
       <anchorfile>classIntRange.html</anchorfile>
       <anchor>ac9aef000e102788a455061bfc0d6f119</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>HasNans</name>
+      <anchorfile>classIntRange.html</anchorfile>
+      <anchor>a1a68ac9f2b67de27f4ef462e77fda168</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -3193,6 +3316,13 @@
       <arglist>() const</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>HasNans</name>
+      <anchorfile>classVec2fRange.html</anchorfile>
+      <anchor>a2e234e346c914e213cae8bb68a2a8486</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
       <type>std::string</type>
       <name>GetString</name>
       <anchorfile>classVec2fRange.html</anchorfile>
@@ -3629,6 +3759,13 @@
       <arglist>() const</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>HasNans</name>
+      <anchorfile>classVec2iRange.html</anchorfile>
+      <anchor>a3757bd29e260050ad17cc737fe522671</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
       <type>std::string</type>
       <name>GetString</name>
       <anchorfile>classVec2iRange.html</anchorfile>
@@ -4047,6 +4184,13 @@
       <name>IsEmpty</name>
       <anchorfile>classVec3fRange.html</anchorfile>
       <anchor>a396c525f672d0859d57e7c0c398bf6f6</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>HasNans</name>
+      <anchorfile>classVec3fRange.html</anchorfile>
+      <anchor>a827ee6a494d089d7e6b041d80df2d84c</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -4500,6 +4644,13 @@
       <arglist>() const</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>HasNans</name>
+      <anchorfile>classVec3iRange.html</anchorfile>
+      <anchor>a74e920c9331fc68e2c42b95db2cd21b1</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
       <type>std::string</type>
       <name>GetString</name>
       <anchorfile>classVec3iRange.html</anchorfile>
@@ -4932,6 +5083,13 @@
       <name>IsEmpty</name>
       <anchorfile>classVec4fRange.html</anchorfile>
       <anchor>aec6e6130af6c4b3e2beda14ac7b5ce59</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>HasNans</name>
+      <anchorfile>classVec4fRange.html</anchorfile>
+      <anchor>a1dc00420c57aae68505d10732a264b9f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -5399,6 +5557,13 @@
       <arglist>() const</arglist>
     </member>
     <member kind="function">
+      <type>GM_HOST_DEVICE bool</type>
+      <name>HasNans</name>
+      <anchorfile>classVec4iRange.html</anchorfile>
+      <anchor>ae19c1a2e023cbd04d9654dd152e46916</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
       <type>std::string</type>
       <name>GetString</name>
       <anchorfile>classVec4iRange.html</anchorfile>
@@ -5491,6 +5656,7 @@
     <title>Basic math operators</title>
     <filename>group__gm__functions__basic.html</filename>
     <file>abs.h</file>
+    <file>bilinearInterpolation.h</file>
     <file>ceil.h</file>
     <file>clamp.h</file>
     <file>contains.h</file>
@@ -5505,6 +5671,7 @@
     <file>quadraticRoots.h</file>
     <file>radians.h</file>
     <file>randomNumber.h</file>
+    <file>trilinearInterpolation.h</file>
     <member kind="function">
       <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
       <name>Abs</name>
@@ -5546,6 +5713,48 @@
       <anchorfile>group__gm__functions__basic.html</anchorfile>
       <anchor>gae719e12185554586385d0da374324c71</anchor>
       <arglist>(const Mat4f &amp;i_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gacbe3775d38660c7d91030cd48b6c7c25</anchor>
+      <arglist>(const float &amp;i_value00, const float &amp;i_value01, const float &amp;i_value10, const float &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat3f</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gacf417c22bd05e261e59e5bc8d15708ae</anchor>
+      <arglist>(const Mat3f &amp;i_value00, const Mat3f &amp;i_value01, const Mat3f &amp;i_value10, const Mat3f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat4f</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga0399fac7ef2b098f07c8861b1d49a0d3</anchor>
+      <arglist>(const Mat4f &amp;i_value00, const Mat4f &amp;i_value01, const Mat4f &amp;i_value10, const Mat4f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec2f</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga094bd25688e2b5b89ceb62f15eb8b62b</anchor>
+      <arglist>(const Vec2f &amp;i_value00, const Vec2f &amp;i_value01, const Vec2f &amp;i_value10, const Vec2f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec3f</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gab7364e0e9685b265474f49a039be8c7e</anchor>
+      <arglist>(const Vec3f &amp;i_value00, const Vec3f &amp;i_value01, const Vec3f &amp;i_value10, const Vec3f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec4f</type>
+      <name>BilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gab137654c95ce45cdadb03efb85071e36</anchor>
+      <arglist>(const Vec4f &amp;i_value00, const Vec4f &amp;i_value01, const Vec4f &amp;i_value10, const Vec4f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
     </member>
     <member kind="function">
       <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
@@ -5973,6 +6182,48 @@
       <anchorfile>group__gm__functions__basic.html</anchorfile>
       <anchor>gaaa6843bdd825058465b7c0784a73c402</anchor>
       <arglist>(const IntRange &amp;i_range)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga703a230714ee24957be6f2da5a8d97ec</anchor>
+      <arglist>(const float &amp;i_value000, const float &amp;i_value001, const float &amp;i_value010, const float &amp;i_value011, const float &amp;i_value100, const float &amp;i_value101, const float &amp;i_value110, const float &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat3f</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>ga358d57a0afd184096466b664330cdc6f</anchor>
+      <arglist>(const Mat3f &amp;i_value000, const Mat3f &amp;i_value001, const Mat3f &amp;i_value010, const Mat3f &amp;i_value011, const Mat3f &amp;i_value100, const Mat3f &amp;i_value101, const Mat3f &amp;i_value110, const Mat3f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Mat4f</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gaed2a655f8192c2c9ba01e8781299facd</anchor>
+      <arglist>(const Mat4f &amp;i_value000, const Mat4f &amp;i_value001, const Mat4f &amp;i_value010, const Mat4f &amp;i_value011, const Mat4f &amp;i_value100, const Mat4f &amp;i_value101, const Mat4f &amp;i_value110, const Mat4f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec2f</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gab5c817c64bea40996a9ad04a80d2124c</anchor>
+      <arglist>(const Vec2f &amp;i_value000, const Vec2f &amp;i_value001, const Vec2f &amp;i_value010, const Vec2f &amp;i_value011, const Vec2f &amp;i_value100, const Vec2f &amp;i_value101, const Vec2f &amp;i_value110, const Vec2f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec3f</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gaf34a3e36b8246f7ae898c55a4ecf3389</anchor>
+      <arglist>(const Vec3f &amp;i_value000, const Vec3f &amp;i_value001, const Vec3f &amp;i_value010, const Vec3f &amp;i_value011, const Vec3f &amp;i_value100, const Vec3f &amp;i_value101, const Vec3f &amp;i_value110, const Vec3f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE Vec4f</type>
+      <name>TrilinearInterpolation</name>
+      <anchorfile>group__gm__functions__basic.html</anchorfile>
+      <anchor>gaf9244a8f16943e49287a57299bd57374</anchor>
+      <arglist>(const Vec4f &amp;i_value000, const Vec4f &amp;i_value001, const Vec4f &amp;i_value010, const Vec4f &amp;i_value011, const Vec4f &amp;i_value100, const Vec4f &amp;i_value101, const Vec4f &amp;i_value110, const Vec4f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
     </member>
   </compound>
   <compound kind="group">

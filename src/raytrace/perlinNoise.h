@@ -11,6 +11,7 @@
 
 #include <gm/functions/floor.h>
 #include <gm/functions/randomNumber.h>
+#include <gm/functions/trilinearInterpolation.h>
 
 #include <array>
 #include <vector>
@@ -46,14 +47,30 @@ public:
     /// \return The random generated value.
     float Generate( const gm::Vec3f& i_coord ) const
     {
-        // Take the decimal place values.
-        // gm::Vec3f decimalComponents = i_coordinate - gm::Floor( i_coordinate );
+        gm::Vec3f floored = gm::Floor( i_coord );
+        gm::Vec3f weights = i_coord - floored;
 
-        int i = static_cast< int >( 4 * i_coord.X() ) & 255;
-        int j = static_cast< int >( 4 * i_coord.Y() ) & 255;
-        int k = static_cast< int >( 4 * i_coord.Z() ) & 255;
+        // Apply hermitian smoothing.
+        weights = gm::Vec3f( weights.X() * weights.X() * ( 3.0f - 2.0f * weights.X() ),
+                             weights.Y() * weights.Y() * ( 3.0f - 2.0f * weights.Y() ),
+                             weights.Z() * weights.Z() * ( 3.0f - 2.0f * weights.Z() ) );
 
-        return m_randomValues[ m_permutationX[ i ] ^ m_permutationY[ j ] ^ m_permutationZ[ k ] ];
+        int x = ( int ) floored[ 0 ];
+        int y = ( int ) floored[ 1 ];
+        int z = ( int ) floored[ 2 ];
+
+        return gm::TrilinearInterpolation(
+            m_randomValues[ m_permutationX[ x & 255 ] ^ m_permutationY[ y & 255 ] ^ m_permutationZ[ z & 255 ] ],
+            m_randomValues[ m_permutationX[ ( x + 1 ) & 255 ] ^ m_permutationY[ y & 255 ] ^ m_permutationZ[ z & 255 ] ],
+            m_randomValues[ m_permutationX[ x & 255 ] ^ m_permutationY[ ( y + 1 ) & 255 ] ^ m_permutationZ[ z & 255 ] ],
+            m_randomValues[ m_permutationX[ ( x + 1 ) & 255 ] ^ m_permutationY[ ( y + 1 ) & 255 ] ^ m_permutationZ[ z & 255 ] ],
+            m_randomValues[ m_permutationX[ x & 255 ] ^ m_permutationY[ y & 255 ] ^ m_permutationZ[ ( z + 1 ) & 255 ] ],
+            m_randomValues[ m_permutationX[ ( x + 1 ) & 255 ] ^ m_permutationY[ y & 255 ] ^ m_permutationZ[ ( z + 1 ) & 255 ] ],
+            m_randomValues[ m_permutationX[ x & 255 ] ^ m_permutationY[ ( y + 1 ) & 255 ] ^ m_permutationZ[ ( z + 1 ) & 255 ] ],
+            m_randomValues[ m_permutationX[ ( x + 1 ) & 255 ] ^ m_permutationY[ ( y + 1 ) & 255 ] ^ m_permutationZ[ ( z + 1 ) & 255 ] ],
+            weights.X(),
+            weights.Y(),
+            weights.Z() );
     }
 
 private:
