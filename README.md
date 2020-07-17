@@ -72,7 +72,9 @@ In the image above, the ground plane is assigned a Lambert material with a Check
 
 ![Image](./src/3_perlinNoise/output.png)
 
-_Work in progress._
+Introduced a Perlin noise generator, for producing smooth noise.  
+
+By accumulating multiple layers of perlin noise applied to a sine function over the Z-coordinate, a marble-like texture is generated.
 
 [Source code](./src/3_perlinNoise/main.cpp)
 

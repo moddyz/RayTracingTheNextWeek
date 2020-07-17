@@ -4,7 +4,7 @@
 ///
 /// A texture providing a noise pattern.
 
-#include <raytrace/perlinNoise.h>
+#include <raytrace/perlin.h>
 #include <raytrace/texture.h>
 
 RAYTRACE_NS_OPEN
@@ -23,12 +23,13 @@ public:
 
     inline virtual gm::Vec3f Sample( const gm::Vec2f& i_uvCoord, const gm::Vec3f& i_position ) const override
     {
-        return gm::Vec3f( 1, 1, 1 ) * 0.5 * ( 1.0 + m_generator.Generate( i_position * m_scale ) );
+        return gm::Vec3f( 1, 1, 1 ) * 0.5 *
+               ( 1.0 + sin( m_scale * i_position.Z() + 10 * m_perlin.Turbulence( i_position ) ) );
     }
 
 private:
-    PerlinNoise m_generator;
-    float       m_scale = 1.0f;
+    Perlin m_perlin;
+    float  m_scale = 1.0f;
 };
 
 RAYTRACE_NS_CLOSE

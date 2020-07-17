@@ -1,6 +1,6 @@
 #pragma once
 
-/// \file raytrace/perlinNoise.h
+/// \file raytrace/perlin.h
 ///
 /// Perlin noise generation.
 
@@ -9,6 +9,7 @@
 #include <gm/types/floatRange.h>
 #include <gm/types/intRange.h>
 
+#include <gm/functions/abs.h>
 #include <gm/functions/dotProduct.h>
 #include <gm/functions/floor.h>
 #include <gm/functions/normalize.h>
@@ -20,15 +21,15 @@
 
 RAYTRACE_NS_OPEN
 
-/// \class PerlinNoise
+/// \class Perlin
 ///
 /// Random noise generator, taking input 3D vectors and producing a
 /// scalar value between 0 and 1.
-class PerlinNoise
+class Perlin
 {
 public:
     /// Default constructor, which computes the initial values for noise generation.
-    PerlinNoise()
+    Perlin()
     {
         // Generate a sequence of random floats between 0 and 1.
         for ( int valueIndex = 0; valueIndex < c_valueCount; ++valueIndex )
@@ -44,12 +45,31 @@ public:
         _GeneratePermutation( m_permutationZ );
     }
 
+    /// Generate turbulence, which is an accumulated composite noise pattern.
+    float Turbulence( const gm::Vec3f& i_coord, int depth = 7 ) const
+    {
+        float     accumulation = 0.0f;
+        float     weight       = 1.0f;
+        gm::Vec3f coordinate   = i_coord;
+
+        for ( int depthIndex = 0; depthIndex < depth; ++depthIndex )
+        {
+            accumulation += weight * Noise( coordinate );
+
+            // Transform weight and coordinate.
+            weight *= 0.5;
+            coordinate *= 2;
+        }
+
+        return gm::Abs( accumulation );
+    }
+
     /// Generate a random floating point value between 0, 1 using the perlin noise generator.
     ///
     /// \param i_coord The input 3D coordinate.
     ///
     /// \return The random generated value.
-    float Generate( const gm::Vec3f& i_coord ) const
+    float Noise( const gm::Vec3f& i_coord ) const
     {
         gm::Vec3f floored = gm::Floor( i_coord );
         gm::Vec3f weights = i_coord - floored;
