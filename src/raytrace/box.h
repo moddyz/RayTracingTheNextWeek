@@ -5,13 +5,14 @@
 /// Representation of a box geometry or cuboid.
 
 #include <raytrace/attribute.h>
+#include <raytrace/hitRecord.h>
 #include <raytrace/material.h>
 #include <raytrace/ray.h>
 #include <raytrace/sceneObject.h>
-#include <raytrace/hitRecord.h>
 
 #include <gm/base/constants.h>
 
+#include <gm/functions/abs.h>
 #include <gm/functions/contains.h>
 #include <gm/functions/expand.h>
 #include <gm/functions/normalize.h>
@@ -115,12 +116,13 @@ private:
         originToHit.Z() /= ( dimensions.Z() * 0.5f );
 
         // Choose longest axis as normal.
-        if ( originToHit.X() > originToHit.Y() && originToHit.X() > originToHit.Z() )
+        gm::Vec3f originToHitAbs = gm::Abs( originToHit );
+        if ( originToHitAbs.X() > originToHitAbs.Y() && originToHitAbs.X() > originToHitAbs.Z() )
         {
             o_normal = gm::Normalize( gm::Vec3f( originToHit.X(), 0, 0 ) );
             o_uv     = gm::Vec2f( origin.Y(), origin.Z() );
         }
-        else if ( originToHit.Y() > originToHit.X() && originToHit.Y() > originToHit.Z() )
+        else if ( originToHitAbs.Y() > originToHitAbs.X() && originToHitAbs.Y() > originToHitAbs.Z() )
         {
             o_normal = gm::Normalize( gm::Vec3f( 0, originToHit.Y(), 0 ) );
             o_uv     = gm::Vec2f( origin.X(), origin.Z() );

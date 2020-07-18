@@ -217,28 +217,45 @@ void ShadePixel( const gm::Vec2i&                i_pixelCoord,
 /// \param o_sceneObjects Collection to populate with scene objects.
 void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::SceneObjectPtrs& o_sceneObjects )
 {
-    raytrace::TextureSharedPtr  noiseTexture = std::make_shared< raytrace::NoiseTexture >( 10.0f );
+    // Materials.
     raytrace::MaterialSharedPtr diffuseLight = std::make_shared< raytrace::DiffuseLight >(
-        std::make_shared< raytrace::ConstantTexture >( gm::Vec3f( 4, 4, 4 ) ) );
+        std::make_shared< raytrace::ConstantTexture >( gm::Vec3f( 15, 15, 15 ) ) );
+    raytrace::MaterialSharedPtr redLambert = std::make_shared< raytrace::Lambert >(
+        std::make_shared< raytrace::ConstantTexture >( gm::Vec3f( 0.65f, 0.05f, 0.05f ) ) );
+    raytrace::MaterialSharedPtr whiteLambert = std::make_shared< raytrace::Lambert >(
+        std::make_shared< raytrace::ConstantTexture >( gm::Vec3f( 0.73f, 0.73f, 0.73f ) ) );
+    raytrace::MaterialSharedPtr greenLambert = std::make_shared< raytrace::Lambert >(
+        std::make_shared< raytrace::ConstantTexture >( gm::Vec3f( 0.12, 0.45, 0.15 ) ) );
 
-    // Sphere light.
-    o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >( /* origin */ gm::Vec3f( 0, 8, 0 ),
-                                                                    /* radius */ 2,
-                                                                    /* material */ diffuseLight ) );
-
-    // Box light.
-    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 0, 4, 4 ),
-                                                                 /* dimensions */ gm::Vec3f( 4.0f, 4.0f, 0.001f ),
+    // Lights.
+    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 278, 554, 278 ),
+                                                                 /* dimensions */ gm::Vec3f( 130, 0.001f, 130 ),
                                                                  /* material */ diffuseLight ) );
 
-    o_sceneObjects.push_back( std::make_shared< raytrace::Sphere >(
-        /* origin */ gm::Vec3f( 0, -1000, 0 ),
-        /* radius */ 1000,
-        /* material */ std::make_shared< raytrace::Lambert >( noiseTexture ) ) );
-    o_sceneObjects.push_back(
-        std::make_shared< raytrace::Sphere >( /* origin */ gm::Vec3f( 0, 2, 0 ),
-                                              /* radius */ 2,
-                                              /* material */ std::make_shared< raytrace::Lambert >( noiseTexture ) ) );
+    // Bottom side.
+    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 278, 0, 278 ),
+                                                                 /* dimensions */ gm::Vec3f( 555, 0.001f, 555 ),
+                                                                 /* material */ whiteLambert ) );
+
+    // Top side.
+    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 278, 555, 278 ),
+                                                                 /* dimensions */ gm::Vec3f( 555, 0.001f, 555 ),
+                                                                 /* material */ whiteLambert ) );
+
+    // Back side.
+    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 278, 278, 555 ),
+                                                                 /* dimensions */ gm::Vec3f( 555, 555, 0.01f ),
+                                                                 /* material */ whiteLambert ) );
+
+    // Left side.
+    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 555, 278, 278 ),
+                                                                 /* dimensions */ gm::Vec3f( 0.01f, 555, 555 ),
+                                                                 /* material */ greenLambert ) );
+
+    // Right side.
+    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 0, 278, 278 ),
+                                                                 /* dimensions */ gm::Vec3f( 0.01f, 555, 555 ),
+                                                                 /* material */ redLambert ) );
 }
 
 int main( int i_argc, char** i_argv )
@@ -252,7 +269,7 @@ int main( int i_argc, char** i_argv )
                               "geometric object in the form of a Rectangle." );
     options.add_options()                                                                       // Command line options.
         ( "w,width", "Width of the image.", cxxopts::value< int >()->default_value( "384" ) )   // Width
-        ( "h,height", "Height of the image.", cxxopts::value< int >()->default_value( "256" ) ) // Height;
+        ( "h,height", "Height of the image.", cxxopts::value< int >()->default_value( "384" ) ) // Height;
         ( "o,output", "Output file", cxxopts::value< std::string >()->default_value( "out.ppm" ) ) // Output file.
         ( "s,samplesPerPixel",
           "Number of samples per-pixel.",
@@ -262,7 +279,7 @@ int main( int i_argc, char** i_argv )
           cxxopts::value< int >()->default_value( "50" ) ) // Maximum number of light bounces before termination.
         ( "f,verticalFov",
           "Vertical field of view of the camera, in degrees.",
-          cxxopts::value< float >()->default_value( "30" ) ) // Camera param.
+          cxxopts::value< float >()->default_value( "40" ) ) // Camera param.
         ( "a,aperture",
           "Aperture of the camera (lens diameter).",
           cxxopts::value< float >()->default_value( "0.0" ) ) // Camera param.
@@ -310,8 +327,8 @@ int main( int i_argc, char** i_argv )
     raytrace::RGBImageBuffer image( imageWidth, imageHeight );
 
     // Camera model.
-    gm::Vec3f        origin = gm::Vec3f( 20, 2, -8 );
-    gm::Vec3f        lookAt = gm::Vec3f( 0, 2, 0 );
+    gm::Vec3f        origin = gm::Vec3f( 278, 278, -800 );
+    gm::Vec3f        lookAt = gm::Vec3f( 278, 278, 0 );
     raytrace::Camera camera(
         /* origin */ origin,
         /* lookAt */ lookAt,

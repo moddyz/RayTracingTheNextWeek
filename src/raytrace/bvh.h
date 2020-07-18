@@ -26,6 +26,8 @@ RAYTRACE_NS_OPEN
 ///
 /// This BVH utilizes a spatial partioning strategy, by \em evenly splitting the input volume across
 /// its \em longest axis, then partitioning the objects into either of the halves.
+///
+/// TODO: Needs a re-write from spatial paritioning strategy into sorted object partitioning.
 class BVHNode : public SceneObject
 {
 public:
@@ -60,11 +62,41 @@ public:
 
         // Split the extent/volume into even halves, across its longest axis.
         gm::Vec3fRange leftExtent, rightExtent;
-        _SplitExtentForLongestAxis( m_extent, leftExtent, rightExtent );
+        int            longestAxis = _SplitExtentForLongestAxis( m_extent, leftExtent, rightExtent );
 
         // Partition objects into left & right volumes.
         SceneObjectPtrs leftObjects, rightObjects;
-        _PartitionObjects( i_sceneObjects, objectExtents, leftExtent, rightExtent, leftObjects, rightObjects );
+        _PartitionObjectsByVolume( i_sceneObjects, objectExtents, leftExtent, rightExtent, leftObjects, rightObjects );
+
+        // If longest axis partitioning failed, try other axis.
+        if ( leftObjects.empty() || rightObjects.empty() )
+        {
+            for ( int axis = 0; axis < 3; ++axis )
+            {
+                if ( axis == longestAxis )
+                {
+                    continue;
+                }
+
+                _SplitExtentForAxis( m_extent, axis, leftExtent, rightExtent );
+                _PartitionObjectsByVolume( i_sceneObjects,
+                                           objectExtents,
+                                           leftExtent,
+                                           rightExtent,
+                                           leftObjects,
+                                           rightObjects );
+
+                if ( !leftObjects.empty() && !rightObjects.empty() )
+                {
+                    break;
+                }
+            }
+        }
+
+        if ( leftObjects.empty() || rightObjects.empty() )
+        {
+            _PartitionObjectsByIndex( i_sceneObjects, leftObjects, rightObjects );
+        }
 
         // Recursively construct descendents with left & right object partitions.
         m_left  = std::make_shared< BVHNode >( leftObjects, i_times );
@@ -179,12 +211,12 @@ private:
     //
     // TODO: We can make this more memory efficient by freeing the intermediate left & right
     // collections, and performing in-place sort on the input scene object array (would need to make it mutable).
-    static void _PartitionObjects( const SceneObjectPtrs&               i_sceneObjects,
-                                   const std::vector< gm::Vec3fRange >& i_objectExtents,
-                                   const gm::Vec3fRange&                i_leftExtent,
-                                   const gm::Vec3fRange&                i_rightExtent,
-                                   SceneObjectPtrs&                     o_leftObjects,
-                                   SceneObjectPtrs&                     o_rightObjects )
+    static void _PartitionObjectsByVolume( const SceneObjectPtrs&               i_sceneObjects,
+                                           const std::vector< gm::Vec3fRange >& i_objectExtents,
+                                           const gm::Vec3fRange&                i_leftExtent,
+                                           const gm::Vec3fRange&                i_rightExtent,
+                                           SceneObjectPtrs&                     o_leftObjects,
+                                           SceneObjectPtrs&                     o_rightObjects )
     {
         o_leftObjects.clear();
         o_rightObjects.clear();
@@ -206,6 +238,27 @@ private:
         }
         o_leftObjects.shrink_to_fit();
         o_rightObjects.shrink_to_fit();
+    }
+
+    static void _PartitionObjectsByIndex( const SceneObjectPtrs& i_sceneObjects,
+                                          SceneObjectPtrs&       o_leftObjects,
+                                          SceneObjectPtrs&       o_rightObjects )
+    {
+        o_leftObjects.clear();
+        o_rightObjects.clear();
+        o_leftObjects.reserve( ( i_sceneObjects.size() / 2 ) + 1 );
+        o_rightObjects.reserve( ( i_sceneObjects.size() / 2 ) + 1 );
+        for ( size_t index = 0; index < i_sceneObjects.size(); ++index )
+        {
+            if ( index % 2 == 0 )
+            {
+                o_leftObjects.push_back( i_sceneObjects[ index ] );
+            }
+            else
+            {
+                o_rightObjects.push_back( i_sceneObjects[ index ] );
+            }
+        }
     }
 
     // Private utility for computing the volume from an 3D extent.
