@@ -229,32 +229,32 @@ void PopulateSceneObjects( const gm::FloatRange& i_shutterRange, raytrace::Scene
 
     // Lights.
     o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 278, 554, 278 ),
-                                                                 /* dimensions */ gm::Vec3f( 130, 0.001f, 130 ),
+                                                                 /* dimensions */ gm::Vec3f( 130, 0.01f, 130 ),
                                                                  /* material */ diffuseLight ) );
 
     // Bottom side.
     o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 278, 0, 278 ),
-                                                                 /* dimensions */ gm::Vec3f( 555, 0.001f, 555 ),
+                                                                 /* dimensions */ gm::Vec3f( 560, 0.01f, 560 ),
                                                                  /* material */ whiteLambert ) );
 
     // Top side.
-    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 278, 555, 278 ),
-                                                                 /* dimensions */ gm::Vec3f( 555, 0.001f, 555 ),
+    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 278, 560, 278 ),
+                                                                 /* dimensions */ gm::Vec3f( 560, 0.01f, 560 ),
                                                                  /* material */ whiteLambert ) );
 
     // Back side.
-    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 278, 278, 555 ),
-                                                                 /* dimensions */ gm::Vec3f( 555, 555, 0.01f ),
+    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 278, 278, 560 ),
+                                                                 /* dimensions */ gm::Vec3f( 560, 560, 0.01f ),
                                                                  /* material */ whiteLambert ) );
 
     // Left side.
-    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 555, 278, 278 ),
-                                                                 /* dimensions */ gm::Vec3f( 0.01f, 555, 555 ),
+    o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 560, 278, 278 ),
+                                                                 /* dimensions */ gm::Vec3f( 0.01f, 560, 560 ),
                                                                  /* material */ greenLambert ) );
 
     // Right side.
     o_sceneObjects.push_back( std::make_shared< raytrace::Box >( /* origin */ gm::Vec3f( 0, 278, 278 ),
-                                                                 /* dimensions */ gm::Vec3f( 0.01f, 555, 555 ),
+                                                                 /* dimensions */ gm::Vec3f( 0.01f, 560, 560 ),
                                                                  /* material */ redLambert ) );
 }
 
