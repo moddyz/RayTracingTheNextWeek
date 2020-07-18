@@ -10,7 +10,9 @@ project(
 
 # Options
 option(BUILD_DOCUMENTATION "Build doxygen documentation." ON)
-option(BUILD_DOCUMENTATION "Build doxygen documentation." ON)
+
+# Debug flags.
+set(CMAKE_CXX_FLAGS_DEBUG "-DGM_DEBUG")
 
 # Cross-platform compatibility.
 if(UNIX AND NOT APPLE)
