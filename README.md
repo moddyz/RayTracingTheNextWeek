@@ -98,7 +98,7 @@ During color sampling, the geometric surface coordinates (uv) are mapped to a pa
 
 ![Image](./src/5_rectanglesAndLights/output.png)
 
-Introducing emissive materials to provide local lighting to the scene, and a new Rectangle scene object class.
+Introducing emissive materials to provide local lighting to the scene, and a new Box scene object class.
 
 [Source code](./src/5_rectanglesAndLights/main.cpp)
 
