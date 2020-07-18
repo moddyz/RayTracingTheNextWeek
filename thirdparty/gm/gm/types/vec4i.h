@@ -47,7 +47,7 @@ public:
     }
 
     // --------------------------------------------------------------------- //
-    /// \name Element access
+    /// \name Indexed element access
     // --------------------------------------------------------------------- //
 
     /// Indexed element write access.
@@ -78,29 +78,74 @@ public:
         return m_elements[ i_index ];
     }
 
-    /// X component accessor for the first element.
-    GM_HOST_DEVICE inline int X() const
+    // --------------------------------------------------------------------- //
+    /// \name Named element access.
+    // --------------------------------------------------------------------- //
+
+    /// Convenience named const accessor for the element at index 0.
+    ///
+    /// \return Const reference to the element at index 0.
+    GM_HOST_DEVICE inline const int& X() const
     {
         GM_ASSERT( !HasNans() );
         return m_elements[ 0 ];
     }
 
-    /// Y component accessor for the second element.
-    GM_HOST_DEVICE inline int Y() const
+    /// Convenience named mutable accessor for the element at index
+    ///
+    /// \return Mutable reference to the element at index 0.
+    GM_HOST_DEVICE inline int& X()
+    {
+        GM_ASSERT( !HasNans() );
+        return m_elements[ 0 ];
+    }
+    /// Convenience named const accessor for the element at index 1.
+    ///
+    /// \return Const reference to the element at index 1.
+    GM_HOST_DEVICE inline const int& Y() const
     {
         GM_ASSERT( !HasNans() );
         return m_elements[ 1 ];
     }
 
-    /// Z component accessor for the third element.
-    GM_HOST_DEVICE inline int Z() const
+    /// Convenience named mutable accessor for the element at index
+    ///
+    /// \return Mutable reference to the element at index 1.
+    GM_HOST_DEVICE inline int& Y()
+    {
+        GM_ASSERT( !HasNans() );
+        return m_elements[ 1 ];
+    }
+    /// Convenience named const accessor for the element at index 2.
+    ///
+    /// \return Const reference to the element at index 2.
+    GM_HOST_DEVICE inline const int& Z() const
     {
         GM_ASSERT( !HasNans() );
         return m_elements[ 2 ];
     }
 
-    /// W component accessor for the fourth element.
-    GM_HOST_DEVICE inline int W() const
+    /// Convenience named mutable accessor for the element at index
+    ///
+    /// \return Mutable reference to the element at index 2.
+    GM_HOST_DEVICE inline int& Z()
+    {
+        GM_ASSERT( !HasNans() );
+        return m_elements[ 2 ];
+    }
+    /// Convenience named const accessor for the element at index 3.
+    ///
+    /// \return Const reference to the element at index 3.
+    GM_HOST_DEVICE inline const int& W() const
+    {
+        GM_ASSERT( !HasNans() );
+        return m_elements[ 3 ];
+    }
+
+    /// Convenience named mutable accessor for the element at index
+    ///
+    /// \return Mutable reference to the element at index 3.
+    GM_HOST_DEVICE inline int& W()
     {
         GM_ASSERT( !HasNans() );
         return m_elements[ 3 ];

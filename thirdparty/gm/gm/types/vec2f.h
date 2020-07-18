@@ -45,7 +45,7 @@ public:
     }
 
     // --------------------------------------------------------------------- //
-    /// \name Element access
+    /// \name Indexed element access
     // --------------------------------------------------------------------- //
 
     /// Indexed element write access.
@@ -76,15 +76,40 @@ public:
         return m_elements[ i_index ];
     }
 
-    /// X component accessor for the first element.
-    GM_HOST_DEVICE inline float X() const
+    // --------------------------------------------------------------------- //
+    /// \name Named element access.
+    // --------------------------------------------------------------------- //
+
+    /// Convenience named const accessor for the element at index 0.
+    ///
+    /// \return Const reference to the element at index 0.
+    GM_HOST_DEVICE inline const float& X() const
     {
         GM_ASSERT( !HasNans() );
         return m_elements[ 0 ];
     }
 
-    /// Y component accessor for the second element.
-    GM_HOST_DEVICE inline float Y() const
+    /// Convenience named mutable accessor for the element at index
+    ///
+    /// \return Mutable reference to the element at index 0.
+    GM_HOST_DEVICE inline float& X()
+    {
+        GM_ASSERT( !HasNans() );
+        return m_elements[ 0 ];
+    }
+    /// Convenience named const accessor for the element at index 1.
+    ///
+    /// \return Const reference to the element at index 1.
+    GM_HOST_DEVICE inline const float& Y() const
+    {
+        GM_ASSERT( !HasNans() );
+        return m_elements[ 1 ];
+    }
+
+    /// Convenience named mutable accessor for the element at index
+    ///
+    /// \return Mutable reference to the element at index 1.
+    GM_HOST_DEVICE inline float& Y()
     {
         GM_ASSERT( !HasNans() );
         return m_elements[ 1 ];

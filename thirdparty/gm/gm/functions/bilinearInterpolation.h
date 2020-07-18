@@ -9,10 +9,8 @@
 ///
 /// Bilinear interpolation.
 ///
-/// Interpolate within a 2D rectilinear grid, bounded by 4 anchoring values, with two weights.
-///
-/// Linearly interpolating across the \em first dimension using the \em first weight will result in two values.
-/// These two values are then linearly interpolated as a function of the \em second weight.
+/// Interpolate within a 2D rectilinear grid, bounded by 4 anchoring corner points, with two weights along the
+/// two axis.
 
 #include <gm/gm.h>
 
@@ -29,169 +27,199 @@ GM_NS_OPEN
 /// Bilinearly interpolate in a 2D rectilinear grid.
 /// \ingroup gm_functions_basic
 ///
-/// \param i_value00 The value at (0, 0).
-/// \param i_value01 The value at (0, 1).
-/// \param i_value10 The value at (1, 0).
-/// \param i_value11 The value at (1, 1).
-/// \param i_weightX The weight for linearly interpolating across the X coordinates.
-/// \param i_weightY The weight for linearly interpolating across the Y coordinates.
+/// \param i_corner00 The corner at (0, 0).
+/// \param i_corner10 The corner at (1, 0).
+/// \param i_corner01 The corner at (0, 1).
+/// \param i_corner11 The corner at (1, 1).
+/// \param i_weight The weights for interpolating in the X and Y axis.
 ///
-/// \pre \p i_weightX and \p i_weightY must be in the range of [0,1].
+/// \pre \p i_weight.X() and \p i_weight.Y() must be in the range of [0,1].
 ///
 /// \return Bilinearly interpolated value.
-GM_HOST_DEVICE inline float BilinearInterpolation( const float& i_value00,
-                                                   const float& i_value01,
-                                                   const float& i_value10,
-                                                   const float& i_value11,
-                                                   const float& i_weightX,
-                                                   const float& i_weightY )
+GM_HOST_DEVICE inline float BilinearInterpolation( const float& i_corner00,
+                                                   const float& i_corner10,
+                                                   const float& i_corner01,
+                                                   const float& i_corner11,
+                                                   const Vec2f& i_weight )
 {
-    GM_ASSERT_MSG( i_weightX >= 0.0f && i_weightX <= 1.0f, "Expected i_weightX between [0,1], got %f\n", i_weightX );
-    GM_ASSERT_MSG( i_weightY >= 0.0f && i_weightX <= 1.0f, "Expected i_weightY between [0,1], got %f\n", i_weightY );
+    GM_ASSERT_MSG( i_weight.X() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.X() between [0,1], got %f\n",
+                   i_weight.X() );
+    GM_ASSERT_MSG( i_weight.Y() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.Y() between [0,1], got %f\n",
+                   i_weight.Y() );
 
-    float value0 = gm::LinearInterpolation( i_value00, i_value01, i_weightX );
-    float value1 = gm::LinearInterpolation( i_value10, i_value11, i_weightX );
-    return gm::LinearInterpolation( value0, value1, i_weightY );
+    // Linearly interpolate along the X axis to produce two intermediate values.
+    float interm0 = gm::LinearInterpolation( i_corner00, i_corner10, i_weight.X() );
+    float interm1 = gm::LinearInterpolation( i_corner01, i_corner11, i_weight.X() );
+
+    // Linearly interpolate the intermediate values along the Y axis.
+    return gm::LinearInterpolation( interm0, interm1, i_weight.Y() );
 }
 
 /// Bilinearly interpolate in a 2D rectilinear grid.
 /// \ingroup gm_functions_basic
 ///
-/// \param i_value00 The value at (0, 0).
-/// \param i_value01 The value at (0, 1).
-/// \param i_value10 The value at (1, 0).
-/// \param i_value11 The value at (1, 1).
-/// \param i_weightX The weight for linearly interpolating across the X coordinates.
-/// \param i_weightY The weight for linearly interpolating across the Y coordinates.
+/// \param i_corner00 The corner at (0, 0).
+/// \param i_corner10 The corner at (1, 0).
+/// \param i_corner01 The corner at (0, 1).
+/// \param i_corner11 The corner at (1, 1).
+/// \param i_weight The weights for interpolating in the X and Y axis.
 ///
-/// \pre \p i_weightX and \p i_weightY must be in the range of [0,1].
+/// \pre \p i_weight.X() and \p i_weight.Y() must be in the range of [0,1].
 ///
 /// \return Bilinearly interpolated value.
-GM_HOST_DEVICE inline Mat3f BilinearInterpolation( const Mat3f& i_value00,
-                                                   const Mat3f& i_value01,
-                                                   const Mat3f& i_value10,
-                                                   const Mat3f& i_value11,
-                                                   const float& i_weightX,
-                                                   const float& i_weightY )
+GM_HOST_DEVICE inline Mat3f BilinearInterpolation( const Mat3f& i_corner00,
+                                                   const Mat3f& i_corner10,
+                                                   const Mat3f& i_corner01,
+                                                   const Mat3f& i_corner11,
+                                                   const Vec2f& i_weight )
 {
-    GM_ASSERT_MSG( i_weightX >= 0.0f && i_weightX <= 1.0f, "Expected i_weightX between [0,1], got %f\n", i_weightX );
-    GM_ASSERT_MSG( i_weightY >= 0.0f && i_weightX <= 1.0f, "Expected i_weightY between [0,1], got %f\n", i_weightY );
+    GM_ASSERT_MSG( i_weight.X() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.X() between [0,1], got %f\n",
+                   i_weight.X() );
+    GM_ASSERT_MSG( i_weight.Y() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.Y() between [0,1], got %f\n",
+                   i_weight.Y() );
 
-    gm::Mat3f value0 = gm::LinearInterpolation( i_value00, i_value01, i_weightX );
-    gm::Mat3f value1 = gm::LinearInterpolation( i_value10, i_value11, i_weightX );
-    return gm::LinearInterpolation( value0, value1, i_weightY );
+    // Linearly interpolate along the X axis to produce two intermediate values.
+    gm::Mat3f interm0 = gm::LinearInterpolation( i_corner00, i_corner10, i_weight.X() );
+    gm::Mat3f interm1 = gm::LinearInterpolation( i_corner01, i_corner11, i_weight.X() );
+
+    // Linearly interpolate the intermediate values along the Y axis.
+    return gm::LinearInterpolation( interm0, interm1, i_weight.Y() );
 }
 
 /// Bilinearly interpolate in a 2D rectilinear grid.
 /// \ingroup gm_functions_basic
 ///
-/// \param i_value00 The value at (0, 0).
-/// \param i_value01 The value at (0, 1).
-/// \param i_value10 The value at (1, 0).
-/// \param i_value11 The value at (1, 1).
-/// \param i_weightX The weight for linearly interpolating across the X coordinates.
-/// \param i_weightY The weight for linearly interpolating across the Y coordinates.
+/// \param i_corner00 The corner at (0, 0).
+/// \param i_corner10 The corner at (1, 0).
+/// \param i_corner01 The corner at (0, 1).
+/// \param i_corner11 The corner at (1, 1).
+/// \param i_weight The weights for interpolating in the X and Y axis.
 ///
-/// \pre \p i_weightX and \p i_weightY must be in the range of [0,1].
+/// \pre \p i_weight.X() and \p i_weight.Y() must be in the range of [0,1].
 ///
 /// \return Bilinearly interpolated value.
-GM_HOST_DEVICE inline Mat4f BilinearInterpolation( const Mat4f& i_value00,
-                                                   const Mat4f& i_value01,
-                                                   const Mat4f& i_value10,
-                                                   const Mat4f& i_value11,
-                                                   const float& i_weightX,
-                                                   const float& i_weightY )
+GM_HOST_DEVICE inline Mat4f BilinearInterpolation( const Mat4f& i_corner00,
+                                                   const Mat4f& i_corner10,
+                                                   const Mat4f& i_corner01,
+                                                   const Mat4f& i_corner11,
+                                                   const Vec2f& i_weight )
 {
-    GM_ASSERT_MSG( i_weightX >= 0.0f && i_weightX <= 1.0f, "Expected i_weightX between [0,1], got %f\n", i_weightX );
-    GM_ASSERT_MSG( i_weightY >= 0.0f && i_weightX <= 1.0f, "Expected i_weightY between [0,1], got %f\n", i_weightY );
+    GM_ASSERT_MSG( i_weight.X() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.X() between [0,1], got %f\n",
+                   i_weight.X() );
+    GM_ASSERT_MSG( i_weight.Y() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.Y() between [0,1], got %f\n",
+                   i_weight.Y() );
 
-    gm::Mat4f value0 = gm::LinearInterpolation( i_value00, i_value01, i_weightX );
-    gm::Mat4f value1 = gm::LinearInterpolation( i_value10, i_value11, i_weightX );
-    return gm::LinearInterpolation( value0, value1, i_weightY );
+    // Linearly interpolate along the X axis to produce two intermediate values.
+    gm::Mat4f interm0 = gm::LinearInterpolation( i_corner00, i_corner10, i_weight.X() );
+    gm::Mat4f interm1 = gm::LinearInterpolation( i_corner01, i_corner11, i_weight.X() );
+
+    // Linearly interpolate the intermediate values along the Y axis.
+    return gm::LinearInterpolation( interm0, interm1, i_weight.Y() );
 }
 
 /// Bilinearly interpolate in a 2D rectilinear grid.
 /// \ingroup gm_functions_basic
 ///
-/// \param i_value00 The value at (0, 0).
-/// \param i_value01 The value at (0, 1).
-/// \param i_value10 The value at (1, 0).
-/// \param i_value11 The value at (1, 1).
-/// \param i_weightX The weight for linearly interpolating across the X coordinates.
-/// \param i_weightY The weight for linearly interpolating across the Y coordinates.
+/// \param i_corner00 The corner at (0, 0).
+/// \param i_corner10 The corner at (1, 0).
+/// \param i_corner01 The corner at (0, 1).
+/// \param i_corner11 The corner at (1, 1).
+/// \param i_weight The weights for interpolating in the X and Y axis.
 ///
-/// \pre \p i_weightX and \p i_weightY must be in the range of [0,1].
+/// \pre \p i_weight.X() and \p i_weight.Y() must be in the range of [0,1].
 ///
 /// \return Bilinearly interpolated value.
-GM_HOST_DEVICE inline Vec2f BilinearInterpolation( const Vec2f& i_value00,
-                                                   const Vec2f& i_value01,
-                                                   const Vec2f& i_value10,
-                                                   const Vec2f& i_value11,
-                                                   const float& i_weightX,
-                                                   const float& i_weightY )
+GM_HOST_DEVICE inline Vec2f BilinearInterpolation( const Vec2f& i_corner00,
+                                                   const Vec2f& i_corner10,
+                                                   const Vec2f& i_corner01,
+                                                   const Vec2f& i_corner11,
+                                                   const Vec2f& i_weight )
 {
-    GM_ASSERT_MSG( i_weightX >= 0.0f && i_weightX <= 1.0f, "Expected i_weightX between [0,1], got %f\n", i_weightX );
-    GM_ASSERT_MSG( i_weightY >= 0.0f && i_weightX <= 1.0f, "Expected i_weightY between [0,1], got %f\n", i_weightY );
+    GM_ASSERT_MSG( i_weight.X() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.X() between [0,1], got %f\n",
+                   i_weight.X() );
+    GM_ASSERT_MSG( i_weight.Y() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.Y() between [0,1], got %f\n",
+                   i_weight.Y() );
 
-    gm::Vec2f value0 = gm::LinearInterpolation( i_value00, i_value01, i_weightX );
-    gm::Vec2f value1 = gm::LinearInterpolation( i_value10, i_value11, i_weightX );
-    return gm::LinearInterpolation( value0, value1, i_weightY );
+    // Linearly interpolate along the X axis to produce two intermediate values.
+    gm::Vec2f interm0 = gm::LinearInterpolation( i_corner00, i_corner10, i_weight.X() );
+    gm::Vec2f interm1 = gm::LinearInterpolation( i_corner01, i_corner11, i_weight.X() );
+
+    // Linearly interpolate the intermediate values along the Y axis.
+    return gm::LinearInterpolation( interm0, interm1, i_weight.Y() );
 }
 
 /// Bilinearly interpolate in a 2D rectilinear grid.
 /// \ingroup gm_functions_basic
 ///
-/// \param i_value00 The value at (0, 0).
-/// \param i_value01 The value at (0, 1).
-/// \param i_value10 The value at (1, 0).
-/// \param i_value11 The value at (1, 1).
-/// \param i_weightX The weight for linearly interpolating across the X coordinates.
-/// \param i_weightY The weight for linearly interpolating across the Y coordinates.
+/// \param i_corner00 The corner at (0, 0).
+/// \param i_corner10 The corner at (1, 0).
+/// \param i_corner01 The corner at (0, 1).
+/// \param i_corner11 The corner at (1, 1).
+/// \param i_weight The weights for interpolating in the X and Y axis.
 ///
-/// \pre \p i_weightX and \p i_weightY must be in the range of [0,1].
+/// \pre \p i_weight.X() and \p i_weight.Y() must be in the range of [0,1].
 ///
 /// \return Bilinearly interpolated value.
-GM_HOST_DEVICE inline Vec3f BilinearInterpolation( const Vec3f& i_value00,
-                                                   const Vec3f& i_value01,
-                                                   const Vec3f& i_value10,
-                                                   const Vec3f& i_value11,
-                                                   const float& i_weightX,
-                                                   const float& i_weightY )
+GM_HOST_DEVICE inline Vec3f BilinearInterpolation( const Vec3f& i_corner00,
+                                                   const Vec3f& i_corner10,
+                                                   const Vec3f& i_corner01,
+                                                   const Vec3f& i_corner11,
+                                                   const Vec2f& i_weight )
 {
-    GM_ASSERT_MSG( i_weightX >= 0.0f && i_weightX <= 1.0f, "Expected i_weightX between [0,1], got %f\n", i_weightX );
-    GM_ASSERT_MSG( i_weightY >= 0.0f && i_weightX <= 1.0f, "Expected i_weightY between [0,1], got %f\n", i_weightY );
+    GM_ASSERT_MSG( i_weight.X() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.X() between [0,1], got %f\n",
+                   i_weight.X() );
+    GM_ASSERT_MSG( i_weight.Y() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.Y() between [0,1], got %f\n",
+                   i_weight.Y() );
 
-    gm::Vec3f value0 = gm::LinearInterpolation( i_value00, i_value01, i_weightX );
-    gm::Vec3f value1 = gm::LinearInterpolation( i_value10, i_value11, i_weightX );
-    return gm::LinearInterpolation( value0, value1, i_weightY );
+    // Linearly interpolate along the X axis to produce two intermediate values.
+    gm::Vec3f interm0 = gm::LinearInterpolation( i_corner00, i_corner10, i_weight.X() );
+    gm::Vec3f interm1 = gm::LinearInterpolation( i_corner01, i_corner11, i_weight.X() );
+
+    // Linearly interpolate the intermediate values along the Y axis.
+    return gm::LinearInterpolation( interm0, interm1, i_weight.Y() );
 }
 
 /// Bilinearly interpolate in a 2D rectilinear grid.
 /// \ingroup gm_functions_basic
 ///
-/// \param i_value00 The value at (0, 0).
-/// \param i_value01 The value at (0, 1).
-/// \param i_value10 The value at (1, 0).
-/// \param i_value11 The value at (1, 1).
-/// \param i_weightX The weight for linearly interpolating across the X coordinates.
-/// \param i_weightY The weight for linearly interpolating across the Y coordinates.
+/// \param i_corner00 The corner at (0, 0).
+/// \param i_corner10 The corner at (1, 0).
+/// \param i_corner01 The corner at (0, 1).
+/// \param i_corner11 The corner at (1, 1).
+/// \param i_weight The weights for interpolating in the X and Y axis.
 ///
-/// \pre \p i_weightX and \p i_weightY must be in the range of [0,1].
+/// \pre \p i_weight.X() and \p i_weight.Y() must be in the range of [0,1].
 ///
 /// \return Bilinearly interpolated value.
-GM_HOST_DEVICE inline Vec4f BilinearInterpolation( const Vec4f& i_value00,
-                                                   const Vec4f& i_value01,
-                                                   const Vec4f& i_value10,
-                                                   const Vec4f& i_value11,
-                                                   const float& i_weightX,
-                                                   const float& i_weightY )
+GM_HOST_DEVICE inline Vec4f BilinearInterpolation( const Vec4f& i_corner00,
+                                                   const Vec4f& i_corner10,
+                                                   const Vec4f& i_corner01,
+                                                   const Vec4f& i_corner11,
+                                                   const Vec2f& i_weight )
 {
-    GM_ASSERT_MSG( i_weightX >= 0.0f && i_weightX <= 1.0f, "Expected i_weightX between [0,1], got %f\n", i_weightX );
-    GM_ASSERT_MSG( i_weightY >= 0.0f && i_weightX <= 1.0f, "Expected i_weightY between [0,1], got %f\n", i_weightY );
+    GM_ASSERT_MSG( i_weight.X() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.X() between [0,1], got %f\n",
+                   i_weight.X() );
+    GM_ASSERT_MSG( i_weight.Y() >= 0.0f && i_weight.X() <= 1.0f,
+                   "Expected i_weight.Y() between [0,1], got %f\n",
+                   i_weight.Y() );
 
-    gm::Vec4f value0 = gm::LinearInterpolation( i_value00, i_value01, i_weightX );
-    gm::Vec4f value1 = gm::LinearInterpolation( i_value10, i_value11, i_weightX );
-    return gm::LinearInterpolation( value0, value1, i_weightY );
+    // Linearly interpolate along the X axis to produce two intermediate values.
+    gm::Vec4f interm0 = gm::LinearInterpolation( i_corner00, i_corner10, i_weight.X() );
+    gm::Vec4f interm1 = gm::LinearInterpolation( i_corner01, i_corner11, i_weight.X() );
+
+    // Linearly interpolate the intermediate values along the Y axis.
+    return gm::LinearInterpolation( interm0, interm1, i_weight.Y() );
 }
 
 GM_NS_CLOSE

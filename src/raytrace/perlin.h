@@ -45,14 +45,21 @@ public:
         _GeneratePermutation( m_permutationZ );
     }
 
-    /// Generate turbulence, which is an accumulated composite noise pattern.
-    float Turbulence( const gm::Vec3f& i_coord, int depth = 7 ) const
+    /// Generate turbulence, which is an accumulation of multiple varying noise patterns.
+    ///
+    /// \param i_coord The 3D coordinate as the input to the noise generation.
+    /// \param i_depth The number of noise iterations to accumulate.
+    ///
+    /// \return The final accumulated noise value.
+    float Turbulence( const gm::Vec3f& i_coord, int i_depth = 7 ) const
     {
         float     accumulation = 0.0f;
+
+        // These are inputs which vary over the course of accumulation.
         float     weight       = 1.0f;
         gm::Vec3f coordinate   = i_coord;
 
-        for ( int depthIndex = 0; depthIndex < depth; ++depthIndex )
+        for ( int depthIndex = 0; depthIndex < i_depth; ++depthIndex )
         {
             accumulation += weight * Noise( coordinate );
 
@@ -74,13 +81,15 @@ public:
         gm::Vec3f floored = gm::Floor( i_coord );
         gm::Vec3f weights = i_coord - floored;
 
-        // Apply hermitian smoothing.
+        gm::Vec3i coordinates( ( int ) floored[ 0 ], ( int ) floored[ 1 ], ( int ) floored[ 2 ] );
+
+        // Use hermitian technique to smooth out the interpolation weights.
         gm::Vec3f smoothWeights( weights.X() * weights.X() * ( 3.0f - 2.0f * weights.X() ),
                                  weights.Y() * weights.Y() * ( 3.0f - 2.0f * weights.Y() ),
                                  weights.Z() * weights.Z() * ( 3.0f - 2.0f * weights.Z() ) );
 
-        gm::Vec3i coordinates( ( int ) floored[ 0 ], ( int ) floored[ 1 ], ( int ) floored[ 2 ] );
-
+        // Each _LatticeValue transforms a corner of the 3D grid, in combination with the weights,
+        // into a non-integral location.
         return gm::TrilinearInterpolation( _LatticeValue( coordinates, gm::Vec3i( 0, 0, 0 ), weights ),
                                            _LatticeValue( coordinates, gm::Vec3i( 1, 0, 0 ), weights ),
                                            _LatticeValue( coordinates, gm::Vec3i( 0, 1, 0 ), weights ),
@@ -89,9 +98,7 @@ public:
                                            _LatticeValue( coordinates, gm::Vec3i( 1, 0, 1 ), weights ),
                                            _LatticeValue( coordinates, gm::Vec3i( 0, 1, 1 ), weights ),
                                            _LatticeValue( coordinates, gm::Vec3i( 1, 1, 1 ), weights ),
-                                           smoothWeights.X(),
-                                           smoothWeights.Y(),
-                                           smoothWeights.Z() );
+                                           smoothWeights );
     }
 
 private:

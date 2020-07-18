@@ -62,14 +62,14 @@ public:
         gm::Vec2f uvCoord = gm::Clamp( i_uvCoord, gm::FloatRange( 0, 1 ) );
 
         // Flip the vertical component to align with image coordinates.
-        uvCoord[ 1 ] = 1.0 - uvCoord[ 1 ];
+        uvCoord.Y() = 1.0 - uvCoord.Y();
 
         // Scale normalised UV coordinates into image pixel coordinates.
         gm::Vec2i imageCoord( ( int ) ( uvCoord.X() * m_imageDim.X() ), ( int ) ( uvCoord.Y() * m_imageDim.Y() ) );
 
         // Clamp image coordinates.
-        imageCoord[ 0 ] = gm::Clamp( imageCoord.X(), gm::IntRange( 0, m_imageDim.X() - 1 ) );
-        imageCoord[ 1 ] = gm::Clamp( imageCoord.Y(), gm::IntRange( 0, m_imageDim.Y() - 1 ) );
+        imageCoord.X() = gm::Clamp( imageCoord.X(), gm::IntRange( 0, m_imageDim.X() - 1 ) );
+        imageCoord.Y() = gm::Clamp( imageCoord.Y(), gm::IntRange( 0, m_imageDim.Y() - 1 ) );
 
         // Factor which scales a color encoded as a byte into a normalised floating point in the range [0,1].
         constexpr float colorScale = 1.0f / 255.0f;

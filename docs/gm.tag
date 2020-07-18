@@ -157,43 +157,43 @@
       <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gacbe3775d38660c7d91030cd48b6c7c25</anchor>
-      <arglist>(const float &amp;i_value00, const float &amp;i_value01, const float &amp;i_value10, const float &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>ga7736fa4b072b4056a713d3a1159db2e8</anchor>
+      <arglist>(const float &amp;i_corner00, const float &amp;i_corner10, const float &amp;i_corner01, const float &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Mat3f</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gacf417c22bd05e261e59e5bc8d15708ae</anchor>
-      <arglist>(const Mat3f &amp;i_value00, const Mat3f &amp;i_value01, const Mat3f &amp;i_value10, const Mat3f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>ga8efb293bf3f1f1a55e533e62a3408cb7</anchor>
+      <arglist>(const Mat3f &amp;i_corner00, const Mat3f &amp;i_corner10, const Mat3f &amp;i_corner01, const Mat3f &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Mat4f</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga0399fac7ef2b098f07c8861b1d49a0d3</anchor>
-      <arglist>(const Mat4f &amp;i_value00, const Mat4f &amp;i_value01, const Mat4f &amp;i_value10, const Mat4f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>ga15b600b4cd2275194cc625940e9ad223</anchor>
+      <arglist>(const Mat4f &amp;i_corner00, const Mat4f &amp;i_corner10, const Mat4f &amp;i_corner01, const Mat4f &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga094bd25688e2b5b89ceb62f15eb8b62b</anchor>
-      <arglist>(const Vec2f &amp;i_value00, const Vec2f &amp;i_value01, const Vec2f &amp;i_value10, const Vec2f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>ga5fdc961fd5a9c4d3085ba0e0d41fa8fa</anchor>
+      <arglist>(const Vec2f &amp;i_corner00, const Vec2f &amp;i_corner10, const Vec2f &amp;i_corner01, const Vec2f &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec3f</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gab7364e0e9685b265474f49a039be8c7e</anchor>
-      <arglist>(const Vec3f &amp;i_value00, const Vec3f &amp;i_value01, const Vec3f &amp;i_value10, const Vec3f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>ga440d91d4bed1a368fd1758271b273dc1</anchor>
+      <arglist>(const Vec3f &amp;i_corner00, const Vec3f &amp;i_corner10, const Vec3f &amp;i_corner01, const Vec3f &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec4f</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gab137654c95ce45cdadb03efb85071e36</anchor>
-      <arglist>(const Vec4f &amp;i_value00, const Vec4f &amp;i_value01, const Vec4f &amp;i_value10, const Vec4f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>gae2ad9c74e4f2d875c43996c7ee2ae6f6</anchor>
+      <arglist>(const Vec4f &amp;i_corner00, const Vec4f &amp;i_corner10, const Vec4f &amp;i_corner01, const Vec4f &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -1418,43 +1418,43 @@
       <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga703a230714ee24957be6f2da5a8d97ec</anchor>
-      <arglist>(const float &amp;i_value000, const float &amp;i_value001, const float &amp;i_value010, const float &amp;i_value011, const float &amp;i_value100, const float &amp;i_value101, const float &amp;i_value110, const float &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>gaa41b5a49566dfe8511e8b5c9b715b872</anchor>
+      <arglist>(const float &amp;i_corner000, const float &amp;i_corner100, const float &amp;i_corner010, const float &amp;i_corner110, const float &amp;i_corner001, const float &amp;i_corner101, const float &amp;i_corner011, const float &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Mat3f</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga358d57a0afd184096466b664330cdc6f</anchor>
-      <arglist>(const Mat3f &amp;i_value000, const Mat3f &amp;i_value001, const Mat3f &amp;i_value010, const Mat3f &amp;i_value011, const Mat3f &amp;i_value100, const Mat3f &amp;i_value101, const Mat3f &amp;i_value110, const Mat3f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>gafacc33605346a9b834afab80195197e2</anchor>
+      <arglist>(const Mat3f &amp;i_corner000, const Mat3f &amp;i_corner100, const Mat3f &amp;i_corner010, const Mat3f &amp;i_corner110, const Mat3f &amp;i_corner001, const Mat3f &amp;i_corner101, const Mat3f &amp;i_corner011, const Mat3f &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Mat4f</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gaed2a655f8192c2c9ba01e8781299facd</anchor>
-      <arglist>(const Mat4f &amp;i_value000, const Mat4f &amp;i_value001, const Mat4f &amp;i_value010, const Mat4f &amp;i_value011, const Mat4f &amp;i_value100, const Mat4f &amp;i_value101, const Mat4f &amp;i_value110, const Mat4f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>ga0b702023c3efcce7d660a7504f30c30e</anchor>
+      <arglist>(const Mat4f &amp;i_corner000, const Mat4f &amp;i_corner100, const Mat4f &amp;i_corner010, const Mat4f &amp;i_corner110, const Mat4f &amp;i_corner001, const Mat4f &amp;i_corner101, const Mat4f &amp;i_corner011, const Mat4f &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gab5c817c64bea40996a9ad04a80d2124c</anchor>
-      <arglist>(const Vec2f &amp;i_value000, const Vec2f &amp;i_value001, const Vec2f &amp;i_value010, const Vec2f &amp;i_value011, const Vec2f &amp;i_value100, const Vec2f &amp;i_value101, const Vec2f &amp;i_value110, const Vec2f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>ga09b6d94bb42195cfee55d2450b33f97c</anchor>
+      <arglist>(const Vec2f &amp;i_corner000, const Vec2f &amp;i_corner100, const Vec2f &amp;i_corner010, const Vec2f &amp;i_corner110, const Vec2f &amp;i_corner001, const Vec2f &amp;i_corner101, const Vec2f &amp;i_corner011, const Vec2f &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec3f</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gaf34a3e36b8246f7ae898c55a4ecf3389</anchor>
-      <arglist>(const Vec3f &amp;i_value000, const Vec3f &amp;i_value001, const Vec3f &amp;i_value010, const Vec3f &amp;i_value011, const Vec3f &amp;i_value100, const Vec3f &amp;i_value101, const Vec3f &amp;i_value110, const Vec3f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>ga3f492ef8f9e4b9cd81b96f0632d31c51</anchor>
+      <arglist>(const Vec3f &amp;i_corner000, const Vec3f &amp;i_corner100, const Vec3f &amp;i_corner010, const Vec3f &amp;i_corner110, const Vec3f &amp;i_corner001, const Vec3f &amp;i_corner101, const Vec3f &amp;i_corner011, const Vec3f &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec4f</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gaf9244a8f16943e49287a57299bd57374</anchor>
-      <arglist>(const Vec4f &amp;i_value000, const Vec4f &amp;i_value001, const Vec4f &amp;i_value010, const Vec4f &amp;i_value011, const Vec4f &amp;i_value100, const Vec4f &amp;i_value101, const Vec4f &amp;i_value110, const Vec4f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>ga2bc004fea5e76e4257cde68b75c7d9e2</anchor>
+      <arglist>(const Vec4f &amp;i_corner000, const Vec4f &amp;i_corner100, const Vec4f &amp;i_corner010, const Vec4f &amp;i_corner110, const Vec4f &amp;i_corner001, const Vec4f &amp;i_corner101, const Vec4f &amp;i_corner011, const Vec4f &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -2955,18 +2955,32 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>X</name>
       <anchorfile>classVec2f.html</anchorfile>
-      <anchor>a239c72129efe9c9d0f03cb0f25d4cd1f</anchor>
+      <anchor>a359e2940d063e377a2ad720988e8435a</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec2f.html</anchorfile>
+      <anchor>af98e5e6c3758d1ad2a9cd104b369f992</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>Y</name>
       <anchorfile>classVec2f.html</anchorfile>
-      <anchor>ad008f9285c7723c8c62d7f5fa461b5fc</anchor>
+      <anchor>a019211a5f3582e69fd899cf6a29a93fb</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec2f.html</anchorfile>
+      <anchor>a01f5545f9d28247d73990e85cf3ddc54</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
@@ -3074,18 +3088,32 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>X</name>
       <anchorfile>classVec2f.html</anchorfile>
-      <anchor>a239c72129efe9c9d0f03cb0f25d4cd1f</anchor>
+      <anchor>a359e2940d063e377a2ad720988e8435a</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec2f.html</anchorfile>
+      <anchor>af98e5e6c3758d1ad2a9cd104b369f992</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>Y</name>
       <anchorfile>classVec2f.html</anchorfile>
-      <anchor>ad008f9285c7723c8c62d7f5fa461b5fc</anchor>
+      <anchor>a019211a5f3582e69fd899cf6a29a93fb</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec2f.html</anchorfile>
+      <anchor>a01f5545f9d28247d73990e85cf3ddc54</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
@@ -3369,18 +3397,32 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>X</name>
       <anchorfile>classVec2i.html</anchorfile>
-      <anchor>a540d739b409834f1371e7822db8173e4</anchor>
+      <anchor>af72471a4db7c4ac3f45e40a82c80f305</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec2i.html</anchorfile>
+      <anchor>a43254a37e1dc6659f6def574a01eef72</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>Y</name>
       <anchorfile>classVec2i.html</anchorfile>
-      <anchor>a09dd65f63771b2b363f0f456f408936d</anchor>
+      <anchor>a9f9ddac8909b9ec3840c33a02498e91d</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec2i.html</anchorfile>
+      <anchor>a8d71dae17eceb5d35c6ef28a9b15883f</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec2i</type>
@@ -3488,18 +3530,32 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>X</name>
       <anchorfile>classVec2i.html</anchorfile>
-      <anchor>a540d739b409834f1371e7822db8173e4</anchor>
+      <anchor>af72471a4db7c4ac3f45e40a82c80f305</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec2i.html</anchorfile>
+      <anchor>a43254a37e1dc6659f6def574a01eef72</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>Y</name>
       <anchorfile>classVec2i.html</anchorfile>
-      <anchor>a09dd65f63771b2b363f0f456f408936d</anchor>
+      <anchor>a9f9ddac8909b9ec3840c33a02498e91d</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec2i.html</anchorfile>
+      <anchor>a8d71dae17eceb5d35c6ef28a9b15883f</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec2i</type>
@@ -3812,25 +3868,46 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>X</name>
       <anchorfile>classVec3f.html</anchorfile>
-      <anchor>ad9c547026b0a0c194a7559a7e8827861</anchor>
+      <anchor>accc0600a2882d3d77f058ea09ad8732a</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec3f.html</anchorfile>
+      <anchor>adcf027feeddc37b75dd54621c257fb01</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>Y</name>
       <anchorfile>classVec3f.html</anchorfile>
-      <anchor>a26493e2dd1c8dc96a231078dac7e2c97</anchor>
+      <anchor>a80ceb094bb8469431d9e0f0dfc95497e</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec3f.html</anchorfile>
+      <anchor>a20122fcab084046d6688efe41e0f3498</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>Z</name>
       <anchorfile>classVec3f.html</anchorfile>
-      <anchor>aeb1d1eefdf2524136418e8a8070d83aa</anchor>
+      <anchor>a6e2251553dca2c5ce8216e42ebed236c</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>Z</name>
+      <anchorfile>classVec3f.html</anchorfile>
+      <anchor>a1dad77b61a537fef820d75fbf34c78db</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec3f</type>
@@ -3938,25 +4015,46 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>X</name>
       <anchorfile>classVec3f.html</anchorfile>
-      <anchor>ad9c547026b0a0c194a7559a7e8827861</anchor>
+      <anchor>accc0600a2882d3d77f058ea09ad8732a</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec3f.html</anchorfile>
+      <anchor>adcf027feeddc37b75dd54621c257fb01</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>Y</name>
       <anchorfile>classVec3f.html</anchorfile>
-      <anchor>a26493e2dd1c8dc96a231078dac7e2c97</anchor>
+      <anchor>a80ceb094bb8469431d9e0f0dfc95497e</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec3f.html</anchorfile>
+      <anchor>a20122fcab084046d6688efe41e0f3498</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>Z</name>
       <anchorfile>classVec3f.html</anchorfile>
-      <anchor>aeb1d1eefdf2524136418e8a8070d83aa</anchor>
+      <anchor>a6e2251553dca2c5ce8216e42ebed236c</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>Z</name>
+      <anchorfile>classVec3f.html</anchorfile>
+      <anchor>a1dad77b61a537fef820d75fbf34c78db</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec3f</type>
@@ -4240,25 +4338,46 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>X</name>
       <anchorfile>classVec3i.html</anchorfile>
-      <anchor>ac2e03018fdef10c285c998dede89fdcc</anchor>
+      <anchor>ab75fe40dcae59a23f5a6c887d998b4a9</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec3i.html</anchorfile>
+      <anchor>a4201c2bb7b6d4b53591456d8f3e43d87</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>Y</name>
       <anchorfile>classVec3i.html</anchorfile>
-      <anchor>aae0bc88226b8ca49f579a52c18dc1be8</anchor>
+      <anchor>aba926a6ba72d58d9bad2ca844b9f6125</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec3i.html</anchorfile>
+      <anchor>aac94b8a035e469e1a00aa4908006c794</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>Z</name>
       <anchorfile>classVec3i.html</anchorfile>
-      <anchor>a0efb0583e39c7588cf4bcdfa5c32d327</anchor>
+      <anchor>af2a95b43a5aefaaee25f6d3105449957</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>Z</name>
+      <anchorfile>classVec3i.html</anchorfile>
+      <anchor>aae5ff12a5fbd778350b60cbcdc39a290</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec3i</type>
@@ -4366,25 +4485,46 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>X</name>
       <anchorfile>classVec3i.html</anchorfile>
-      <anchor>ac2e03018fdef10c285c998dede89fdcc</anchor>
+      <anchor>ab75fe40dcae59a23f5a6c887d998b4a9</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec3i.html</anchorfile>
+      <anchor>a4201c2bb7b6d4b53591456d8f3e43d87</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>Y</name>
       <anchorfile>classVec3i.html</anchorfile>
-      <anchor>aae0bc88226b8ca49f579a52c18dc1be8</anchor>
+      <anchor>aba926a6ba72d58d9bad2ca844b9f6125</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec3i.html</anchorfile>
+      <anchor>aac94b8a035e469e1a00aa4908006c794</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>Z</name>
       <anchorfile>classVec3i.html</anchorfile>
-      <anchor>a0efb0583e39c7588cf4bcdfa5c32d327</anchor>
+      <anchor>af2a95b43a5aefaaee25f6d3105449957</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>Z</name>
+      <anchorfile>classVec3i.html</anchorfile>
+      <anchor>aae5ff12a5fbd778350b60cbcdc39a290</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec3i</type>
@@ -4697,32 +4837,60 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>X</name>
       <anchorfile>classVec4f.html</anchorfile>
-      <anchor>a52723463e99e7220a90a983dd8daf817</anchor>
+      <anchor>abf86f7a6076482a0e12bebf640ec8061</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec4f.html</anchorfile>
+      <anchor>a630e69e64b125d7556383935d3d3cdcf</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>Y</name>
       <anchorfile>classVec4f.html</anchorfile>
-      <anchor>a7db1b03fee158f9bfce3d6acdeffc572</anchor>
+      <anchor>a57d4482e0d4f83b9ab4fa2034b1b1b98</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec4f.html</anchorfile>
+      <anchor>a3c3093a8cb86eac8839cab601619a96f</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>Z</name>
       <anchorfile>classVec4f.html</anchorfile>
-      <anchor>a3133835886cfdf1758bbfb82fb5dc85f</anchor>
+      <anchor>ad331aebc0d8060f1927717ddecb73bbe</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>Z</name>
+      <anchorfile>classVec4f.html</anchorfile>
+      <anchor>a4034ef5a221c0b490cec1010ae5132a4</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>W</name>
       <anchorfile>classVec4f.html</anchorfile>
-      <anchor>aae40738c0baa008c36a13307fb2780a7</anchor>
+      <anchor>a307c4904fb438281f61f998395b06511</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>W</name>
+      <anchorfile>classVec4f.html</anchorfile>
+      <anchor>aad43147f7eaf3e5f8b6e641c082e34f2</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec4f</type>
@@ -4830,32 +4998,60 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>X</name>
       <anchorfile>classVec4f.html</anchorfile>
-      <anchor>a52723463e99e7220a90a983dd8daf817</anchor>
+      <anchor>abf86f7a6076482a0e12bebf640ec8061</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec4f.html</anchorfile>
+      <anchor>a630e69e64b125d7556383935d3d3cdcf</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>Y</name>
       <anchorfile>classVec4f.html</anchorfile>
-      <anchor>a7db1b03fee158f9bfce3d6acdeffc572</anchor>
+      <anchor>a57d4482e0d4f83b9ab4fa2034b1b1b98</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec4f.html</anchorfile>
+      <anchor>a3c3093a8cb86eac8839cab601619a96f</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>Z</name>
       <anchorfile>classVec4f.html</anchorfile>
-      <anchor>a3133835886cfdf1758bbfb82fb5dc85f</anchor>
+      <anchor>ad331aebc0d8060f1927717ddecb73bbe</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE float</type>
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>Z</name>
+      <anchorfile>classVec4f.html</anchorfile>
+      <anchor>a4034ef5a221c0b490cec1010ae5132a4</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const float &amp;</type>
       <name>W</name>
       <anchorfile>classVec4f.html</anchorfile>
-      <anchor>aae40738c0baa008c36a13307fb2780a7</anchor>
+      <anchor>a307c4904fb438281f61f998395b06511</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE float &amp;</type>
+      <name>W</name>
+      <anchorfile>classVec4f.html</anchorfile>
+      <anchor>aad43147f7eaf3e5f8b6e641c082e34f2</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec4f</type>
@@ -5139,32 +5335,60 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>X</name>
       <anchorfile>classVec4i.html</anchorfile>
-      <anchor>a32525356e16354827c4cd8e44cadfebe</anchor>
+      <anchor>a743aab4f903f96f1d542af192c84a6f6</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec4i.html</anchorfile>
+      <anchor>a5ec9cef8fa8a6e2c49192aad33e714c9</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>Y</name>
       <anchorfile>classVec4i.html</anchorfile>
-      <anchor>a6ce21deb43a40988db0a797d882118b0</anchor>
+      <anchor>a9f91e5fe35d5ed35aba9721d56704936</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec4i.html</anchorfile>
+      <anchor>a8197ccf2f65ce3404d0a6cd1773c8164</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>Z</name>
       <anchorfile>classVec4i.html</anchorfile>
-      <anchor>aad2229ba78cde8bec91e1a7883aae5bd</anchor>
+      <anchor>ae2ef99afb10efd77027f74e8256ddf13</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>Z</name>
+      <anchorfile>classVec4i.html</anchorfile>
+      <anchor>a1df1ff81e6762f1a4f27b78f31ac7b86</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>W</name>
       <anchorfile>classVec4i.html</anchorfile>
-      <anchor>aa23eb8a9942210759d0a615a402174ee</anchor>
+      <anchor>a11a912b1433445def529c1a9dcdee03d</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>W</name>
+      <anchorfile>classVec4i.html</anchorfile>
+      <anchor>a8b961265779b6562c782edcaedc69d19</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec4i</type>
@@ -5272,32 +5496,60 @@
       <arglist>(size_t i_index) const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>X</name>
       <anchorfile>classVec4i.html</anchorfile>
-      <anchor>a32525356e16354827c4cd8e44cadfebe</anchor>
+      <anchor>a743aab4f903f96f1d542af192c84a6f6</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>X</name>
+      <anchorfile>classVec4i.html</anchorfile>
+      <anchor>a5ec9cef8fa8a6e2c49192aad33e714c9</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>Y</name>
       <anchorfile>classVec4i.html</anchorfile>
-      <anchor>a6ce21deb43a40988db0a797d882118b0</anchor>
+      <anchor>a9f91e5fe35d5ed35aba9721d56704936</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>Y</name>
+      <anchorfile>classVec4i.html</anchorfile>
+      <anchor>a8197ccf2f65ce3404d0a6cd1773c8164</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>Z</name>
       <anchorfile>classVec4i.html</anchorfile>
-      <anchor>aad2229ba78cde8bec91e1a7883aae5bd</anchor>
+      <anchor>ae2ef99afb10efd77027f74e8256ddf13</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>GM_HOST_DEVICE int</type>
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>Z</name>
+      <anchorfile>classVec4i.html</anchorfile>
+      <anchor>a1df1ff81e6762f1a4f27b78f31ac7b86</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE const int &amp;</type>
       <name>W</name>
       <anchorfile>classVec4i.html</anchorfile>
-      <anchor>aa23eb8a9942210759d0a615a402174ee</anchor>
+      <anchor>a11a912b1433445def529c1a9dcdee03d</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GM_HOST_DEVICE int &amp;</type>
+      <name>W</name>
+      <anchorfile>classVec4i.html</anchorfile>
+      <anchor>a8b961265779b6562c782edcaedc69d19</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec4i</type>
@@ -5718,43 +5970,43 @@
       <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gacbe3775d38660c7d91030cd48b6c7c25</anchor>
-      <arglist>(const float &amp;i_value00, const float &amp;i_value01, const float &amp;i_value10, const float &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>ga7736fa4b072b4056a713d3a1159db2e8</anchor>
+      <arglist>(const float &amp;i_corner00, const float &amp;i_corner10, const float &amp;i_corner01, const float &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Mat3f</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gacf417c22bd05e261e59e5bc8d15708ae</anchor>
-      <arglist>(const Mat3f &amp;i_value00, const Mat3f &amp;i_value01, const Mat3f &amp;i_value10, const Mat3f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>ga8efb293bf3f1f1a55e533e62a3408cb7</anchor>
+      <arglist>(const Mat3f &amp;i_corner00, const Mat3f &amp;i_corner10, const Mat3f &amp;i_corner01, const Mat3f &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Mat4f</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga0399fac7ef2b098f07c8861b1d49a0d3</anchor>
-      <arglist>(const Mat4f &amp;i_value00, const Mat4f &amp;i_value01, const Mat4f &amp;i_value10, const Mat4f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>ga15b600b4cd2275194cc625940e9ad223</anchor>
+      <arglist>(const Mat4f &amp;i_corner00, const Mat4f &amp;i_corner10, const Mat4f &amp;i_corner01, const Mat4f &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga094bd25688e2b5b89ceb62f15eb8b62b</anchor>
-      <arglist>(const Vec2f &amp;i_value00, const Vec2f &amp;i_value01, const Vec2f &amp;i_value10, const Vec2f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>ga5fdc961fd5a9c4d3085ba0e0d41fa8fa</anchor>
+      <arglist>(const Vec2f &amp;i_corner00, const Vec2f &amp;i_corner10, const Vec2f &amp;i_corner01, const Vec2f &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec3f</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gab7364e0e9685b265474f49a039be8c7e</anchor>
-      <arglist>(const Vec3f &amp;i_value00, const Vec3f &amp;i_value01, const Vec3f &amp;i_value10, const Vec3f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>ga440d91d4bed1a368fd1758271b273dc1</anchor>
+      <arglist>(const Vec3f &amp;i_corner00, const Vec3f &amp;i_corner10, const Vec3f &amp;i_corner01, const Vec3f &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec4f</type>
       <name>BilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gab137654c95ce45cdadb03efb85071e36</anchor>
-      <arglist>(const Vec4f &amp;i_value00, const Vec4f &amp;i_value01, const Vec4f &amp;i_value10, const Vec4f &amp;i_value11, const float &amp;i_weightX, const float &amp;i_weightY)</arglist>
+      <anchor>gae2ad9c74e4f2d875c43996c7ee2ae6f6</anchor>
+      <arglist>(const Vec4f &amp;i_corner00, const Vec4f &amp;i_corner10, const Vec4f &amp;i_corner01, const Vec4f &amp;i_corner11, const Vec2f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
@@ -6187,43 +6439,43 @@
       <type>GM_NS_OPEN GM_HOST_DEVICE float</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga703a230714ee24957be6f2da5a8d97ec</anchor>
-      <arglist>(const float &amp;i_value000, const float &amp;i_value001, const float &amp;i_value010, const float &amp;i_value011, const float &amp;i_value100, const float &amp;i_value101, const float &amp;i_value110, const float &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>gaa41b5a49566dfe8511e8b5c9b715b872</anchor>
+      <arglist>(const float &amp;i_corner000, const float &amp;i_corner100, const float &amp;i_corner010, const float &amp;i_corner110, const float &amp;i_corner001, const float &amp;i_corner101, const float &amp;i_corner011, const float &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Mat3f</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>ga358d57a0afd184096466b664330cdc6f</anchor>
-      <arglist>(const Mat3f &amp;i_value000, const Mat3f &amp;i_value001, const Mat3f &amp;i_value010, const Mat3f &amp;i_value011, const Mat3f &amp;i_value100, const Mat3f &amp;i_value101, const Mat3f &amp;i_value110, const Mat3f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>gafacc33605346a9b834afab80195197e2</anchor>
+      <arglist>(const Mat3f &amp;i_corner000, const Mat3f &amp;i_corner100, const Mat3f &amp;i_corner010, const Mat3f &amp;i_corner110, const Mat3f &amp;i_corner001, const Mat3f &amp;i_corner101, const Mat3f &amp;i_corner011, const Mat3f &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Mat4f</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gaed2a655f8192c2c9ba01e8781299facd</anchor>
-      <arglist>(const Mat4f &amp;i_value000, const Mat4f &amp;i_value001, const Mat4f &amp;i_value010, const Mat4f &amp;i_value011, const Mat4f &amp;i_value100, const Mat4f &amp;i_value101, const Mat4f &amp;i_value110, const Mat4f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>ga0b702023c3efcce7d660a7504f30c30e</anchor>
+      <arglist>(const Mat4f &amp;i_corner000, const Mat4f &amp;i_corner100, const Mat4f &amp;i_corner010, const Mat4f &amp;i_corner110, const Mat4f &amp;i_corner001, const Mat4f &amp;i_corner101, const Mat4f &amp;i_corner011, const Mat4f &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec2f</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gab5c817c64bea40996a9ad04a80d2124c</anchor>
-      <arglist>(const Vec2f &amp;i_value000, const Vec2f &amp;i_value001, const Vec2f &amp;i_value010, const Vec2f &amp;i_value011, const Vec2f &amp;i_value100, const Vec2f &amp;i_value101, const Vec2f &amp;i_value110, const Vec2f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>ga09b6d94bb42195cfee55d2450b33f97c</anchor>
+      <arglist>(const Vec2f &amp;i_corner000, const Vec2f &amp;i_corner100, const Vec2f &amp;i_corner010, const Vec2f &amp;i_corner110, const Vec2f &amp;i_corner001, const Vec2f &amp;i_corner101, const Vec2f &amp;i_corner011, const Vec2f &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec3f</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gaf34a3e36b8246f7ae898c55a4ecf3389</anchor>
-      <arglist>(const Vec3f &amp;i_value000, const Vec3f &amp;i_value001, const Vec3f &amp;i_value010, const Vec3f &amp;i_value011, const Vec3f &amp;i_value100, const Vec3f &amp;i_value101, const Vec3f &amp;i_value110, const Vec3f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>ga3f492ef8f9e4b9cd81b96f0632d31c51</anchor>
+      <arglist>(const Vec3f &amp;i_corner000, const Vec3f &amp;i_corner100, const Vec3f &amp;i_corner010, const Vec3f &amp;i_corner110, const Vec3f &amp;i_corner001, const Vec3f &amp;i_corner101, const Vec3f &amp;i_corner011, const Vec3f &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
     <member kind="function">
       <type>GM_HOST_DEVICE Vec4f</type>
       <name>TrilinearInterpolation</name>
       <anchorfile>group__gm__functions__basic.html</anchorfile>
-      <anchor>gaf9244a8f16943e49287a57299bd57374</anchor>
-      <arglist>(const Vec4f &amp;i_value000, const Vec4f &amp;i_value001, const Vec4f &amp;i_value010, const Vec4f &amp;i_value011, const Vec4f &amp;i_value100, const Vec4f &amp;i_value101, const Vec4f &amp;i_value110, const Vec4f &amp;i_value111, const float &amp;i_weightX, const float &amp;i_weightY, const float &amp;i_weightZ)</arglist>
+      <anchor>ga2bc004fea5e76e4257cde68b75c7d9e2</anchor>
+      <arglist>(const Vec4f &amp;i_corner000, const Vec4f &amp;i_corner100, const Vec4f &amp;i_corner010, const Vec4f &amp;i_corner110, const Vec4f &amp;i_corner001, const Vec4f &amp;i_corner101, const Vec4f &amp;i_corner011, const Vec4f &amp;i_corner111, const Vec3f &amp;i_weight)</arglist>
     </member>
   </compound>
   <compound kind="group">

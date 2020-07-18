@@ -75,7 +75,7 @@ public:
     }
 
     // --------------------------------------------------------------------- //
-    /// \name Element access
+    /// \name Indexed element access
     // --------------------------------------------------------------------- //
 
     /// Indexed element write access.
@@ -106,15 +106,41 @@ public:
         return m_elements[ i_index ];
     }
 
+    // --------------------------------------------------------------------- //
+    /// \name Matrix row column indexed element access
+    // --------------------------------------------------------------------- //
+
     /// Matrix element read-access.
+    ///
+    /// \param i_row Row index.
+    /// \param i_column Column index.
+    ///
+    /// \pre \p i_row must be less than 4.
+    /// \pre \p i_column must be less than 4.
+    ///
+    /// \return Element value.
     GM_HOST_DEVICE inline const float& operator()( size_t i_row, size_t i_column ) const
     {
+        GM_ASSERT( !HasNans() );
+        GM_ASSERT( i_row < 4 );
+        GM_ASSERT( i_column < 4 );
         return m_elements[ i_row * 4 + i_column ];
     }
 
     /// Matrix element write-access.
+    ///
+    /// \param i_row Row index.
+    /// \param i_column Column index.
+    ///
+    /// \pre \p i_row must be less than 4.
+    /// \pre \p i_column must be less than 4.
+    ///
+    /// \return Element value.
     GM_HOST_DEVICE inline float& operator()( size_t i_row, size_t i_column )
     {
+        GM_ASSERT( !HasNans() );
+        GM_ASSERT( i_row < 4 );
+        GM_ASSERT( i_column < 4 );
         return m_elements[ i_row * 4 + i_column ];
     }
 
