@@ -22,14 +22,14 @@ public:
     {
     }
 
-    /// Sample a color from this texture with the UV coordinate \p i_uvCoord
+    /// Sample a color from this texture with the UV coordinate \p i_uv
     /// and position \p i_position.
     ///
-    /// \param i_uvCoord The 2D coordinate to sample from in the texture space.
+    /// \param i_uv The 2D coordinate to sample from in the texture space.
     /// \param i_position The 3D position of the geometric surface to apply the color to.
     ///
     /// \return The color sample.
-    virtual gm::Vec3f Sample( const gm::Vec2f& i_uvCoord, const gm::Vec3f& i_position ) const = 0;
+    virtual gm::Vec3f Sample( const gm::Vec2f& i_uv, const gm::Vec3f& i_position ) const = 0;
 };
 
 /// \typedef TextureSharedPtr

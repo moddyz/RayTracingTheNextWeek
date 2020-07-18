@@ -50,7 +50,7 @@ public:
         }
     }
 
-    inline virtual gm::Vec3f Sample( const gm::Vec2f& i_uvCoord, const gm::Vec3f& i_position ) const override
+    inline virtual gm::Vec3f Sample( const gm::Vec2f& i_uv, const gm::Vec3f& i_position ) const override
     {
         if ( m_imageData == nullptr )
         {
@@ -59,7 +59,7 @@ public:
         }
 
         // Clamp input texture coordinates to (0, 1]
-        gm::Vec2f uvCoord = gm::Clamp( i_uvCoord, gm::FloatRange( 0, 1 ) );
+        gm::Vec2f uvCoord = gm::Clamp( i_uv, gm::FloatRange( 0, 1 ) );
 
         // Flip the vertical component to align with image coordinates.
         uvCoord.Y() = 1.0 - uvCoord.Y();

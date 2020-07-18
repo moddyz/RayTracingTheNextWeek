@@ -14,9 +14,9 @@ class HitRecord;
 
 /// \class Material
 ///
-/// Material is the abstract base class of all material(s).  The purpose of a material is to define
-/// different ways color can be computed from a ray, and behavior in how the ray should "scatter" in
-/// a new direction.
+/// Material is the abstract base class of all material(s).
+///
+/// Materials can "scatter" rays by defining their next trajectory, and "emit" light.
 ///
 /// A single material can be assigned to multiple scene objects.
 class Material
@@ -39,6 +39,18 @@ public:
                           const HitRecord&     i_hitRecord,
                           gm::Vec3f&           o_attenuation,
                           raytrace::Ray&       o_scatteredRay ) const = 0;
+
+    /// Emit colored light based on 2D surface coordinates and position of the ray hit.
+    ///
+    /// \param i_uv 2D texture coordinates
+    /// \param i_position 3D position of the ray hit.
+    ///
+    /// \return The emitted color.
+    virtual gm::Vec3f Emit( const gm::Vec2f& i_uv, const gm::Vec3f& i_position ) const
+    {
+        // By default, the material does not emit any light!
+        return gm::Vec3f( 0, 0, 0 );
+    }
 };
 
 /// \typedef MaterialSharedPtr

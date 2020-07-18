@@ -63,12 +63,12 @@ public:
         {
             if ( gm::Contains( i_magnitudeRange, intersections.Min() ) )
             {
-                _Record( i_ray, intersections.Min(), o_record );
+                _RecordHit( i_ray, intersections.Min(), o_record );
                 return true;
             }
             else if ( gm::Contains( i_magnitudeRange, intersections.Max() ) )
             {
-                _Record( i_ray, intersections.Max(), o_record );
+                _RecordHit( i_ray, intersections.Max(), o_record );
                 return true;
             }
         }
@@ -104,7 +104,7 @@ private:
     /// \param i_ray The ray.
     /// \param i_rayMagnitude the magnitude of the ray intersection.
     /// \param o_record the record of a ray hit.
-    inline void _Record( const raytrace::Ray& i_ray, float i_rayMagnitude, HitRecord& o_record ) const
+    inline void _RecordHit( const raytrace::Ray& i_ray, float i_rayMagnitude, HitRecord& o_record ) const
     {
         o_record.m_position  = gm::RayPosition( i_ray.Origin(), i_ray.Direction(), i_rayMagnitude );
         o_record.m_normal    = ( o_record.m_position - m_origin.Value( i_ray.Time() ) ) / m_radius;

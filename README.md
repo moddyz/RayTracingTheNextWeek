@@ -11,6 +11,7 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
   * [2. Solid Textures](#2-solid-textures)
   * [3. Perlin Noise](#3-perlin-noise)
   * [4. Image Texture Mapping](#4-image-texture-mapping)
+  * [5. Rectangles and Lights](#5-rectangles-and-lights)
 - [Library](#library)
 - [Documentation](#documentation)
 - [Building](#building)
@@ -81,7 +82,6 @@ By accumulating multiple layers of perlin noise applied to a sine function over 
 
 [Link to Chapter 5](https://raytracing.github.io/books/RayTracingTheNextWeek.html#perlinnoise)
 
-
 ### 4. Image Texture Mapping
 
 ![Image](./src/4_imageTextureMapping/output.png)
@@ -93,6 +93,16 @@ During color sampling, the geometric surface coordinates (uv) are mapped to a pa
 [Source code](./src/4_imageTextureMapping/main.cpp)
 
 [Link to Chapter 6](https://raytracing.github.io/books/RayTracingTheNextWeek.html#imagetexturemapping)
+
+### 5. Rectangles and Lights
+
+![Image](./src/5_rectanglesAndLights/output.png)
+
+Introducing emissive materials to provide local lighting to the scene, and a new Rectangle scene object class.
+
+[Source code](./src/5_rectanglesAndLights/main.cpp)
+
+[Link to Chapter 7](https://raytracing.github.io/books/RayTracingTheNextWeek.html#rectanglesandlights)
 
 ## Library
 
