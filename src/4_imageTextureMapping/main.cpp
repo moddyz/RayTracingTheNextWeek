@@ -13,7 +13,6 @@
 #include <gm/functions/normalize.h>
 #include <gm/functions/randomNumber.h>
 
-#include <raytrace/spatialBVH.h>
 #include <raytrace/camera.h>
 #include <raytrace/hitRecord.h>
 #include <raytrace/imageBuffer.h>
@@ -22,6 +21,7 @@
 #include <raytrace/ppmImageWriter.h>
 #include <raytrace/randomPointInUnitDisk.h>
 #include <raytrace/ray.h>
+#include <raytrace/spatialBVH.h>
 #include <raytrace/sphere.h>
 
 #include <iostream>

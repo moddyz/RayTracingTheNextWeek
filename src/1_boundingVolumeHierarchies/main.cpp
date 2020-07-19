@@ -13,7 +13,6 @@
 #include <gm/functions/normalize.h>
 #include <gm/functions/randomNumber.h>
 
-#include <raytrace/spatialBVH.h>
 #include <raytrace/camera.h>
 #include <raytrace/constantTexture.h>
 #include <raytrace/dielectric.h>
@@ -24,6 +23,7 @@
 #include <raytrace/ppmImageWriter.h>
 #include <raytrace/randomPointInUnitDisk.h>
 #include <raytrace/ray.h>
+#include <raytrace/spatialBVH.h>
 #include <raytrace/sphere.h>
 
 #include <iostream>
@@ -291,7 +291,8 @@ int main( int i_argc, char** i_argv )
     // Parse command line arguments.
     // ------------------------------------------------------------------------
 
-    cxxopts::Options options( "1_boundingVolumeHierarchies", "Ray tracing program which uses a BVH for efficient intersection tests." );
+    cxxopts::Options options( "1_boundingVolumeHierarchies",
+                              "Ray tracing program which uses a BVH for efficient intersection tests." );
     options.add_options()                                                                       // Command line options.
         ( "w,width", "Width of the image.", cxxopts::value< int >()->default_value( "384" ) )   // Width
         ( "h,height", "Height of the image.", cxxopts::value< int >()->default_value( "256" ) ) // Height;

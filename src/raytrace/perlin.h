@@ -53,11 +53,11 @@ public:
     /// \return The final accumulated noise value.
     float Turbulence( const gm::Vec3f& i_coord, int i_depth = 7 ) const
     {
-        float     accumulation = 0.0f;
+        float accumulation = 0.0f;
 
         // These are inputs which vary over the course of accumulation.
-        float     weight       = 1.0f;
-        gm::Vec3f coordinate   = i_coord;
+        float     weight     = 1.0f;
+        gm::Vec3f coordinate = i_coord;
 
         for ( int depthIndex = 0; depthIndex < i_depth; ++depthIndex )
         {
