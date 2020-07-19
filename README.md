@@ -126,9 +126,11 @@ Any particle hit will cause the ray to be scattered in a random direction thanks
 
 The final render, testing all the new features learned in [Ray Tracing: The Next Week](https://raytracing.github.io/books/RayTracingTheNextWeek.html).
 
+Rendered with 15,000 samples per pixel.
+
 [Source code](./src/7_aSceneTestingAllNewFeatures/main.cpp)
 
-[Link to Chapter 9](https://raytracing.github.io/books/RayTracingTheNextWeek.html#ascenetestingallnewfeatures)
+[Link to Chapter 10](https://raytracing.github.io/books/RayTracingTheNextWeek.html#ascenetestingallnewfeatures)
 
 ## Library
 
