@@ -24,7 +24,7 @@ public:
     inline virtual gm::Vec3f Sample( const gm::Vec2f& i_uv, const gm::Vec3f& i_position ) const override
     {
         return gm::Vec3f( 1, 1, 1 ) * 0.5 *
-               ( 1.0 + sin( m_scale * i_position.Z() + 10 * m_perlin.Turbulence( i_position ) ) );
+               ( 1.0 + sin( m_scale * i_position.X() + 10 * m_perlin.Turbulence( i_position ) ) );
     }
 
 private:

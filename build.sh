@@ -5,7 +5,6 @@ set -euxo pipefail
 mkdir -p build && cd build
 
 CMAKE_ARGS=\
-\ -DCMAKE_BUILD_TYPE="Debug"\
 \ -DBUILD_DOCUMENTATION="TRUE"\
 \ -DBUILD_TESTING="TRUE"
 

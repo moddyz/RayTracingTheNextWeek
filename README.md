@@ -13,6 +13,7 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
   * [4. Image Texture Mapping](#4-image-texture-mapping)
   * [5. Rectangles and Lights](#5-rectangles-and-lights)
   * [6. Volumes](#6-volumes)
+  * [7. A Scene Testing All New Features](#7-a-scene-testing-all-new-features)
 - [Library](#library)
 - [Documentation](#documentation)
 - [Building](#building)
@@ -119,6 +120,15 @@ Any particle hit will cause the ray to be scattered in a random direction thanks
 
 [Link to Chapter 9](https://raytracing.github.io/books/RayTracingTheNextWeek.html#volumes)
 
+### 7. A Scene Testing All New Features
+
+![Image](./src/7_aSceneTestingAllNewFeatures/output.png)
+
+The final render, testing all the new features learned in [Ray Tracing: The Next Week](https://raytracing.github.io/books/RayTracingTheNextWeek.html).
+
+[Source code](./src/7_aSceneTestingAllNewFeatures/main.cpp)
+
+[Link to Chapter 9](https://raytracing.github.io/books/RayTracingTheNextWeek.html#ascenetestingallnewfeatures)
 
 ## Library
 

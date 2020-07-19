@@ -60,10 +60,8 @@
 
 #include <gm/base/assert.h>
 #include <gm/functions/dotProduct.h>
-#include <gm/functions/quadraticRoots.h>
-#ifdef GM_DEBUG
 #include <gm/functions/length.h>
-#endif
+#include <gm/functions/quadraticRoots.h>
 
 GM_NS_OPEN
 
@@ -103,7 +101,7 @@ GM_HOST_DEVICE inline int RaySphereIntersection( const Vec3f& i_sphereOrigin,
                                                  const Vec3f& i_rayDirection,
                                                  FloatRange&  o_intersections )
 {
-    GM_ASSERT_MSG( Length( i_rayDirection ) == 1.0f, "Direction i_rayDirection is not normalised!" );
+    GM_ASSERT_MSG( AlmostEqual( Length( i_rayDirection ), 1.0f ), "Direction i_rayDirection is not normalised!" );
 
     // Compute quadratic co-efficients
     Vec3f originDiff = i_rayOrigin - i_sphereOrigin;
@@ -137,14 +135,20 @@ GM_HOST_DEVICE inline int RaySphereIntersection( const Vec3f& i_sphereOrigin,
         // Root negative check, as to not intersect with objects behind the ray direction.
         if ( o_intersections.Min() < 0 )
         {
-            o_intersections.Min() = o_intersections.Max();
-            if ( o_intersections.Min() < 0 )
+            if ( o_intersections.Max() < 0 )
             {
                 // Both roots are negative, count it as no intersection.
                 return 0;
             }
+            else if ( Length( i_rayOrigin - i_sphereOrigin ) < i_sphereRadius )
+            {
+                // The ray origin is INSIDE the sphere.
+                o_intersections.Min() = 0.0f;
+                return 2;
+            }
             else
             {
+                o_intersections.Min() = o_intersections.Max();
                 return 1;
             }
         }
