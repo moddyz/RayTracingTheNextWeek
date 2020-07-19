@@ -14,6 +14,7 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
   * [5. Rectangles and Lights](#5-rectangles-and-lights)
   * [6. Volumes](#6-volumes)
   * [7. A Scene Testing All New Features](#7-a-scene-testing-all-new-features)
+- [Sequel](#sequel)
 - [Library](#library)
 - [Documentation](#documentation)
 - [Building](#building)
@@ -131,6 +132,10 @@ Rendered with 15,000 samples per pixel.
 [Source code](./src/7_aSceneTestingAllNewFeatures/main.cpp)
 
 [Link to Chapter 10](https://raytracing.github.io/books/RayTracingTheNextWeek.html#ascenetestingallnewfeatures)
+
+## Sequel
+
+The implementation of the sequel is available under [RayTracingTheRestOfYourLife](https://github.com/moddyz/RayTracingTheRestOfYourLife).
 
 ## Library
 
