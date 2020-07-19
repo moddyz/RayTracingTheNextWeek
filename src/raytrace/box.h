@@ -74,7 +74,7 @@ public:
         return false;
     }
 
-    virtual gm::Vec3fRange Extent( const std::vector< float >& i_times ) const override
+    virtual inline gm::Vec3fRange Extent( const std::vector< float >& i_times ) const override
     {
         gm::Vec3fRange extent;
         for ( float time : i_times )
@@ -133,6 +133,7 @@ private:
             o_uv     = gm::Vec2f( origin.X(), origin.Y() );
         }
 
+        // Flip UV coordinates into (0, 1) region if required.
         if ( o_uv.X() < 0 )
         {
             o_uv.X() = 1.0f - o_uv.X();

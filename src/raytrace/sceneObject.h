@@ -37,14 +37,15 @@ public:
     virtual bool
     Hit( const raytrace::Ray& i_ray, const gm::FloatRange& i_magnitudeRange, HitRecord& o_record ) const = 0;
 
-    /// Compute the extent of this SceneObject over the course of multiple time samples \p i_times.
+    /// Compute the extent containing this SceneObject over time samples \p i_times.
     ///
-    /// If this SceneObject does not have a bounding volume, then an empty extent is returned.
+    /// If this SceneObject does not have a bounding volume at any of the times,
+    /// then an empty extent is returned.
     /// \sa \ref Vec3fRange::IsEmpty
     ///
     /// \pre If \p i_times is an empty array, then an empty extent will be returned.
     ///
-    /// \param i_times The time samples to computed the unioned extent for.
+    /// \param i_times The time samples to computed the extent.
     ///
     /// \return The extent of this scene object.
     virtual gm::Vec3fRange Extent( const std::vector< float >& i_times ) const = 0;

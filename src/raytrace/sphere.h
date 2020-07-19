@@ -77,7 +77,7 @@ public:
         return false;
     }
 
-    virtual gm::Vec3fRange Extent( const std::vector< float >& i_times ) const override
+    virtual inline gm::Vec3fRange Extent( const std::vector< float >& i_times ) const override
     {
         gm::Vec3fRange extent;
         for ( float time : i_times )

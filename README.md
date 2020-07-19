@@ -12,6 +12,7 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
   * [3. Perlin Noise](#3-perlin-noise)
   * [4. Image Texture Mapping](#4-image-texture-mapping)
   * [5. Rectangles and Lights](#5-rectangles-and-lights)
+  * [6. Volumes](#6-volumes)
 - [Library](#library)
 - [Documentation](#documentation)
 - [Building](#building)
@@ -103,6 +104,21 @@ Introducing emissive materials to provide local lighting to the scene, and a new
 [Source code](./src/5_rectanglesAndLights/main.cpp)
 
 [Link to Chapter 7](https://raytracing.github.io/books/RayTracingTheNextWeek.html#rectanglesandlights)
+
+### 6. Volumes
+
+![Image](./src/6_volumes/output.png)
+
+Adding a ConstantMedium for a volume of particulates.  
+
+The ConstantMedium is associated with a geometric shape, and models ray hitting particles via a probability based on distance that the ray travels through the volume.  
+
+Any particle hit will cause the ray to be scattered in a random direction thanks to the new Isotropic material.
+
+[Source code](./src/6_volumes/main.cpp)
+
+[Link to Chapter 9](https://raytracing.github.io/books/RayTracingTheNextWeek.html#volumes)
+
 
 ## Library
 
