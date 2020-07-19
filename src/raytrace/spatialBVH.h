@@ -1,8 +1,8 @@
 #pragma once
 
-/// \file raytrace/bvh.h
+/// \file raytrace/spatialBVH.h
 ///
-/// Bounding volume hierarchy acceleration structure.
+/// Bounding volume hierarchy acceleration structure based on spatial partitioning.
 
 #include <raytrace/hitRecord.h>
 #include <raytrace/sceneObject.h>
@@ -15,27 +15,27 @@
 
 RAYTRACE_NS_OPEN
 
-/// \class BVHNode
+/// \class SpatialBVHNode
 ///
-/// BVHNode is a single node in the bounding volume hierarchy.
+/// SpatialBVHNode is a single node in the bounding volume hierarchy.
 ///
-/// Constructing a root BVHNode with an array of SceneObject(s) will result in the recursive
+/// Constructing a root SpatialBVHNode with an array of SceneObject(s) will result in the recursive
 /// construction of the BVH tree, with the leaf nodes representing the original SceneObject(s).
 ///
-/// BVH is represented as a binary tree, so each BVHNode has \em left & \em right children.
+/// BVH is represented as a binary tree, so each SpatialBVHNode has \em left & \em right children.
 ///
 /// This BVH utilizes a spatial partioning strategy, by \em evenly splitting the input volume across
 /// its \em longest axis, then partitioning the objects into either of the halves.
 ///
 /// TODO: Needs a re-write from spatial paritioning strategy into sorted object partitioning.
-class BVHNode : public SceneObject
+class SpatialBVHNode : public SceneObject
 {
 public:
     /// Explicit construction of a BVH from a collection of SceneObject(s) and time samples.
     ///
     /// \param i_sceneObjects Scene objects to build the BVH for.
     /// \param i_times Time samples to compute extents for.
-    inline explicit BVHNode( const SceneObjectPtrs& i_sceneObjects, const std::vector< float >& i_times )
+    inline explicit SpatialBVHNode( const SceneObjectPtrs& i_sceneObjects, const std::vector< float >& i_times )
     {
         // Compute extent of all the objects, including the aggregate extent for this node.
         std::vector< gm::Vec3fRange > objectExtents;
@@ -99,8 +99,8 @@ public:
         }
 
         // Recursively construct descendents with left & right object partitions.
-        m_left  = std::make_shared< BVHNode >( leftObjects, i_times );
-        m_right = std::make_shared< BVHNode >( rightObjects, i_times );
+        m_left  = std::make_shared< SpatialBVHNode >( leftObjects, i_times );
+        m_right = std::make_shared< SpatialBVHNode >( rightObjects, i_times );
     }
 
     virtual inline bool

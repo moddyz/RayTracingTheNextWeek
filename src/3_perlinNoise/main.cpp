@@ -13,7 +13,7 @@
 #include <gm/functions/normalize.h>
 #include <gm/functions/randomNumber.h>
 
-#include <raytrace/bvh.h>
+#include <raytrace/spatialBVH.h>
 #include <raytrace/camera.h>
 #include <raytrace/hitRecord.h>
 #include <raytrace/imageBuffer.h>
@@ -306,7 +306,7 @@ int main( int i_argc, char** i_argv )
 
     // Transform the scene objects into a BVH tree.
     std::vector< float >     times      = {shutterRange.Min(), shutterRange.Max()};
-    raytrace::SceneObjectPtr rootObject = std::make_shared< raytrace::BVHNode >( sceneObjects, times );
+    raytrace::SceneObjectPtr rootObject = std::make_shared< raytrace::SpatialBVHNode >( sceneObjects, times );
 
     // ------------------------------------------------------------------------
     // Compute ray colors.
