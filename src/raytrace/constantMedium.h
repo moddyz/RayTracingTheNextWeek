@@ -22,7 +22,9 @@ RAYTRACE_NS_OPEN
 
 /// \class ConstantMedium
 ///
-/// ConstantMedium is a 3D rectilinear geometric surface with 6 sides.
+/// ConstantMedium transforms an associated geometry into a medium with a specified constant density,
+/// such that rays have a probablistic chance to travel through the medium and hit a particulate,
+/// after a certain distance.
 class ConstantMedium : public SceneObject
 {
 public:
