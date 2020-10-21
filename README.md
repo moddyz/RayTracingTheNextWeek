@@ -26,9 +26,6 @@ The following dependencies are mandatory:
 - C++ compiler
 - [CMake](https://cmake.org/documentation/) (3.12 or greater)
 
-The following dependencies are optional:
-- [Doxygen](https://www.doxygen.nl/index.html) and [graphviz](https://graphviz.org/) for documentation.
-
 ## Building
 
 Example snippet for building this project:
