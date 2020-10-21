@@ -7,7 +7,7 @@
 /// \file functions/contains.h
 /// \ingroup gm_functions_basic
 ///
-/// Check if a containee resides within a container.
+/// Check if a container, such as a range contains a specified element or range of elements.
 
 #include <gm/gm.h>
 
@@ -31,9 +31,9 @@
 
 GM_NS_OPEN
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -43,9 +43,9 @@ GM_HOST_DEVICE inline bool Contains( const FloatRange& i_container, const float&
     return i_containee >= i_container.Min() && i_containee <= i_container.Max();
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -55,9 +55,9 @@ GM_HOST_DEVICE inline bool Contains( const FloatRange& i_container, const FloatR
     return Contains( i_container, i_containee.Min() ) && Contains( i_container, i_containee.Max() );
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -67,9 +67,9 @@ GM_HOST_DEVICE inline bool Contains( const IntRange& i_container, const int& i_c
     return i_containee >= i_container.Min() && i_containee <= i_container.Max();
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -79,9 +79,9 @@ GM_HOST_DEVICE inline bool Contains( const IntRange& i_container, const IntRange
     return Contains( i_container, i_containee.Min() ) && Contains( i_container, i_containee.Max() );
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -92,9 +92,9 @@ GM_HOST_DEVICE inline bool Contains( const Vec2fRange& i_container, const Vec2f&
            i_containee[ 1 ] >= i_container.Min()[ 1 ] && i_containee[ 1 ] <= i_container.Max()[ 1 ];
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -104,9 +104,9 @@ GM_HOST_DEVICE inline bool Contains( const Vec2fRange& i_container, const Vec2fR
     return Contains( i_container, i_containee.Min() ) && Contains( i_container, i_containee.Max() );
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -118,9 +118,9 @@ GM_HOST_DEVICE inline bool Contains( const Vec3fRange& i_container, const Vec3f&
            i_containee[ 2 ] >= i_container.Min()[ 2 ] && i_containee[ 2 ] <= i_container.Max()[ 2 ];
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -130,9 +130,9 @@ GM_HOST_DEVICE inline bool Contains( const Vec3fRange& i_container, const Vec3fR
     return Contains( i_container, i_containee.Min() ) && Contains( i_container, i_containee.Max() );
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -145,9 +145,9 @@ GM_HOST_DEVICE inline bool Contains( const Vec4fRange& i_container, const Vec4f&
            i_containee[ 3 ] >= i_container.Min()[ 3 ] && i_containee[ 3 ] <= i_container.Max()[ 3 ];
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -157,9 +157,9 @@ GM_HOST_DEVICE inline bool Contains( const Vec4fRange& i_container, const Vec4fR
     return Contains( i_container, i_containee.Min() ) && Contains( i_container, i_containee.Max() );
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -170,9 +170,9 @@ GM_HOST_DEVICE inline bool Contains( const Vec2iRange& i_container, const Vec2i&
            i_containee[ 1 ] >= i_container.Min()[ 1 ] && i_containee[ 1 ] <= i_container.Max()[ 1 ];
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -182,9 +182,9 @@ GM_HOST_DEVICE inline bool Contains( const Vec2iRange& i_container, const Vec2iR
     return Contains( i_container, i_containee.Min() ) && Contains( i_container, i_containee.Max() );
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -196,9 +196,9 @@ GM_HOST_DEVICE inline bool Contains( const Vec3iRange& i_container, const Vec3i&
            i_containee[ 2 ] >= i_container.Min()[ 2 ] && i_containee[ 2 ] <= i_container.Max()[ 2 ];
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -208,9 +208,9 @@ GM_HOST_DEVICE inline bool Contains( const Vec3iRange& i_container, const Vec3iR
     return Contains( i_container, i_containee.Min() ) && Contains( i_container, i_containee.Max() );
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.
@@ -223,9 +223,9 @@ GM_HOST_DEVICE inline bool Contains( const Vec4iRange& i_container, const Vec4i&
            i_containee[ 3 ] >= i_container.Min()[ 3 ] && i_containee[ 3 ] <= i_container.Max()[ 3 ];
 }
 
-/// Check if \p i_containee is contained within the range i_container.
+/// Check if the range \p i_container completely contains \p i_containee.
 ///
-/// \param i_container The range.
+/// \param i_container The range container.
 /// \param i_containee The i_containee.
 ///
 /// \retval true If \p i_containee is completely contained within i_container.

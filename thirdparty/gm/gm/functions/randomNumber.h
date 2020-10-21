@@ -13,7 +13,7 @@
 
 #include <gm/gm.h>
 
-#include <gm/base/assert.h>
+#include <gm/base/diagnostic.h>
 
 #include <gm/types/floatRange.h>
 #include <gm/types/intRange.h>

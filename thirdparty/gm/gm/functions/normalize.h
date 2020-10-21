@@ -18,7 +18,7 @@
 #include <gm/types/vec3f.h>
 #include <gm/types/vec4f.h>
 
-#include <gm/base/assert.h>
+#include <gm/base/diagnostic.h>
 #include <gm/functions/length.h>
 
 GM_NS_OPEN

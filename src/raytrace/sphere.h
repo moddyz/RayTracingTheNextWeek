@@ -128,13 +128,13 @@ private:
         // u = phi / 2*PI
         //
         // XXX: Why are we subtracting the result from 1.0f?
-        float u = 1.0f - ( ( phi + GM_PI ) / ( 2.0f * GM_PI ) );
+        float u = 1.0f - ( ( phi + gm::Pi ) / ( 2.0f * gm::Pi ) );
 
         // The normalised coordinate "v" can be computed for the longitude angle (theta) down
         // from the pole of the sphere:
         //
         // v = theta / PI
-        float v = ( theta + ( GM_PI / 2.0f ) ) / GM_PI;
+        float v = ( theta + ( gm::Pi / 2.0f ) ) / gm::Pi;
 
         return gm::Vec2f( u, v );
     }

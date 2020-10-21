@@ -49,7 +49,7 @@
 #include <gm/types/vec4f.h>
 #include <gm/types/vec4fRange.h>
 
-#include <gm/base/assert.h>
+#include <gm/base/diagnostic.h>
 #ifdef GM_DEBUG
 #include <gm/base/almost.h>
 #include <gm/functions/length.h>

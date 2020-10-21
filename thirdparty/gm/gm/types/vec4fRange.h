@@ -132,9 +132,9 @@ public:
     /// Check if the min or max contain NaN values.
     ///
     /// \return If this range has NaN values.
-    GM_HOST_DEVICE inline bool HasNans() const
+    GM_HOST_DEVICE inline bool HasNaNs() const
     {
-        return Min().HasNans() || Max().HasNans();
+        return Min().HasNaNs() || Max().HasNaNs();
     }
 
     /// Get the string representation.  For debugging purposes.

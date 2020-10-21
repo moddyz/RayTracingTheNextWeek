@@ -8,7 +8,8 @@
 /// \ingroup gm_functions_basic
 ///
 /// Find the minimum of two input values.
-/// If the value type is a vector, the minimum will be computed per-element.
+///
+/// If the value type is a vector, the operation will be performed on the corresponding elements.
 
 #include <gm/gm.h>
 

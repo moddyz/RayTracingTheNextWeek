@@ -15,11 +15,17 @@
 
 #include <gm/types/floatRange.h>
 #include <gm/types/intRange.h>
+#include <gm/types/vec2f.h>
 #include <gm/types/vec2fRange.h>
+#include <gm/types/vec2i.h>
 #include <gm/types/vec2iRange.h>
+#include <gm/types/vec3f.h>
 #include <gm/types/vec3fRange.h>
+#include <gm/types/vec3i.h>
 #include <gm/types/vec3iRange.h>
+#include <gm/types/vec4f.h>
 #include <gm/types/vec4fRange.h>
+#include <gm/types/vec4i.h>
 #include <gm/types/vec4iRange.h>
 
 #include <gm/functions/max.h>
@@ -28,11 +34,6 @@
 GM_NS_OPEN
 
 /// Compute the expanded range of \p i_lhs and \p i_rhs.
-///
-/// There are three special scenarios for handling empty input ranges:
-/// - If i_lhs and i_rhs are both empty, an empty range is returned.
-/// - If i_lhs is empty, but not i_rhs, i_rhs is returned.
-/// - If i_rhs is empty, but not i_lhs, i_lhs is returned.
 ///
 /// \param i_lhs The first range.
 /// \param i_rhs The second range.
@@ -60,10 +61,22 @@ GM_HOST_DEVICE inline FloatRange Expand( const FloatRange& i_lhs, const FloatRan
 
 /// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
-/// There are three special scenarios for handling empty input ranges:
-/// - If i_lhs and i_rhs are both empty, an empty range is returned.
-/// - If i_lhs is empty, but not i_rhs, i_rhs is returned.
-/// - If i_rhs is empty, but not i_lhs, i_lhs is returned.
+/// \param i_lhs The first range.
+/// \param i_rhs The second range.
+///
+/// \return The expanded range.
+GM_HOST_DEVICE inline FloatRange Expand( const FloatRange& i_lhs, const float& i_rhs )
+{
+    bool leftEmpty = i_lhs.IsEmpty();
+    if ( leftEmpty )
+    {
+        return FloatRange( i_rhs, i_rhs );
+    }
+
+    return FloatRange( Min( i_lhs.Min(), i_rhs ), Max( i_lhs.Max(), i_rhs ) );
+}
+
+/// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
 /// \param i_lhs The first range.
 /// \param i_rhs The second range.
@@ -91,10 +104,22 @@ GM_HOST_DEVICE inline IntRange Expand( const IntRange& i_lhs, const IntRange& i_
 
 /// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
-/// There are three special scenarios for handling empty input ranges:
-/// - If i_lhs and i_rhs are both empty, an empty range is returned.
-/// - If i_lhs is empty, but not i_rhs, i_rhs is returned.
-/// - If i_rhs is empty, but not i_lhs, i_lhs is returned.
+/// \param i_lhs The first range.
+/// \param i_rhs The second range.
+///
+/// \return The expanded range.
+GM_HOST_DEVICE inline IntRange Expand( const IntRange& i_lhs, const int& i_rhs )
+{
+    bool leftEmpty = i_lhs.IsEmpty();
+    if ( leftEmpty )
+    {
+        return IntRange( i_rhs, i_rhs );
+    }
+
+    return IntRange( Min( i_lhs.Min(), i_rhs ), Max( i_lhs.Max(), i_rhs ) );
+}
+
+/// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
 /// \param i_lhs The first range.
 /// \param i_rhs The second range.
@@ -122,10 +147,22 @@ GM_HOST_DEVICE inline Vec2fRange Expand( const Vec2fRange& i_lhs, const Vec2fRan
 
 /// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
-/// There are three special scenarios for handling empty input ranges:
-/// - If i_lhs and i_rhs are both empty, an empty range is returned.
-/// - If i_lhs is empty, but not i_rhs, i_rhs is returned.
-/// - If i_rhs is empty, but not i_lhs, i_lhs is returned.
+/// \param i_lhs The first range.
+/// \param i_rhs The second range.
+///
+/// \return The expanded range.
+GM_HOST_DEVICE inline Vec2fRange Expand( const Vec2fRange& i_lhs, const Vec2f& i_rhs )
+{
+    bool leftEmpty = i_lhs.IsEmpty();
+    if ( leftEmpty )
+    {
+        return Vec2fRange( i_rhs, i_rhs );
+    }
+
+    return Vec2fRange( Min( i_lhs.Min(), i_rhs ), Max( i_lhs.Max(), i_rhs ) );
+}
+
+/// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
 /// \param i_lhs The first range.
 /// \param i_rhs The second range.
@@ -153,10 +190,22 @@ GM_HOST_DEVICE inline Vec3fRange Expand( const Vec3fRange& i_lhs, const Vec3fRan
 
 /// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
-/// There are three special scenarios for handling empty input ranges:
-/// - If i_lhs and i_rhs are both empty, an empty range is returned.
-/// - If i_lhs is empty, but not i_rhs, i_rhs is returned.
-/// - If i_rhs is empty, but not i_lhs, i_lhs is returned.
+/// \param i_lhs The first range.
+/// \param i_rhs The second range.
+///
+/// \return The expanded range.
+GM_HOST_DEVICE inline Vec3fRange Expand( const Vec3fRange& i_lhs, const Vec3f& i_rhs )
+{
+    bool leftEmpty = i_lhs.IsEmpty();
+    if ( leftEmpty )
+    {
+        return Vec3fRange( i_rhs, i_rhs );
+    }
+
+    return Vec3fRange( Min( i_lhs.Min(), i_rhs ), Max( i_lhs.Max(), i_rhs ) );
+}
+
+/// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
 /// \param i_lhs The first range.
 /// \param i_rhs The second range.
@@ -184,10 +233,22 @@ GM_HOST_DEVICE inline Vec4fRange Expand( const Vec4fRange& i_lhs, const Vec4fRan
 
 /// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
-/// There are three special scenarios for handling empty input ranges:
-/// - If i_lhs and i_rhs are both empty, an empty range is returned.
-/// - If i_lhs is empty, but not i_rhs, i_rhs is returned.
-/// - If i_rhs is empty, but not i_lhs, i_lhs is returned.
+/// \param i_lhs The first range.
+/// \param i_rhs The second range.
+///
+/// \return The expanded range.
+GM_HOST_DEVICE inline Vec4fRange Expand( const Vec4fRange& i_lhs, const Vec4f& i_rhs )
+{
+    bool leftEmpty = i_lhs.IsEmpty();
+    if ( leftEmpty )
+    {
+        return Vec4fRange( i_rhs, i_rhs );
+    }
+
+    return Vec4fRange( Min( i_lhs.Min(), i_rhs ), Max( i_lhs.Max(), i_rhs ) );
+}
+
+/// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
 /// \param i_lhs The first range.
 /// \param i_rhs The second range.
@@ -215,10 +276,22 @@ GM_HOST_DEVICE inline Vec2iRange Expand( const Vec2iRange& i_lhs, const Vec2iRan
 
 /// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
-/// There are three special scenarios for handling empty input ranges:
-/// - If i_lhs and i_rhs are both empty, an empty range is returned.
-/// - If i_lhs is empty, but not i_rhs, i_rhs is returned.
-/// - If i_rhs is empty, but not i_lhs, i_lhs is returned.
+/// \param i_lhs The first range.
+/// \param i_rhs The second range.
+///
+/// \return The expanded range.
+GM_HOST_DEVICE inline Vec2iRange Expand( const Vec2iRange& i_lhs, const Vec2i& i_rhs )
+{
+    bool leftEmpty = i_lhs.IsEmpty();
+    if ( leftEmpty )
+    {
+        return Vec2iRange( i_rhs, i_rhs );
+    }
+
+    return Vec2iRange( Min( i_lhs.Min(), i_rhs ), Max( i_lhs.Max(), i_rhs ) );
+}
+
+/// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
 /// \param i_lhs The first range.
 /// \param i_rhs The second range.
@@ -246,10 +319,22 @@ GM_HOST_DEVICE inline Vec3iRange Expand( const Vec3iRange& i_lhs, const Vec3iRan
 
 /// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
-/// There are three special scenarios for handling empty input ranges:
-/// - If i_lhs and i_rhs are both empty, an empty range is returned.
-/// - If i_lhs is empty, but not i_rhs, i_rhs is returned.
-/// - If i_rhs is empty, but not i_lhs, i_lhs is returned.
+/// \param i_lhs The first range.
+/// \param i_rhs The second range.
+///
+/// \return The expanded range.
+GM_HOST_DEVICE inline Vec3iRange Expand( const Vec3iRange& i_lhs, const Vec3i& i_rhs )
+{
+    bool leftEmpty = i_lhs.IsEmpty();
+    if ( leftEmpty )
+    {
+        return Vec3iRange( i_rhs, i_rhs );
+    }
+
+    return Vec3iRange( Min( i_lhs.Min(), i_rhs ), Max( i_lhs.Max(), i_rhs ) );
+}
+
+/// Compute the expanded range of \p i_lhs and \p i_rhs.
 ///
 /// \param i_lhs The first range.
 /// \param i_rhs The second range.
@@ -273,6 +358,23 @@ GM_HOST_DEVICE inline Vec4iRange Expand( const Vec4iRange& i_lhs, const Vec4iRan
     }
 
     return Vec4iRange( Min( i_lhs.Min(), i_rhs.Min() ), Max( i_lhs.Max(), i_rhs.Max() ) );
+}
+
+/// Compute the expanded range of \p i_lhs and \p i_rhs.
+///
+/// \param i_lhs The first range.
+/// \param i_rhs The second range.
+///
+/// \return The expanded range.
+GM_HOST_DEVICE inline Vec4iRange Expand( const Vec4iRange& i_lhs, const Vec4i& i_rhs )
+{
+    bool leftEmpty = i_lhs.IsEmpty();
+    if ( leftEmpty )
+    {
+        return Vec4iRange( i_rhs, i_rhs );
+    }
+
+    return Vec4iRange( Min( i_lhs.Min(), i_rhs ), Max( i_lhs.Max(), i_rhs ) );
 }
 
 GM_NS_CLOSE

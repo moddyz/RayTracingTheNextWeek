@@ -23,7 +23,7 @@ GM_NS_OPEN
 /// \return The angle in units of radians.
 GM_HOST_DEVICE inline float Radians( const float& i_angle )
 {
-    constexpr float degreesToRadiansRatio = GM_PI / 180.0f;
+    constexpr float degreesToRadiansRatio = Pi / 180.0f;
     return i_angle * degreesToRadiansRatio;
 }
 

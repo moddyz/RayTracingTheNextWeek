@@ -130,7 +130,7 @@ public:
     /// Check if the min or max contain NaN values.
     ///
     /// \return If this range has NaN values.
-    GM_HOST_DEVICE inline bool HasNans() const
+    GM_HOST_DEVICE inline bool HasNaNs() const
     {
         return std::isnan( Min() ) || std::isnan( Max() );
     }

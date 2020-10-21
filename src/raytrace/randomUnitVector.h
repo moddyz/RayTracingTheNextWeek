@@ -20,7 +20,7 @@ RAYTRACE_NS_OPEN
 /// \return Random unit vector.
 inline gm::Vec3f RandomUnitVector()
 {
-    float angle = gm::RandomNumber( gm::FloatRange( 0.0f, 2.0f * GM_PI ) );
+    float angle = gm::RandomNumber( gm::FloatRange( 0.0f, 2.0f * gm::Pi ) );
     float z     = gm::RandomNumber( gm::FloatRange( -1.0f, 1.0f ) );
     float r     = sqrt( 1.0f - z * z );
     return gm::Vec3f( r * cos( angle ), r * sin( angle ), z );

@@ -1,58 +1,26 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.12)
 
 # Project Name
 project(
     RayTracingTheNextWeek
     VERSION 0.0
-    DESCRIPTION "Implementation of the Ray Tracing: The Next Week book."
+    DESCRIPTION "A starting point for a new CMake-based C++ project."
     LANGUAGES CXX
 )
 
-# Options
-option(BUILD_DOCUMENTATION "Build doxygen documentation." ON)
-
-# Debug flags.
-set(CMAKE_CXX_FLAGS_DEBUG "-DGM_DEBUG")
-
-# Cross-platform compatibility.
-if(UNIX AND NOT APPLE)
-    set(LINUX TRUE)
-endif()
-
-# Discover macros.
+# Set module search paths.
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
-                      ${CMAKE_SOURCE_DIR}/cmake/macros)
-include(Public)
+                      ${CMAKE_CURRENT_SOURCE_DIR}/cmake
+                      ${CMAKE_CURRENT_SOURCE_DIR}/cmake/tools)
+# Apply options.
+include(Options)
 
-# Testing.
-if(BUILD_TESTING)
-    enable_testing()
-    list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
-endif()
+# Tools
+include(Tools)
 
-if(BUILD_DOCUMENTATION)
-    file(
-        COPY ${CMAKE_SOURCE_DIR}/README.md
-        DESTINATION ${CMAKE_BINARY_DIR}
-    )
+# Apply project defaults.
+include(Defaults)
 
-    doxygen_documentation(
-        doxygen_docs
-        GENERATE_TAGFILE
-            TRUE
-        DOXYFILE
-            ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.in
-        INPUTS
-            ${CMAKE_CURRENT_SOURCE_DIR}/src/
-            ${CMAKE_CURRENT_SOURCE_DIR}/src/raytrace
-        TAGFILES
-            ${CMAKE_CURRENT_SOURCE_DIR}/docs/gm.tag=https://moddyz.github.io/GraphicsMath/
-    )
-endif()
-
-# Build targets.
+# Add targets.
 add_subdirectory(thirdparty)
 add_subdirectory(src)
-
-# Install exported targets.
-#export_project(${CMAKE_SOURCE_DIR}/cmake/Config.cmake.in)

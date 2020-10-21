@@ -4,7 +4,7 @@
 ///
 /// GraphicsMath: C++ header-only computer graphics math library.
 
-#include <gm/base/hostdevice.h>
+#include <gm/base/hostDevice.h>
 
 /// \def GM_NS
 ///

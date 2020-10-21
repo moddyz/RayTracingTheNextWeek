@@ -58,7 +58,7 @@
 #include <gm/types/floatRange.h>
 #include <gm/types/vec3f.h>
 
-#include <gm/base/assert.h>
+#include <gm/base/diagnostic.h>
 #include <gm/functions/dotProduct.h>
 #include <gm/functions/length.h>
 #include <gm/functions/quadraticRoots.h>

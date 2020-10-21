@@ -1,9 +1,12 @@
+<a href="https://github.com/moddyz/RayTracingTheNextWeek/actions?query=workflow%3A%22Build+and+test%22"><img src="https://github.com/moddyz/RayTracingTheNextWeek/workflows/Build%20and%20test/badge.svg"/></a>
+
 # RayTracingTheNextWeek
 
 An implementation of the book [Ray Tracing: The Next Week](https://raytracing.github.io/books/RayTracingTheNextWeek.html).  
 
 ## Table of Contents
 
+- [Dependencies](#dependencies)
 - [Prequel](#prequel)
 - [Programs](#programs)
   * [0. Motion Blur](#0-motion-blur)
@@ -15,14 +18,29 @@ An implementation of the book [Ray Tracing: The Next Week](https://raytracing.gi
   * [6. Volumes](#6-volumes)
   * [7. A Scene Testing All New Features](#7-a-scene-testing-all-new-features)
 - [Sequel](#sequel)
-- [Library](#library)
-- [Documentation](#documentation)
 - [Building](#building)
-- [Build Status](#build-status)
+
+### Dependencies
+
+The following dependencies are mandatory:
+- C++ compiler
+- [CMake](https://cmake.org/documentation/) (3.12 or greater)
+
+The following dependencies are optional:
+- [Doxygen](https://www.doxygen.nl/index.html) and [graphviz](https://graphviz.org/) for documentation.
+
+## Building
+
+Example snippet for building this project:
+```
+mkdir build && cd build
+cmake -DCMAKE_INSTALL_PREFIX="/apps/CXXTemplate/" ..
+cmake --build  . -- VERBOSE=1 -j8 all install
+```
 
 ## Prequel
 
-You can check out the implementation to the prequel, [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html), over at [RayTracingInOneWeekend](https://github.com/moddyz/RayTracingInOneWeekend).
+The implementation to the prequel at [RayTracingInOneWeekend](https://github.com/moddyz/RayTracingInOneWeekend).
 
 ## Programs
 
@@ -136,30 +154,3 @@ Rendered with 15,000 samples per pixel.
 ## Sequel
 
 The implementation of the sequel is available under [RayTracingTheRestOfYourLife](https://github.com/moddyz/RayTracingTheRestOfYourLife).
-
-## Library
-
-Common functions and classes are refactored into the [raytrace library](./src/raytrace) and the [GraphicsMath](https://github.com/moddyz/GraphicsMath) project.
-
-## Documentation
-
-Doxygen documentation based on the latest state of master, [hosted by GitHub Pages](https://moddyz.github.io/RayTracingTheNextWeek/).
-
-## Building
-
-A convenience build script is provided, for building all targets, and optionally installing to a location:
-```
-./build.sh <OPTIONAL_INSTALL_LOCATION>
-```
-
-### Requirements
-
-- `>= CMake-3.17`
-- `C++17`
-- `doxygen` and `graphviz` (optional for documentation)
-
-## Build Status
-
-|       | master | 
-| ----- | ------ | 
-| macOS-10.14 | [![Build Status](https://travis-ci.com/moddyz/RayTracingTheNextWeek.svg?branch=master)](https://travis-ci.com/moddyz/RayTracingTheNextWeek) |

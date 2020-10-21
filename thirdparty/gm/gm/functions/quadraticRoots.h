@@ -21,7 +21,7 @@
 
 #include <gm/types/vec2f.h>
 
-#include <gm/base/assert.h>
+#include <gm/base/diagnostic.h>
 
 GM_NS_OPEN
 
